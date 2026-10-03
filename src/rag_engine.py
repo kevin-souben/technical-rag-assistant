@@ -112,6 +112,22 @@ def find_unsupported_values(answer_text: str, source_text: str) -> list[str]:
             unsupported.append(token)
     return unsupported
 
+# Identifiants en majuscules (SPICLK, VBAT, MTDO...) : doivent exister dans la source citée
+IDENT_PATTERN = re.compile(r"\b[A-Z][A-Z0-9_]{3,}\b")
+IDENT_IGNORED = {"ESP32"}  # termes génériques à ne pas vérifier ; à compléter si fausses alertes
+
+
+def find_unsupported_identifiers(answer_text: str, source_text: str) -> list[str]:
+    """Liste les noms de signaux/registres cités dans la réponse mais absents des sources."""
+    answer_clean = re.sub(r"\[[\d,\s]+\]", "", answer_text)
+    missing = []
+    for token in IDENT_PATTERN.findall(answer_clean):
+        if token in IDENT_IGNORED or token in missing:
+            continue
+        if not re.search(r"\b" + re.escape(token) + r"\b", source_text):
+            missing.append(token)
+    return missing
+
 
 def ask(question: str, store, on_token=None) -> Answer:
     """Pipeline complet pour UNE question. on_token(str) permet d'afficher en direct."""
@@ -159,6 +175,9 @@ def ask(question: str, store, on_token=None) -> Answer:
         checked_docs = [doc for _, doc in cited] or [doc for doc, _ in hits]
         source_text = "\n".join(doc.page_content for doc in checked_docs)
         unsupported = find_unsupported_values(text, source_text)
+        for token in find_unsupported_identifiers(text, source_text):
+            if token not in unsupported:
+                unsupported.append(token)
 
     return Answer(text=text, hits=hits, cited=cited, invalid_citations=invalid,
                   unsupported=unsupported, refused=refused, t_retrieval=t_retrieval,

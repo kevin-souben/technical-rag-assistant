@@ -13,6 +13,13 @@ PROMPT = (
     "Only describe what is visible."
 )
 
+def is_degenerate(text: str) -> bool:
+    """Détecte une description qui boucle : trop longue, ou presque que des mots répétés."""
+    words = text.lower().split()
+    if len(words) > 200:
+        return True
+    return len(words) >= 20 and len(set(words)) / len(words) < 0.4
+
 
 def check_ollama() -> None:
     """Vérifie qu'Ollama tourne et que le VLM est installé, avec un message clair sinon."""
@@ -32,9 +39,14 @@ def describe_image(image_path) -> str:
     response = ollama.chat(
         model=config.VLM_MODEL,
         messages=[{"role": "user", "content": PROMPT, "images": [str(image_path)]}],
-        options={"temperature": 0.0},  # 0 = réponse la plus stable, pas de créativité
+        options={
+            "temperature": 0.0,
+            "num_predict": 150,      # plafond de longueur : une description ne dépasse jamais ~150 tokens
+            "repeat_penalty": 1.3,   # décourage le modèle de se répéter
+        },
     )
-    return response["message"]["content"].strip()
+    text = response["message"]["content"].strip()
+    return "" if is_degenerate(text) else text  # mieux vaut pas de description qu'une description fausse
 
 
 def describe_images(images, cache_path: Path) -> dict[str, str]:
@@ -42,6 +54,8 @@ def describe_images(images, cache_path: Path) -> dict[str, str]:
     cache = {}
     if cache_path.exists():
         cache = json.loads(cache_path.read_text(encoding="utf-8"))
+        # on jette les anciennes descriptions qui bouclaient : elles seront régénérées
+        cache = {name: text for name, text in cache.items() if not is_degenerate(text)}
 
     total = len(images)
     for number, img in enumerate(images, start=1):
