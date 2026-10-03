@@ -1,0 +1,22 @@
+# --- Extraction PDF / images ---
+pymupdf>=1.24,<2.0
+pillow>=10.0,<12.0
+
+# --- Orchestration RAG (briques LangChain uniquement) ---
+langchain-core>=1.0,<2.0
+langchain-text-splitters>=1.0,<2.0
+langchain-chroma>=1.0,<2.0
+langchain-ollama>=1.0,<2.0
+langchain-huggingface>=1.0,<2.0
+
+# --- Base vectorielle locale ---
+chromadb>=1.0,<2.0
+
+# --- Embeddings locaux ---
+sentence-transformers>=3.0,<6.0
+
+# --- Client Ollama (VLM + LLM locaux) ---
+ollama>=0.4,<1.0
+
+# --- Interface ---
+streamlit>=1.40,<2.0
