@@ -26,6 +26,7 @@ class ExtractedImage:
     kind: str     # "raster" (image embarquée) ou "vector" (dessin recadré)
     width: int
     height: int
+    text: str = ""   # texte réel lu DANS la figure (noms de broches, légendes)
 
 
 def _clean_text(text: str) -> str:
@@ -52,6 +53,8 @@ def _extract_raster_images(doc, source: str, out_dir: Path) -> list[ExtractedIma
     seen_xrefs = set()  # un logo répété sur chaque page a le même identifiant : on le garde une fois
 
     for page_index in range(len(doc)):
+        if (page_index + 1) in config.SKIP_RASTER_PAGES:
+            continue  # page de couverture : logo sans valeur technique
         page = doc[page_index]
         for img_number, img in enumerate(page.get_images(full=True), start=1):
             xref = img[0]  # identifiant interne de l'image dans le PDF
@@ -107,9 +110,11 @@ def _extract_vector_figures(doc, source: str, out_dir: Path) -> list[ExtractedIm
                 name = f"{Path(source).stem}_p{page_index + 1:03d}_fig{fig_number:02d}.png"
                 path = out_dir / name
                 pix.save(str(path))
+                inner_text = _clean_text(page.get_text("text", clip=clip, sort=True))
                 figures.append(ExtractedImage(
                     source=source, page=page_index + 1, name=name, path=path,
                     kind="vector", width=pix.width, height=pix.height,
+                    text=inner_text[:config.MAX_INNER_TEXT_CHARS],
                 ))
             except Exception as err:
                 print(f"  [avertissement] figure page {page_index + 1} ignorée : {err}")

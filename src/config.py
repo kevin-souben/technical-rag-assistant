@@ -12,6 +12,8 @@ CHROMA_DIR = BASE_DIR / "data" / "chroma_db"
 
 # --- Extraction des images raster ---
 MIN_IMAGE_SIZE_PX = 150  # ignore les images plus petites (logos, puces)
+SKIP_RASTER_PAGES = {1}         # page de couverture : logo sans valeur technique
+MAX_INNER_TEXT_CHARS = 800      # texte maximal conservé par figure (voir explication plus bas)
 
 # --- Extraction des figures vectorielles ---
 EXTRACT_VECTOR_FIGURES = True
