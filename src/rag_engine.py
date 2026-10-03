@@ -86,9 +86,12 @@ def extract_citations(text: str, n_sources: int) -> tuple[list[int], list[int]]:
     invalid = sorted({n for n in numbers if not 1 <= n <= n_sources})
     return valid, invalid
 
-# Ce qu'on vérifie : noms de broches (GPIO12) et valeurs avec unité (3.6V, 80 MHz)
+# Ce qu'on vérifie : broches (GPIO12), valeurs avec unité (3.6V, 80 MHz)
+# et valeurs relatives à une tension (0.75×VIO)
 VALUE_PATTERN = re.compile(
-    r"GPIO\d+|\b\d+(?:\.\d+)?\s?(?:mV|V|mA|µA|uA|A|MHz|kHz|GHz|Mbps|dBm|°C|KB|MB|ns|µs|us|ms)\b"
+    r"GPIO\d+"
+    r"|\b\d+(?:\.\d+)?\s?(?:mV|V|mA|µA|uA|A|MHz|kHz|GHz|Mbps|dBm|°C|KB|MB|ns|µs|us|ms)\b"
+    r"|\b\d+(?:\.\d+)?\s?[x×]\s?[A-Z]{2,}[A-Z0-9_]*\b"
 )
 
 
@@ -146,6 +149,8 @@ def ask(question: str, store, on_token=None) -> Answer:
     text = text.strip()
 
     refused = NOT_FOUND.lower() in text.lower()
+    if refused:
+        text = NOT_FOUND  # une réponse "à moitié refusée" n'est pas fiable : on garde le refus seul
     cited, invalid, unsupported = [], [], []
     if not refused:
         valid_numbers, invalid = extract_citations(text, len(hits))

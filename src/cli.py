@@ -40,9 +40,9 @@ def print_report(answer) -> None:
 
 
 def run_question(question: str, store) -> None:
-    answer = ask(question, store, on_token=lambda t: print(t, end="", flush=True))
-    if not answer.hits:
-        print(answer.text, end="")  # pas de streaming dans ce cas : on affiche le refus
+    # pas de streaming : un texte déjà affiché ne peut plus être retiré si le modèle se rétracte
+    answer = ask(question, store)
+    print(answer.text)
     print_report(answer)
 
 
