@@ -1,0 +1,73 @@
+[
+  {
+    "id": "Q01",
+    "question": "What is the recommended operating supply voltage range of the ESP32?",
+    "expected_all": ["2.8", "3.6", "1.8"],
+    "expected_pages": [33],
+    "should_refuse": false
+  },
+  {
+    "id": "Q02",
+    "question": "What are the strapping pins of the ESP32?",
+    "expected_all": ["GPIO12", "GPIO0", "GPIO2", "GPIO4", "GPIO15", "GPIO5"],
+    "expected_pages": [16],
+    "should_refuse": false
+  },
+  {
+    "id": "Q03",
+    "question": "Which pins have the SPICLK, SPID and SPIQ functions?",
+    "expected_all": ["GPIO6", "GPIO7", "GPIO8"],
+    "forbidden": ["GPIO0", "MTDO"],
+    "expected_pages": [14, 15],
+    "should_refuse": false
+  },
+  {
+    "id": "Q04",
+    "question": "Which GPIO pin has the VSPICLK function?",
+    "expected_all": ["GPIO18"],
+    "expected_pages": [15],
+    "should_refuse": false
+  },
+  {
+    "id": "Q05",
+    "question": "Which GPIO pin has the VSPIQ function?",
+    "expected_all": ["GPIO19"],
+    "expected_pages": [15],
+    "should_refuse": false
+  },
+  {
+    "id": "Q06",
+    "question": "What is the operating temperature range of the ESP32?",
+    "expected_all": ["40", "125"],
+    "expected_pages": [33],
+    "should_refuse": false
+  },
+  {
+    "id": "Q07",
+    "question": "Which GPIO numbers correspond to U0RXD and U0TXD?",
+    "expected_all": ["GPIO3", "GPIO1"],
+    "expected_pages": [15],
+    "should_refuse": false
+  },
+  {
+    "id": "Q08",
+    "question": "How many GPIO pins does the ESP32 have?",
+    "expected_all": ["48"],
+    "expected_pages": [28],
+    "should_refuse": false
+  },
+  {
+    "id": "Q09",
+    "question": "What is the battery capacity of a Tesla Model 3?",
+    "expected_all": [],
+    "expected_pages": [],
+    "should_refuse": true
+  },
+  {
+    "id": "Q10",
+    "question": "What is the capital of France?",
+    "expected_all": [],
+    "expected_pages": [],
+    "should_refuse": true
+  }
+]
