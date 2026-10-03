@@ -5,12 +5,17 @@ Ask questions about datasheets (text **and** figures such as pinouts and tables)
 with the exact **file, page and figure name** as sources. Everything runs locally:
 no cloud API, no API key, no document leaves the machine.
 
-> Status: work in progress. A full benchmark and a web interface are on the roadmap.
+> Status: early version. Command-line and Streamlit interfaces work; a full benchmark is in progress.
+
+![Answer with the cited figure displayed](docs/demo_voltage.png)
+![Refusal when the documents do not contain the answer](docs/demo_refusal.png)
 
 ## Why
 
 Datasheets are proprietary and long. A cloud chatbot means uploading confidential documents,
 and an ungrounded LLM invents pin numbers. This project keeps data local and makes every answer traceable.
+
+Telemetry is disabled in ChromaDB and Streamlit. Internet is used only to download the models once.
 
 ## How it works
 
@@ -22,12 +27,15 @@ Question -> embedding -> top-K passages -> local LLM -> answer with [n] citation
 
 - **Extraction**: PyMuPDF reads text page by page. Vector drawings (pinouts, block diagrams) are
   detected by clustering and rendered to PNG. The native text inside each figure is kept.
-- **Figures**: a local VLM (Moondream via Ollama) adds a short description. Page title and native
-  labels are indexed with it, because a small VLM reads fine details poorly.
+- **Figures**: a local VLM (Moondream via Ollama) adds a short description. On the ESP32 datasheet,
+  19 of 29 figures received a non-empty description; the others are indexed through their native
+  text only. Page title and native labels are indexed with it, because a small VLM reads fine
+  details poorly.
 - **Retrieval**: `sentence-transformers/all-MiniLM-L6-v2` embeddings and ChromaDB.
 - **Generation**: `llama3.2:3b` via Ollama, with a constrained prompt (temperature 0).
 - **Traceability**: the LLM only picks source numbers. File, page and figure name are read from
-  metadata by the code, so the model cannot invent a page.
+  metadata by the code, so a page number cannot be invented. The model can still cite the wrong
+  passage, which is why the grounding check below exists.
 
 ## Anti-hallucination safeguards
 
@@ -39,7 +47,7 @@ Question -> embedding -> top-K passages -> local LLM -> answer with [n] citation
 
 ## Quick start (Windows, PowerShell)
 
-Requires Python 3.11+ and [Ollama](https://ollama.com/download).
+Requires Python 3.11 or 3.12 (tested on 3.11.3) and [Ollama](https://ollama.com/download).
 
 ```powershell
 python -m venv venv
@@ -51,7 +59,12 @@ ollama pull llama3.2:3b
 
 # put a PDF in data\raw_pdfs\, then:
 python -m src.ingest
+
+# ask questions in the terminal...
 python -m src.cli
+
+# ...or in the web interface
+streamlit run src/app_streamlit.py
 ```
 
 Internet is needed only once, to download the models.
@@ -75,13 +88,16 @@ Informal measurements on one machine, one PDF (ESP32 datasheet, 43 pages). A pro
   grounding check displayed a warning. Correct answer in the document: GPIO6, GPIO8 and GPIO7.
 - The grounding check is lexical: it catches invented values and names, not real values
   attached to the wrong signal.
+- Answers can vary between runs, even at temperature 0. The same SPI question gave a wrong
+  answer with a warning in the CLI and a clean refusal in the web interface.
+- Answers sometimes include related but off-topic parameters (for example input voltage
+  levels when asked for the supply range).
 - Page numbers are those of the PDF reader, which can differ from the printed page numbers.
 - The embedding model is English-oriented, so questions should be in English for now.
 - Tested on a single datasheet so far.
 
 ## Roadmap
 
-- Streamlit interface showing the cited figures
-- Benchmark on about 10 questions (latency and accuracy)
+- Benchmark on about 10 questions, each asked 3 times (latency, accuracy, run-to-run variability)
 - Larger model comparison (3B vs 7B)
 - Keyword search (BM25) alongside embeddings
