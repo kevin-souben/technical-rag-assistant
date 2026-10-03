@@ -69,5 +69,26 @@
     "expected_all": [],
     "expected_pages": [],
     "should_refuse": true
+  },
+  {
+    "id": "Q11",
+    "question": "What is the exposed pad (DAP) dimension of the QFN48 package?",
+    "expected_all": ["4.300"],
+    "expected_pages": [39],
+    "should_refuse": false
+  },
+  {
+    "id": "Q12",
+    "question": "What is the minimum distance between a touch sensor track and the ground plane?",
+    "expected_all": ["2mm"],
+    "expected_pages": [42],
+    "should_refuse": false
+  },
+  {
+    "id": "Q13",
+    "question": "Which blocks are inside the RTC block of the ESP32 function block diagram?",
+    "expected_all": ["PMU", "ULP", "Recovery"],
+    "expected_pages": [12],
+    "should_refuse": false
   }
 ]

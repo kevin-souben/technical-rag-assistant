@@ -1,0 +1,773 @@
+{
+  "model": "mistral",
+  "runs_per_question": 3,
+  "load_time_s": 4.943345400010003,
+  "results": [
+    {
+      "item": {
+        "id": "Q01",
+        "question": "What is the recommended operating supply voltage range of the ESP32?",
+        "expected_all": [
+          "2.8",
+          "3.6",
+          "1.8"
+        ],
+        "expected_pages": [
+          33
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            1,
+            33
+          ],
+          "warned": false,
+          "answer": "The recommended operating supply voltage range of the ESP32 is 2.8 V to 3.6 V [1][3][4].",
+          "unsupported": [],
+          "t_retrieval": 0.01250030001392588,
+          "t_first_token": 0.6827246000029845,
+          "t_total": 1.348652000000584,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            1,
+            33
+          ],
+          "warned": false,
+          "answer": "The recommended operating supply voltage range of the ESP32 is 2.8 V to 3.6 V [1][3][4].",
+          "unsupported": [],
+          "t_retrieval": 0.010840499991900288,
+          "t_first_token": 0.05355869999038987,
+          "t_total": 0.7078265000018291,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            1,
+            33
+          ],
+          "warned": false,
+          "answer": "The recommended operating supply voltage range of the ESP32 is 2.8 V to 3.6 V [1][3][4].",
+          "unsupported": [],
+          "t_retrieval": 0.011144299991428852,
+          "t_first_token": 0.053955600000335835,
+          "t_total": 0.660556999995606,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q02",
+        "question": "What are the strapping pins of the ESP32?",
+        "expected_all": [
+          "GPIO12",
+          "GPIO0",
+          "GPIO2",
+          "GPIO4",
+          "GPIO15",
+          "GPIO5"
+        ],
+        "expected_pages": [
+          16
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            16
+          ],
+          "warned": false,
+          "answer": "The ESP32 has 6 strapping pins:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
+          "unsupported": [],
+          "t_retrieval": 0.011152499995660037,
+          "t_first_token": 0.9307956999982707,
+          "t_total": 2.7802348999975948,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            16
+          ],
+          "warned": false,
+          "answer": "The ESP32 has 6 strapping pins:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
+          "unsupported": [],
+          "t_retrieval": 0.009993800005759113,
+          "t_first_token": 0.04949990000750404,
+          "t_total": 1.8919266000011703,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            16
+          ],
+          "warned": false,
+          "answer": "The ESP32 has 6 strapping pins:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
+          "unsupported": [],
+          "t_retrieval": 0.00969180000538472,
+          "t_first_token": 0.047483300004387274,
+          "t_total": 1.8810951000050409,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q03",
+        "question": "Which pins have the SPICLK, SPID and SPIQ functions?",
+        "expected_all": [
+          "GPIO6",
+          "GPIO7",
+          "GPIO8"
+        ],
+        "forbidden": [
+          "GPIO0",
+          "MTDO"
+        ],
+        "expected_pages": [
+          14,
+          15
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "error_flagged",
+          "page_ok": null,
+          "cited_pages": [
+            16,
+            32
+          ],
+          "warned": true,
+          "answer": "The ESP32 has three SPIs (SPI, HSPI, and VSPI) [2]. The specific pins for SPICLK, SPID, and SPIQ are not specified in the provided documents.\n\nFor the strapping pins and their functions, refer to Table 2 in the datasheet [1]. However, the SPICLK, SPID, and SPIQ functions are not listed in this table.",
+          "unsupported": [
+            "SPICLK",
+            "SPID",
+            "SPIQ"
+          ],
+          "t_retrieval": 0.010992700001224875,
+          "t_first_token": 0.3579606999992393,
+          "t_total": 2.240420800007996,
+          "llm_called": true
+        },
+        {
+          "category": "error_flagged",
+          "page_ok": null,
+          "cited_pages": [
+            16,
+            32
+          ],
+          "warned": true,
+          "answer": "The ESP32 has three SPIs (SPI, HSPI, and VSPI) [2]. The specific pins for SPICLK, SPID, and SPIQ are not specified in the provided documents.\n\nFor the strapping pins and their functions, refer to Table 2 in the datasheet [1]. However, the SPICLK, SPID, and SPIQ functions are not listed in this table.",
+          "unsupported": [
+            "SPICLK",
+            "SPID",
+            "SPIQ"
+          ],
+          "t_retrieval": 0.012755399991874583,
+          "t_first_token": 0.04571540000324603,
+          "t_total": 1.8518047999968985,
+          "llm_called": true
+        },
+        {
+          "category": "error_flagged",
+          "page_ok": null,
+          "cited_pages": [
+            16,
+            32
+          ],
+          "warned": true,
+          "answer": "The ESP32 has three SPIs (SPI, HSPI, and VSPI) [2]. The specific pins for SPICLK, SPID, and SPIQ are not specified in the provided documents.\n\nFor the strapping pins and their functions, refer to Table 2 in the datasheet [1]. However, the SPICLK, SPID, and SPIQ functions are not listed in this table.",
+          "unsupported": [
+            "SPICLK",
+            "SPID",
+            "SPIQ"
+          ],
+          "t_retrieval": 0.010384799999883398,
+          "t_first_token": 0.03943040000740439,
+          "t_total": 1.853281200004858,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q04",
+        "question": "Which GPIO pin has the VSPICLK function?",
+        "expected_all": [
+          "GPIO18"
+        ],
+        "expected_pages": [
+          15
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            15
+          ],
+          "warned": true,
+          "answer": "[1] The GPIO pin with the VSPICLK function is GPIO18.",
+          "unsupported": [
+            "GPIO"
+          ],
+          "t_retrieval": 0.010628000003634952,
+          "t_first_token": 1.2027330999990227,
+          "t_total": 1.5783309999969788,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            15
+          ],
+          "warned": true,
+          "answer": "[1] The GPIO pin with the VSPICLK function is GPIO18.",
+          "unsupported": [
+            "GPIO"
+          ],
+          "t_retrieval": 0.009374500004923902,
+          "t_first_token": 0.0687647000013385,
+          "t_total": 0.4276261000049999,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            15
+          ],
+          "warned": true,
+          "answer": "[1] The GPIO pin with the VSPICLK function is GPIO18.",
+          "unsupported": [
+            "GPIO"
+          ],
+          "t_retrieval": 0.01049349999811966,
+          "t_first_token": 0.071285900005023,
+          "t_total": 0.43140289999428205,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q05",
+        "question": "Which GPIO pin has the VSPIQ function?",
+        "expected_all": [
+          "GPIO19"
+        ],
+        "expected_pages": [
+          15
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": false,
+          "cited_pages": [
+            28
+          ],
+          "warned": true,
+          "answer": "[1] The GPIO pin with the VSPIQ function is GPIO19.",
+          "unsupported": [
+            "GPIO19",
+            "VSPIQ"
+          ],
+          "t_retrieval": 0.015070000008563511,
+          "t_first_token": 1.2872017000045162,
+          "t_total": 1.6368919000087772,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": false,
+          "cited_pages": [
+            28
+          ],
+          "warned": true,
+          "answer": "[1] The GPIO pin with the VSPIQ function is GPIO19.",
+          "unsupported": [
+            "GPIO19",
+            "VSPIQ"
+          ],
+          "t_retrieval": 0.01052170000912156,
+          "t_first_token": 0.07364380000217352,
+          "t_total": 0.39357050000398885,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": false,
+          "cited_pages": [
+            28
+          ],
+          "warned": true,
+          "answer": "[1] The GPIO pin with the VSPIQ function is GPIO19.",
+          "unsupported": [
+            "GPIO19",
+            "VSPIQ"
+          ],
+          "t_retrieval": 0.010683300002710894,
+          "t_first_token": 0.07214080000994727,
+          "t_total": 0.3954169000062393,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q06",
+        "question": "What is the operating temperature range of the ESP32?",
+        "expected_all": [
+          "40",
+          "125"
+        ],
+        "expected_pages": [
+          33
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            33
+          ],
+          "warned": false,
+          "answer": "The operating temperature range of the ESP32 is -40°C to 125°C [1][4].",
+          "unsupported": [],
+          "t_retrieval": 0.010136900003999472,
+          "t_first_token": 0.8024167999974452,
+          "t_total": 1.3903466000047047,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            33
+          ],
+          "warned": false,
+          "answer": "The operating temperature range of the ESP32 is -40°C to 125°C [1][4].",
+          "unsupported": [],
+          "t_retrieval": 0.010199999989708886,
+          "t_first_token": 0.04948760000115726,
+          "t_total": 0.571408199990401,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            33
+          ],
+          "warned": false,
+          "answer": "The operating temperature range of the ESP32 is -40°C to 125°C [1][4].",
+          "unsupported": [],
+          "t_retrieval": 0.010171599991736002,
+          "t_first_token": 0.051074599992716685,
+          "t_total": 0.5784315999917453,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q07",
+        "question": "Which GPIO numbers correspond to U0RXD and U0TXD?",
+        "expected_all": [
+          "GPIO3",
+          "GPIO1"
+        ],
+        "expected_pages": [
+          15
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            15
+          ],
+          "warned": false,
+          "answer": "U0RXD corresponds to GPIO3 [4] and U0TXD corresponds to GPIO1 [4].",
+          "unsupported": [],
+          "t_retrieval": 0.012950599993928336,
+          "t_first_token": 1.3707731000031345,
+          "t_total": 1.8337667000014335,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            15
+          ],
+          "warned": false,
+          "answer": "U0RXD corresponds to GPIO3 [4] and U0TXD corresponds to GPIO1 [4].",
+          "unsupported": [],
+          "t_retrieval": 0.011179499997524545,
+          "t_first_token": 0.05353780000586994,
+          "t_total": 0.5130072000029031,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            15
+          ],
+          "warned": false,
+          "answer": "U0RXD corresponds to GPIO3 [4] and U0TXD corresponds to GPIO1 [4].",
+          "unsupported": [],
+          "t_retrieval": 0.010464899998623878,
+          "t_first_token": 0.04824069999449421,
+          "t_total": 0.5054649999947287,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q08",
+        "question": "How many GPIO pins does the ESP32 have?",
+        "expected_all": [
+          "48"
+        ],
+        "expected_pages": [
+          28
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            28
+          ],
+          "warned": false,
+          "answer": "The ESP32 has 48 GPIO pins [1].",
+          "unsupported": [],
+          "t_retrieval": 0.010093699995195493,
+          "t_first_token": 0.9156421999941813,
+          "t_total": 1.2451389999914682,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            28
+          ],
+          "warned": false,
+          "answer": "The ESP32 has 48 GPIO pins [1].",
+          "unsupported": [],
+          "t_retrieval": 0.011853499992867,
+          "t_first_token": 0.055412200003047474,
+          "t_total": 0.3345052999939071,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            28
+          ],
+          "warned": false,
+          "answer": "The ESP32 has 48 GPIO pins [1].",
+          "unsupported": [],
+          "t_retrieval": 0.010507999992114492,
+          "t_first_token": 0.054795000003650784,
+          "t_total": 0.345008999996935,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q09",
+        "question": "What is the battery capacity of a Tesla Model 3?",
+        "expected_all": [],
+        "expected_pages": [],
+        "should_refuse": true
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.011871700000483543,
+          "t_first_token": 0.0,
+          "t_total": 0.011874100004206412,
+          "llm_called": false
+        },
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.012196399999083951,
+          "t_first_token": 0.0,
+          "t_total": 0.01219729999138508,
+          "llm_called": false
+        },
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.012473800001316704,
+          "t_first_token": 0.0,
+          "t_total": 0.0124744000058854,
+          "llm_called": false
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q10",
+        "question": "What is the capital of France?",
+        "expected_all": [],
+        "expected_pages": [],
+        "should_refuse": true
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.011781299996073358,
+          "t_first_token": 0.0,
+          "t_total": 0.011782000001403503,
+          "llm_called": false
+        },
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.012730799993732944,
+          "t_first_token": 0.0,
+          "t_total": 0.012732100003631786,
+          "llm_called": false
+        },
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.011225499998545274,
+          "t_first_token": 0.0,
+          "t_total": 0.01122620000387542,
+          "llm_called": false
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q11",
+        "question": "What is the exposed pad (DAP) dimension of the QFN48 package?",
+        "expected_all": [
+          "4.300"
+        ],
+        "expected_pages": [
+          39
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "refusal_wrong",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.01216480000584852,
+          "t_first_token": 0.22036300000036135,
+          "t_total": 0.6933895999973174,
+          "llm_called": true
+        },
+        {
+          "category": "refusal_wrong",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.013593899988336489,
+          "t_first_token": 0.047302599996328354,
+          "t_total": 0.5171758999931626,
+          "llm_called": true
+        },
+        {
+          "category": "refusal_wrong",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.013542799992137589,
+          "t_first_token": 0.04734900000039488,
+          "t_total": 0.4801348000037251,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q12",
+        "question": "What is the minimum distance between a touch sensor track and the ground plane?",
+        "expected_all": [
+          "2mm"
+        ],
+        "expected_pages": [
+          42
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            42
+          ],
+          "warned": false,
+          "answer": "The minimum distance between a touch sensor track and the ground plane is 2mm [3, 4].",
+          "unsupported": [],
+          "t_retrieval": 0.010627299998304807,
+          "t_first_token": 0.6082656000071438,
+          "t_total": 1.0961424999986775,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            42
+          ],
+          "warned": false,
+          "answer": "The minimum distance between a touch sensor track and the ground plane is 2mm [3, 4].",
+          "unsupported": [],
+          "t_retrieval": 0.01261950000480283,
+          "t_first_token": 0.05450329999439418,
+          "t_total": 0.5002849000011338,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            42
+          ],
+          "warned": false,
+          "answer": "The minimum distance between a touch sensor track and the ground plane is 2mm [3, 4].",
+          "unsupported": [],
+          "t_retrieval": 0.01371310000831727,
+          "t_first_token": 0.0562385999946855,
+          "t_total": 0.4976965999958338,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q13",
+        "question": "Which blocks are inside the RTC block of the ESP32 function block diagram?",
+        "expected_all": [
+          "PMU",
+          "ULP",
+          "Recovery"
+        ],
+        "expected_pages": [
+          12
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            12
+          ],
+          "warned": false,
+          "answer": "The ADC block is inside the RTC block of the ESP32 function block diagram [5].",
+          "unsupported": [],
+          "t_retrieval": 0.04100270000344608,
+          "t_first_token": 1.5220719000062672,
+          "t_total": 1.9905622999940533,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            12
+          ],
+          "warned": false,
+          "answer": "The ADC block is inside the RTC block in the ESP32 function block diagram [5].",
+          "unsupported": [],
+          "t_retrieval": 0.01091709999309387,
+          "t_first_token": 0.05610539999906905,
+          "t_total": 0.5202539999881992,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            12
+          ],
+          "warned": false,
+          "answer": "The ADC block is inside the RTC block in the ESP32 function block diagram [5].",
+          "unsupported": [],
+          "t_retrieval": 0.010586200005491264,
+          "t_first_token": 0.050174399992101826,
+          "t_total": 0.4741972000047099,
+          "llm_called": true
+        }
+      ]
+    }
+  ]
+}

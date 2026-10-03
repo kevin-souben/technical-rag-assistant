@@ -5,7 +5,7 @@ Ask questions about datasheets (text **and** figures such as pinouts and tables)
 with the exact **file, page and figure name** as sources. Everything runs locally:
 no cloud API, no API key, no document leaves the machine.
 
-> Status: early version. Command-line and Streamlit interfaces work; a full benchmark is in progress.
+> Status: early version. Command-line and Streamlit interfaces work; a first benchmark is included.
 
 ![Answer with the cited figure displayed](docs/demo_voltage.png)
 ![Refusal when the documents do not contain the answer](docs/demo_refusal.png)
@@ -69,35 +69,66 @@ streamlit run src/app_streamlit.py
 
 Internet is needed only once, to download the models.
 
-## Measured so far
+## Benchmark
 
-Informal measurements on one machine, one PDF (ESP32 datasheet, 43 pages). A proper benchmark will replace them.
+13 questions on one datasheet (ESP32, 43 pages), each asked 3 times. Model `llama3.2:3b`,
+top-K 8, distance threshold 1.25, run on 2026-10-04. Expected answers were written by reading the PDF.
+13 questions is a small sample: read these numbers as indicative, not as general accuracy.
+The benchmark checks that expected values appear in the answer, not that they are attached to the right signal.
 
-| Step | Result |
+### Results per question
+
+| Outcome | Questions |
 |---|---|
-| Extraction + chunking | about 1.1 s (121 text chunks, 29 figures) |
-| Indexing 150 entries | about 4 s |
-| Retrieval | about 0.01 s |
-| LLM first token, model already loaded | about 0.4 to 7 s |
-| LLM first load | about 38 s |
+| Correct answer (or correct refusal), right page | 8 of 13 |
+| Correct answer, wrong page cited (flagged by the grounding check) | 1 of 13 (Q07) |
+| Wrong answer with no warning | 2 of 13 (Q01, Q11) |
+| Wrong answer with a warning displayed | 1 of 13 (Q13) |
+| Refusal although the answer existed | 1 of 13 (Q03) |
+
+Q11 gave a wrong answer in 2 runs out of 3 and a refusal in the third.
+
+### Results per run (39 runs)
+
+| Metric | Result |
+|---|---|
+| Correct answers or correct refusals | 69 % (27/39) |
+| Fully correct (answer and cited page, or correct refusal) | 62 % (24/39) |
+| Silent errors (wrong, no warning) | 13 % (5/39) |
+| Flagged errors (wrong, warning shown) | 8 % (3/39) |
+| Useless refusals (answer existed) | 10 % (4/39) |
+| Questions whose verdict changed between runs | 1/13 (Q11) |
+| Median / max total latency, model already loaded | 0.3 s / 1.5 s |
+| Median retrieval | 10 ms |
+
+Latencies were measured with the model already in memory; a cold start took about 38 s.
+A first single-run pass gave a 0.6 s median and a 1.3 s maximum.
+
+### What the benchmark showed
+
+- **Retrieval limits some answers more than generation.** For Q03 (SPICLK, SPID, SPIQ), the pin table
+  on pages 14-15 never reached the LLM: page 14 is absent from the 12 nearest entries and page 15
+  ranks 8th at a distance of 1.34, above the 1.25 threshold. The embedding model handles
+  identifiers like `SPICLK` poorly.
+- **Dimensions drawn in a raster figure are not readable.** For Q11 (package dimensions), the model
+  answered a value that does not appear in the drawing, with no warning. The check
+  cannot compare against text that does not exist, and it does not cover the `mm` unit.
+- **Incomplete answers pass the check.** Q01 returned the I/O supply range as the supply range.
+  The check detects values absent from the sources, not omissions.
+- **The grounding check catches wrong citations.** On Q07 the answer was right but cited the wrong page,
+  and the check flagged it.
 
 ## Known limitations
 
-- Small models read dense tables poorly. Example: asked which pins carry `SPICLK`, `SPID` and `SPIQ`,
-  the 3B model gave wrong pins. The signal names were missing from the cited page, so the
-  grounding check displayed a warning. Correct answer in the document: GPIO6, GPIO8 and GPIO7.
-- The grounding check is lexical: it catches invented values and names, not real values
-  attached to the wrong signal.
-- Answers can vary between runs, even at temperature 0. The same SPI question gave a wrong
-  answer with a warning in the CLI and a clean refusal in the web interface.
-- Answers sometimes include related but off-topic parameters (for example input voltage
-  levels when asked for the supply range).
+- Small models read dense tables poorly, and the embedding model retrieves identifiers poorly (see Q03).
+- The grounding check is lexical: it catches invented values and names, not real values attached to the wrong signal, not omissions, and not units outside its list.
+- Values that appear only inside raster images depend on a small VLM and are not verified.
 - Page numbers are those of the PDF reader, which can differ from the printed page numbers.
 - The embedding model is English-oriented, so questions should be in English for now.
-- Tested on a single datasheet so far.
+- Tested on a single datasheet and 13 questions, some of them written after seeing the system's behavior.
 
 ## Roadmap
 
-- Benchmark on about 10 questions, each asked 3 times (latency, accuracy, run-to-run variability)
-- Larger model comparison (3B vs 7B)
-- Keyword search (BM25) alongside embeddings
+- Keyword search (BM25) alongside embeddings, for identifiers such as `SPICLK`
+- Add the `mm` unit to the grounding check and report before/after on the benchmark
+- Larger benchmark, on several datasheets
