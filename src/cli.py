@@ -31,6 +31,10 @@ def print_report(answer) -> None:
     if answer.invalid_citations:
         print(f"ATTENTION : numéros de source inexistants ignorés : {answer.invalid_citations}")
 
+    if answer.unsupported:
+        print("ATTENTION : valeurs absentes des sources utilisées (possible invention) : "
+              + ", ".join(answer.unsupported))
+
     print(f"\nTemps : recherche {answer.t_retrieval:.2f} s | "
           f"1er mot {answer.t_first_token:.1f} s | total {answer.t_total:.1f} s")
 

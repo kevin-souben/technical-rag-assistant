@@ -34,6 +34,7 @@ class Answer:
     hits: list = field(default_factory=list)       # [(Document, distance)] donnés au LLM
     cited: list = field(default_factory=list)      # [(numéro, Document)] réellement cités
     invalid_citations: list = field(default_factory=list)
+    unsupported: list = field(default_factory=list)  # valeurs de la réponse absentes des sources
     refused: bool = False
     t_retrieval: float = 0.0
     t_first_token: float = 0.0
@@ -85,6 +86,29 @@ def extract_citations(text: str, n_sources: int) -> tuple[list[int], list[int]]:
     invalid = sorted({n for n in numbers if not 1 <= n <= n_sources})
     return valid, invalid
 
+# Ce qu'on vérifie : noms de broches (GPIO12) et valeurs avec unité (3.6V, 80 MHz)
+VALUE_PATTERN = re.compile(
+    r"GPIO\d+|\b\d+(?:\.\d+)?\s?(?:mV|V|mA|µA|uA|A|MHz|kHz|GHz|Mbps|dBm|°C|KB|MB|ns|µs|us|ms)\b"
+)
+
+
+def find_unsupported_values(answer_text: str, source_text: str) -> list[str]:
+    """Liste les broches et valeurs citées dans la réponse mais ABSENTES des sources.
+
+    C'est une vérification lexicale : elle attrape les numéros inventés,
+    pas les erreurs de raisonnement."""
+    answer_clean = re.sub(r"\[[\d,\s]+\]", "", answer_text)  # on retire les [1], [2]...
+    unsupported = []
+    for token in VALUE_PATTERN.findall(answer_clean):
+        if token.startswith("GPIO"):
+            pattern = r"\b" + token + r"\b"
+        else:
+            number = re.match(r"\d+(?:\.\d+)?", token).group()
+            pattern = r"(?<![\d.])" + re.escape(number) + r"(?!\d)"
+        if not re.search(pattern, source_text) and token not in unsupported:
+            unsupported.append(token)
+    return unsupported
+
 
 def ask(question: str, store, on_token=None) -> Answer:
     """Pipeline complet pour UNE question. on_token(str) permet d'afficher en direct."""
@@ -98,31 +122,39 @@ def ask(question: str, store, on_token=None) -> Answer:
 
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": f"Sources:\n{build_context(hits)}\n\nQuestion: {question}"},
+        {"role": "user", "content": (
+            f"Sources:\n{build_context(hits)}\n\nQuestion: {question}\n\n"
+            "Reminder: put the source number, like [1], after every statement. "
+            f"If the answer is not in the sources, reply exactly: {NOT_FOUND}"
+        )},
     ]
 
     text, t_first = "", 0.0
     stream = ollama.chat(
         model=config.LLM_MODEL,
         messages=messages,
-        stream=True,  # les mots arrivent au fil de l'eau : réponse perçue plus rapide
+        stream=True,
         options={"temperature": config.LLM_TEMPERATURE, "num_ctx": config.LLM_NUM_CTX},
     )
     for chunk in stream:
         token = chunk["message"]["content"]
         if token and not t_first:
-            t_first = time.perf_counter() - t0  # latence jusqu'au premier mot
+            t_first = time.perf_counter() - t0
         text += token
         if on_token:
             on_token(token)
     text = text.strip()
 
     refused = NOT_FOUND.lower() in text.lower()
-    cited, invalid = [], []
+    cited, invalid, unsupported = [], [], []
     if not refused:
         valid_numbers, invalid = extract_citations(text, len(hits))
         cited = [(n, hits[n - 1][0]) for n in valid_numbers]
+        # on vérifie contre les sources citées ; sans citation, contre tous les passages
+        checked_docs = [doc for _, doc in cited] or [doc for doc, _ in hits]
+        source_text = "\n".join(doc.page_content for doc in checked_docs)
+        unsupported = find_unsupported_values(text, source_text)
 
     return Answer(text=text, hits=hits, cited=cited, invalid_citations=invalid,
-                  refused=refused, t_retrieval=t_retrieval, t_first_token=t_first,
-                  t_total=time.perf_counter() - t0)
+                  unsupported=unsupported, refused=refused, t_retrieval=t_retrieval,
+                  t_first_token=t_first, t_total=time.perf_counter() - t0)
