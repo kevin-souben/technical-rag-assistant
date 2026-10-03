@@ -90,7 +90,7 @@ def extract_citations(text: str, n_sources: int) -> tuple[list[int], list[int]]:
 # et valeurs relatives à une tension (0.75×VIO)
 VALUE_PATTERN = re.compile(
     r"GPIO\d+"
-    r"|\b\d+(?:\.\d+)?\s?(?:mV|V|mA|µA|uA|A|MHz|kHz|GHz|Mbps|dBm|°C|KB|MB|ns|µs|us|ms)\b"
+    r"|\b\d+(?:\.\d+)?\s?(?:mV|V|mA|µA|uA|A|MHz|kHz|GHz|Mbps|dBm|°C|KB|MB|ns|µs|us|ms|mm|cm)\b"
     r"|\b\d+(?:\.\d+)?\s?[x×]\s?[A-Z]{2,}[A-Z0-9_]*\b"
 )
 

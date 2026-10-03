@@ -82,9 +82,9 @@ The benchmark checks that expected values appear in the answer, not that they ar
 |---|---|
 | Correct answer (or correct refusal), right page | 8 of 13 |
 | Correct answer, wrong page cited (flagged by the grounding check) | 1 of 13 (Q07) |
-| Wrong answer with no warning | 2 of 13 (Q01, Q11) |
-| Wrong answer with a warning displayed | 1 of 13 (Q13) |
-| Refusal although the answer existed | 1 of 13 (Q03) |
+| Wrong answer with no warning | 1 of 13 (Q01) |
+| Wrong answer with a warning displayed | 2 of 13 (Q13; Q11 in 2 runs of 3) |
+| Refusal although the answer existed | 1 of 13 (Q03; Q11 in 1 run of 3) |
 
 Q11 gave a wrong answer in 2 runs out of 3 and a refusal in the third.
 
@@ -111,8 +111,9 @@ A first single-run pass gave a 0.6 s median and a 1.3 s maximum.
   ranks 8th at a distance of 1.34, above the 1.25 threshold. The embedding model handles
   identifiers like `SPICLK` poorly.
 - **Dimensions drawn in a raster figure are not readable.** For Q11 (package dimensions), the model
-  answered a value that does not appear in the drawing, with no warning. The check
-  cannot compare against text that does not exist, and it does not cover the `mm` unit.
+  answered "1.2 mm", a value that appears neither in the indexed text of the figure nor, as far as
+  we can tell, in the drawing. The grounding check initially missed it because its unit list did
+  not include `mm`.
 - **Incomplete answers pass the check.** Q01 returned the I/O supply range as the supply range.
   The check detects values absent from the sources, not omissions.
 - **The grounding check catches wrong citations.** On Q07 the answer was right but cited the wrong page,
@@ -123,6 +124,20 @@ A first single-run pass gave a 0.6 s median and a 1.3 s maximum.
 - **No benchmark question yet shows a correct answer that depends on a drawing.** Q12 was answered
   from the page text, not from the figure. Figures are indexed and cited (see the screenshot above),
   but answering from a drawing is not demonstrated.
+
+### Check improvement: `mm` unit (v1 to v2)
+
+Q11 exposed a gap: the grounding check ignored the `mm` unit. Adding it moved Q11's wrong
+answers from silent to flagged. Accuracy did not change, only detection.
+
+| `llama3.2:3b`, 13 questions x 3 runs | v1 | v2 |
+|---|---|---|
+| Correct answers or correct refusals | 69 % (27/39) | 69 % (27/39) |
+| Silent errors | 13 % (5/39) | 8 % (3/39) |
+| Flagged errors | 8 % (3/39) | 13 % (5/39) |
+
+The fix targets a gap found on Q11 itself, and was measured on Q11: it shows the fix works on
+that case, not that it generalizes to other dimensions.
 
 ### Model comparison (same 13 questions, 3 runs each)
 
