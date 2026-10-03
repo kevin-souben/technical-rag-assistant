@@ -117,6 +117,26 @@ A first single-run pass gave a 0.6 s median and a 1.3 s maximum.
   The check detects values absent from the sources, not omissions.
 - **The grounding check catches wrong citations.** On Q07 the answer was right but cited the wrong page,
   and the check flagged it.
+- **Figure layout is lost.** For Q13 (blocks inside the RTC block of the block diagram), both models
+  answered wrongly. A likely cause, not verified: the native text of a vector figure keeps the labels
+  but not which box contains which, and the small VLM adds nothing on this figure.
+- **No benchmark question yet shows a correct answer that depends on a drawing.** Q12 was answered
+  from the page text, not from the figure. Figures are indexed and cited (see the screenshot above),
+  but answering from a drawing is not demonstrated.
+
+### Model comparison (same 13 questions, 3 runs each)
+
+| | llama3.2:3b | mistral (7B) |
+|---|---|---|
+| Correct answers or refusals (questions) | 9/13 | 9/13 |
+| Fully correct, answer and page (questions) | 8/13 | 8/13 |
+| Wrong answer, no warning | Q01, Q11 (2 runs of 3) | Q01, Q13 |
+| Wrong answer, warning displayed | Q13 | Q03 |
+| Refusal although the answer existed | Q03 (and Q11 once) | Q11 |
+| Median / max total latency, model loaded | 0.3 s / 1.5 s | 0.7 s / 2.8 s |
+
+The larger model was about twice as slow and not more accurate on this set. With 13 questions,
+a one-question difference is not significant. The same questions fail with both models.
 
 ## Known limitations
 
@@ -125,7 +145,7 @@ A first single-run pass gave a 0.6 s median and a 1.3 s maximum.
 - Values that appear only inside raster images depend on a small VLM and are not verified.
 - Page numbers are those of the PDF reader, which can differ from the printed page numbers.
 - The embedding model is English-oriented, so questions should be in English for now.
-- Tested on a single datasheet and 13 questions, some of them written after seeing the system's behavior.
+- Tested on a single datasheet and 13 questions. Q11 to Q13 were added after seeing the system's behavior on the first ten.
 
 ## Roadmap
 
