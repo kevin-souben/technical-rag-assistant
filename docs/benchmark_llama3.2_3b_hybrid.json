@@ -1,7 +1,7 @@
 {
   "model": "llama3.2:3b",
   "runs_per_question": 3,
-  "load_time_s": 1.2113930999912554,
+  "load_time_s": 1.0249728999915533,
   "results": [
     {
       "item": {
@@ -22,45 +22,42 @@
           "category": "error_silent",
           "page_ok": null,
           "cited_pages": [
-            1,
             33
           ],
           "warned": false,
-          "answer": "The recommended operating supply voltage range of the ESP32 is 1.8 V to 3.6 V [1][3][4].",
+          "answer": "The recommended operating supply voltage range of the ESP32 is VBAT 2.8 3.3 3.6 V [1][2].",
           "unsupported": [],
-          "t_retrieval": 0.01027639998937957,
-          "t_first_token": 0.14737339998828247,
-          "t_total": 0.4420265999942785,
+          "t_retrieval": 0.017304900000453927,
+          "t_first_token": 0.1757614999951329,
+          "t_total": 0.49448739999206737,
           "llm_called": true
         },
         {
           "category": "error_silent",
           "page_ok": null,
           "cited_pages": [
-            1,
             33
           ],
           "warned": false,
-          "answer": "The recommended operating supply voltage range of the ESP32 is 1.8 V to 3.6 V [1][3][4].",
+          "answer": "The recommended operating supply voltage range of the ESP32 is VBAT 2.8 3.3 3.6 V [1][2].",
           "unsupported": [],
-          "t_retrieval": 0.010162499995203689,
-          "t_first_token": 0.035240700002759695,
-          "t_total": 0.3319694999954663,
+          "t_retrieval": 0.01588140000239946,
+          "t_first_token": 0.04026969999540597,
+          "t_total": 0.357742899999721,
           "llm_called": true
         },
         {
           "category": "error_silent",
           "page_ok": null,
           "cited_pages": [
-            1,
             33
           ],
           "warned": false,
-          "answer": "The recommended operating supply voltage range of the ESP32 is 1.8 V to 3.6 V [1][3][4].",
+          "answer": "The recommended operating supply voltage range of the ESP32 is VBAT 2.8 3.3 3.6 V [1][2].",
           "unsupported": [],
-          "t_retrieval": 0.009872900001937523,
-          "t_first_token": 0.0336890000035055,
-          "t_total": 0.3297575000033248,
+          "t_retrieval": 0.015122199998586439,
+          "t_first_token": 0.03956499999912921,
+          "t_total": 0.3553461999981664,
           "llm_called": true
         }
       ]
@@ -92,9 +89,9 @@
           "warned": false,
           "answer": "The strapping pins of the ESP32 are:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
           "unsupported": [],
-          "t_retrieval": 0.009759000007761642,
-          "t_first_token": 0.1304997999977786,
-          "t_total": 0.9078956000012113,
+          "t_retrieval": 0.015623100000084378,
+          "t_first_token": 0.28906380000989884,
+          "t_total": 1.0693432000116445,
           "llm_called": true
         },
         {
@@ -106,9 +103,9 @@
           "warned": false,
           "answer": "The strapping pins of the ESP32 are:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
           "unsupported": [],
-          "t_retrieval": 0.009472199992160313,
-          "t_first_token": 0.033535199996549636,
-          "t_total": 0.8120426999957999,
+          "t_retrieval": 0.01593739999225363,
+          "t_first_token": 0.040578799991635606,
+          "t_total": 0.8192024000018137,
           "llm_called": true
         },
         {
@@ -120,9 +117,9 @@
           "warned": false,
           "answer": "The strapping pins of the ESP32 are:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
           "unsupported": [],
-          "t_retrieval": 0.009679900002083741,
-          "t_first_token": 0.03234800000791438,
-          "t_total": 0.8098809000075562,
+          "t_retrieval": 0.01619030001165811,
+          "t_first_token": 0.04026690000318922,
+          "t_total": 0.8203323000052478,
           "llm_called": true
         }
       ]
@@ -148,39 +145,66 @@
       },
       "runs": [
         {
-          "category": "refusal_wrong",
-          "page_ok": null,
-          "cited_pages": [],
-          "warned": false,
-          "answer": "Not found in the provided documents.",
-          "unsupported": [],
-          "t_retrieval": 0.010533699998632073,
-          "t_first_token": 0.10960009999689646,
-          "t_total": 0.17722019999928307,
+          "category": "ok",
+          "page_ok": false,
+          "cited_pages": [
+            16
+          ],
+          "warned": true,
+          "answer": "According to Table 2 in [1], the pins with the SPICLK, SPID, and SPIQ functions are:\n\n* SPICLK: GPIO6 (Table 2, Pin Default: GPIO6, Falling-edge Output)\n* SPID: GPIO8 (Table 2, Pin Default: GPIO8, Falling-edge Input)\n* SPIQ: GPIO7 (Table 2, Pin Default: GPIO7, Falling-edge Input)",
+          "unsupported": [
+            "GPIO6",
+            "GPIO8",
+            "GPIO7",
+            "SPICLK",
+            "SPID",
+            "SPIQ"
+          ],
+          "t_retrieval": 0.020832300011534244,
+          "t_first_token": 0.3602984000026481,
+          "t_total": 1.2777092000033008,
           "llm_called": true
         },
         {
-          "category": "refusal_wrong",
-          "page_ok": null,
-          "cited_pages": [],
-          "warned": false,
-          "answer": "Not found in the provided documents.",
-          "unsupported": [],
-          "t_retrieval": 0.009611999994376674,
-          "t_first_token": 0.027103500004159287,
-          "t_total": 0.09380649999366142,
+          "category": "ok",
+          "page_ok": false,
+          "cited_pages": [
+            16
+          ],
+          "warned": true,
+          "answer": "According to Table 2 in [1], the pins with the SPICLK, SPID, and SPIQ functions are:\n\n* SPICLK: GPIO6 [1]\n* SPID: GPIO8 [1]\n* SPIQ: GPIO7 [1]",
+          "unsupported": [
+            "GPIO6",
+            "GPIO8",
+            "GPIO7",
+            "SPICLK",
+            "SPID",
+            "SPIQ"
+          ],
+          "t_retrieval": 0.020592400003806688,
+          "t_first_token": 0.04392619999998715,
+          "t_total": 0.5927733999997145,
           "llm_called": true
         },
         {
-          "category": "refusal_wrong",
-          "page_ok": null,
-          "cited_pages": [],
-          "warned": false,
-          "answer": "Not found in the provided documents.",
-          "unsupported": [],
-          "t_retrieval": 0.010043200003565289,
-          "t_first_token": 0.02846660000795964,
-          "t_total": 0.09460340000805445,
+          "category": "ok",
+          "page_ok": false,
+          "cited_pages": [
+            16
+          ],
+          "warned": true,
+          "answer": "According to Table 2 in [1], the pins with the SPICLK, SPID, and SPIQ functions are:\n\n* SPICLK: GPIO6 [1]\n* SPID: GPIO8 [1]\n* SPIQ: GPIO7 [1]",
+          "unsupported": [
+            "GPIO6",
+            "GPIO8",
+            "GPIO7",
+            "SPICLK",
+            "SPID",
+            "SPIQ"
+          ],
+          "t_retrieval": 0.018314999993890524,
+          "t_first_token": 0.04117860000405926,
+          "t_total": 0.5863516999961575,
           "llm_called": true
         }
       ]
@@ -207,9 +231,9 @@
           "warned": false,
           "answer": "GPIO18 has the VSPICLK function [1].",
           "unsupported": [],
-          "t_retrieval": 0.009656099995481782,
-          "t_first_token": 0.11159869999391958,
-          "t_total": 0.236755699996138,
+          "t_retrieval": 0.014922600006684661,
+          "t_first_token": 0.4800212999980431,
+          "t_total": 0.6097140000056243,
           "llm_called": true
         },
         {
@@ -221,9 +245,9 @@
           "warned": false,
           "answer": "GPIO18 has the VSPICLK function [1].",
           "unsupported": [],
-          "t_retrieval": 0.009102500000153668,
-          "t_first_token": 0.033553199988091365,
-          "t_total": 0.15842599999450613,
+          "t_retrieval": 0.016651500001898967,
+          "t_first_token": 0.04070810000121128,
+          "t_total": 0.16775280000001658,
           "llm_called": true
         },
         {
@@ -235,9 +259,9 @@
           "warned": false,
           "answer": "GPIO18 has the VSPICLK function [1].",
           "unsupported": [],
-          "t_retrieval": 0.011073700006818399,
-          "t_first_token": 0.03474790000473149,
-          "t_total": 0.1597271000064211,
+          "t_retrieval": 0.01513390000036452,
+          "t_first_token": 0.04016470001079142,
+          "t_total": 0.16729120000672992,
           "llm_called": true
         }
       ]
@@ -257,44 +281,53 @@
       "runs": [
         {
           "category": "ok",
-          "page_ok": true,
+          "page_ok": false,
           "cited_pages": [
-            15
+            28
           ],
-          "warned": false,
-          "answer": "GPIO19 has the VSPIQ function [5].",
-          "unsupported": [],
-          "t_retrieval": 0.010252399995806627,
-          "t_first_token": 0.15929520000645425,
-          "t_total": 0.2727431999956025,
+          "warned": true,
+          "answer": "According to [1] (page 28 | text), GPIO19 has the VSPIQ function.",
+          "unsupported": [
+            "GPIO19",
+            "VSPIQ"
+          ],
+          "t_retrieval": 0.014814800000749528,
+          "t_first_token": 0.530206299998099,
+          "t_total": 0.7553770999948028,
           "llm_called": true
         },
         {
           "category": "ok",
-          "page_ok": true,
+          "page_ok": false,
           "cited_pages": [
-            15
+            28
           ],
-          "warned": false,
-          "answer": "GPIO19 has the VSPIQ function [5].",
-          "unsupported": [],
-          "t_retrieval": 0.010301499991328456,
-          "t_first_token": 0.03398419999575708,
-          "t_total": 0.147697699998389,
+          "warned": true,
+          "answer": "According to [1] (page 28 | text), GPIO19 has the VSPIQ function.",
+          "unsupported": [
+            "GPIO19",
+            "VSPIQ"
+          ],
+          "t_retrieval": 0.015306500004953705,
+          "t_first_token": 0.03974269999889657,
+          "t_total": 0.26280870000482537,
           "llm_called": true
         },
         {
           "category": "ok",
-          "page_ok": true,
+          "page_ok": false,
           "cited_pages": [
-            15
+            28
           ],
-          "warned": false,
-          "answer": "GPIO19 has the VSPIQ function [5].",
-          "unsupported": [],
-          "t_retrieval": 0.009147899996605702,
-          "t_first_token": 0.03250139999727253,
-          "t_total": 0.1465133000019705,
+          "warned": true,
+          "answer": "According to [1] (page 28 | text), GPIO19 has the VSPIQ function.",
+          "unsupported": [
+            "GPIO19",
+            "VSPIQ"
+          ],
+          "t_retrieval": 0.015127599996048957,
+          "t_first_token": 0.038974999988568015,
+          "t_total": 0.2612102999992203,
           "llm_called": true
         }
       ]
@@ -320,11 +353,11 @@
             33
           ],
           "warned": false,
-          "answer": "The operating temperature range of the ESP32 is -40°C to 125°C, as stated in [8].",
+          "answer": "The operating temperature range of the ESP32 is -40°C to 125°C [4].",
           "unsupported": [],
-          "t_retrieval": 0.010964000000967644,
-          "t_first_token": 0.14019019999250304,
-          "t_total": 0.3709194999973988,
+          "t_retrieval": 0.016575399989960715,
+          "t_first_token": 0.37396779999835417,
+          "t_total": 0.565589199992246,
           "llm_called": true
         },
         {
@@ -334,11 +367,11 @@
             33
           ],
           "warned": false,
-          "answer": "The operating temperature range of the ESP32 is -40°C to 125°C, as stated in [8].",
+          "answer": "The operating temperature range of the ESP32 is -40°C to 125°C [4].",
           "unsupported": [],
-          "t_retrieval": 0.00965110000106506,
-          "t_first_token": 0.031116300000576302,
-          "t_total": 0.2630370999977458,
+          "t_retrieval": 0.18347230000654235,
+          "t_first_token": 0.20729590000701137,
+          "t_total": 0.39659869999741204,
           "llm_called": true
         },
         {
@@ -348,11 +381,11 @@
             33
           ],
           "warned": false,
-          "answer": "The operating temperature range of the ESP32 is -40°C to 125°C, as stated in [8].",
+          "answer": "The operating temperature range of the ESP32 is -40°C to 125°C [4].",
           "unsupported": [],
-          "t_retrieval": 0.009639500000048429,
-          "t_first_token": 0.03185799998755101,
-          "t_total": 0.2631391999893822,
+          "t_retrieval": 0.01577690000704024,
+          "t_first_token": 0.03747060000023339,
+          "t_total": 0.22955639999418054,
           "llm_called": true
         }
       ]
@@ -373,53 +406,44 @@
       "runs": [
         {
           "category": "ok",
-          "page_ok": false,
+          "page_ok": true,
           "cited_pages": [
-            13
+            15
           ],
-          "warned": true,
-          "answer": "According to [3], U0RXD is GPIO3 and U0TXD is GPIO1 [3].",
-          "unsupported": [
-            "GPIO3",
-            "GPIO1"
-          ],
-          "t_retrieval": 0.010591999991447665,
-          "t_first_token": 0.14073919999646023,
-          "t_total": 0.3797446999960812,
+          "warned": false,
+          "answer": "According to [6], U0RXD corresponds to GPIO3, and U0TXD corresponds to GPIO1.",
+          "unsupported": [],
+          "t_retrieval": 0.01951549999648705,
+          "t_first_token": 0.5384563999978127,
+          "t_total": 0.7915291999961482,
           "llm_called": true
         },
         {
           "category": "ok",
-          "page_ok": false,
+          "page_ok": true,
           "cited_pages": [
-            13
+            15
           ],
-          "warned": true,
-          "answer": "According to [3], U0RXD is GPIO3 and U0TXD is GPIO1 [3].",
-          "unsupported": [
-            "GPIO3",
-            "GPIO1"
-          ],
-          "t_retrieval": 0.009439600005862303,
-          "t_first_token": 0.03317100000276696,
-          "t_total": 0.2706932000000961,
+          "warned": false,
+          "answer": "According to [6], U0RXD corresponds to GPIO3, and U0TXD corresponds to GPIO1.",
+          "unsupported": [],
+          "t_retrieval": 0.01575089999823831,
+          "t_first_token": 0.04190620000008494,
+          "t_total": 0.2940202999889152,
           "llm_called": true
         },
         {
           "category": "ok",
-          "page_ok": false,
+          "page_ok": true,
           "cited_pages": [
-            13
+            15
           ],
-          "warned": true,
-          "answer": "According to [3], U0RXD is GPIO3 and U0TXD is GPIO1 [3].",
-          "unsupported": [
-            "GPIO3",
-            "GPIO1"
-          ],
-          "t_retrieval": 0.01052759999583941,
-          "t_first_token": 0.035224499995820224,
-          "t_total": 0.2738771000003908,
+          "warned": false,
+          "answer": "According to [6], U0RXD corresponds to GPIO3, and U0TXD corresponds to GPIO1.",
+          "unsupported": [],
+          "t_retrieval": 0.016158300000824966,
+          "t_first_token": 0.04197639999620151,
+          "t_total": 0.2928661000041757,
           "llm_called": true
         }
       ]
@@ -446,9 +470,9 @@
           "warned": false,
           "answer": "The ESP32 has 48 GPIO pins [1].",
           "unsupported": [],
-          "t_retrieval": 0.009824900000239722,
-          "t_first_token": 0.1470306000119308,
-          "t_total": 0.2580471000110265,
+          "t_retrieval": 0.015262899993103929,
+          "t_first_token": 0.3754947999987053,
+          "t_total": 0.48758069999166764,
           "llm_called": true
         },
         {
@@ -460,9 +484,9 @@
           "warned": false,
           "answer": "The ESP32 has 48 GPIO pins [1].",
           "unsupported": [],
-          "t_retrieval": 0.009326300001703203,
-          "t_first_token": 0.032167700002901256,
-          "t_total": 0.14215150001109578,
+          "t_retrieval": 0.01617469999473542,
+          "t_first_token": 0.039635299996007234,
+          "t_total": 0.15005070000188425,
           "llm_called": true
         },
         {
@@ -474,9 +498,9 @@
           "warned": false,
           "answer": "The ESP32 has 48 GPIO pins [1].",
           "unsupported": [],
-          "t_retrieval": 0.010072300006868318,
-          "t_first_token": 0.03226300000096671,
-          "t_total": 0.14219389999925625,
+          "t_retrieval": 0.014409099996555597,
+          "t_first_token": 0.0365070999978343,
+          "t_total": 0.14729540000553243,
           "llm_called": true
         }
       ]
@@ -497,9 +521,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.00954739999724552,
+          "t_retrieval": 0.019831300000078045,
           "t_first_token": 0.0,
-          "t_total": 0.009548999994876795,
+          "t_total": 0.019833000013022684,
           "llm_called": false
         },
         {
@@ -509,9 +533,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.010144699990632944,
+          "t_retrieval": 0.021005000002332963,
           "t_first_token": 0.0,
-          "t_total": 0.010145599997485988,
+          "t_total": 0.021005900009186007,
           "llm_called": false
         },
         {
@@ -521,9 +545,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.011547799993422814,
+          "t_retrieval": 0.020236300013493747,
           "t_first_token": 0.0,
-          "t_total": 0.011548499998752959,
+          "t_total": 0.020237100005033426,
           "llm_called": false
         }
       ]
@@ -544,9 +568,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.009614599999622442,
+          "t_retrieval": 0.020311900007072836,
           "t_first_token": 0.0,
-          "t_total": 0.009615400005714037,
+          "t_total": 0.020313100001658313,
           "llm_called": false
         },
         {
@@ -556,9 +580,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.009986000004573725,
+          "t_retrieval": 0.022969600002397783,
           "t_first_token": 0.0,
-          "t_total": 0.009986999997636303,
+          "t_total": 0.02297069999622181,
           "llm_called": false
         },
         {
@@ -568,9 +592,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.010413600000902079,
+          "t_retrieval": 0.020876399998087436,
           "t_first_token": 0.0,
-          "t_total": 0.010414200005470775,
+          "t_total": 0.020877599992672913,
           "llm_called": false
         }
       ]
@@ -595,41 +619,33 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.010421500002848916,
-          "t_first_token": 0.1121452999941539,
-          "t_total": 0.18188740000186954,
+          "t_retrieval": 0.022033199988072738,
+          "t_first_token": 0.13783179999154527,
+          "t_total": 0.2093651999894064,
           "llm_called": true
         },
         {
-          "category": "error_flagged",
+          "category": "refusal_wrong",
           "page_ok": null,
-          "cited_pages": [
-            39
-          ],
-          "warned": true,
-          "answer": "The exposed pad (DAP) dimension of the QFN48 package is 1.2 mm [1].",
-          "unsupported": [
-            "1.2 mm"
-          ],
-          "t_retrieval": 0.01029200000630226,
-          "t_first_token": 0.02784770001017023,
-          "t_total": 0.245589000012842,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.023024900001473725,
+          "t_first_token": 0.041083500007516704,
+          "t_total": 0.1082792000088375,
           "llm_called": true
         },
         {
-          "category": "error_flagged",
+          "category": "refusal_wrong",
           "page_ok": null,
-          "cited_pages": [
-            39
-          ],
-          "warned": true,
-          "answer": "The exposed pad (DAP) dimension of the QFN48 package is 1.2 mm [1].",
-          "unsupported": [
-            "1.2 mm"
-          ],
-          "t_retrieval": 0.01080010000441689,
-          "t_first_token": 0.028739100001985207,
-          "t_total": 0.24473860001307912,
+          "cited_pages": [],
+          "warned": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.021251199999824166,
+          "t_first_token": 0.039504200001829304,
+          "t_total": 0.10661400000390131,
           "llm_called": true
         }
       ]
@@ -658,9 +674,9 @@
           "unsupported": [
             "2mm"
           ],
-          "t_retrieval": 0.010876900007133372,
-          "t_first_token": 0.22027030000754166,
-          "t_total": 0.4094033000001218,
+          "t_retrieval": 0.01631029999407474,
+          "t_first_token": 0.17692369999713264,
+          "t_total": 0.3691118999995524,
           "llm_called": true
         },
         {
@@ -674,9 +690,9 @@
           "unsupported": [
             "2mm"
           ],
-          "t_retrieval": 0.009356900001876056,
-          "t_first_token": 0.03105689999938477,
-          "t_total": 0.2181572999979835,
+          "t_retrieval": 0.016043199997511692,
+          "t_first_token": 0.03711599999223836,
+          "t_total": 0.22864659999322612,
           "llm_called": true
         },
         {
@@ -690,9 +706,9 @@
           "unsupported": [
             "2mm"
           ],
-          "t_retrieval": 0.010115400000358932,
-          "t_first_token": 0.0316951999993762,
-          "t_total": 0.2203741999983322,
+          "t_retrieval": 0.01630730000033509,
+          "t_first_token": 0.037781599996378645,
+          "t_total": 0.2259481999935815,
           "llm_called": true
         }
       ]
@@ -713,60 +729,54 @@
       },
       "runs": [
         {
-          "category": "error_flagged",
-          "page_ok": null,
+          "category": "ok",
+          "page_ok": true,
           "cited_pages": [
             12
           ],
           "warned": true,
-          "answer": "According to Figure 1: Function Block Diagram in [1], the blocks inside the RTC block are:\n\n• RTC FAST Memory [1]\n• RTC SLOW Memory [1]\n• RTC Watchdog Timer, or RWDT [1]\n• 8 KBytes SRAM in RTC, which is called RTC SLOW Memory [1]\n• 8 KBytes SRAM in RTC, which is called RTC FAST Memory [1]",
+          "answer": "Text found in the figure: RTC | 1 x Xtensa® 32-bit LX6 acceleration ETH Microprocessors |  SHA RSA |  IR |  ROM SRAM |  AES RNG |  RTC SLOW Memory |  RTC FAST Memory |  ULP Recovery |  DAC PMU coprocessor memory |  Temperature |  sensor [5]",
           "unsupported": [
-            "FAST",
             "SLOW",
-            "RWDT",
-            "SRAM"
+            "FAST"
           ],
-          "t_retrieval": 0.010436399999889545,
-          "t_first_token": 0.11000689999491442,
-          "t_total": 1.0346369000035338,
+          "t_retrieval": 0.017700199998216704,
+          "t_first_token": 0.2985839000029955,
+          "t_total": 1.0333660000032978,
           "llm_called": true
         },
         {
-          "category": "error_flagged",
-          "page_ok": null,
+          "category": "ok",
+          "page_ok": true,
           "cited_pages": [
             12
           ],
           "warned": true,
-          "answer": "According to Figure 1: Function Block Diagram in [1], the blocks inside the RTC block are:\n\n• RTC FAST Memory [1]\n• RTC SLOW Memory [1]\n• RTC Watchdog Timer, or RWDT [1]\n• 8 KBytes SRAM in RTC, which is called RTC SLOW Memory [1]\n• 8 KBytes SRAM in RTC, which is called RTC FAST Memory [1]",
+          "answer": "Text found in the figure: RTC | 1 x Xtensa® 32-bit LX6 acceleration ETH Microprocessors |  SHA RSA |  IR |  ROM SRAM |  AES RNG |  RTC SLOW Memory |  RTC FAST Memory |  ULP Recovery |  DAC PMU coprocessor memory |  Temperature |  sensor [5]",
           "unsupported": [
-            "FAST",
             "SLOW",
-            "RWDT",
-            "SRAM"
+            "FAST"
           ],
-          "t_retrieval": 0.009568499997840263,
-          "t_first_token": 0.036424299993086606,
-          "t_total": 0.9628267999942182,
+          "t_retrieval": 0.01605520000157412,
+          "t_first_token": 0.03897200000938028,
+          "t_total": 0.7730053999985103,
           "llm_called": true
         },
         {
-          "category": "error_flagged",
-          "page_ok": null,
+          "category": "ok",
+          "page_ok": true,
           "cited_pages": [
             12
           ],
           "warned": true,
-          "answer": "According to Figure 1: Function Block Diagram in [1], the blocks inside the RTC block are:\n\n• RTC FAST Memory [1]\n• RTC SLOW Memory [1]\n• RTC Watchdog Timer, or RWDT [1]\n• 8 KBytes SRAM in RTC, which is called RTC SLOW Memory [1]\n• 8 KBytes SRAM in RTC, which is called RTC FAST Memory [1]",
+          "answer": "Text found in the figure: RTC | 1 x Xtensa® 32-bit LX6 acceleration ETH Microprocessors |  SHA RSA |  IR |  ROM SRAM |  AES RNG |  RTC SLOW Memory |  RTC FAST Memory |  ULP Recovery |  DAC PMU coprocessor memory |  Temperature |  sensor [5]",
           "unsupported": [
-            "FAST",
             "SLOW",
-            "RWDT",
-            "SRAM"
+            "FAST"
           ],
-          "t_retrieval": 0.009726399992359802,
-          "t_first_token": 0.03519139999116305,
-          "t_total": 0.9601551999949152,
+          "t_retrieval": 0.015729800012195483,
+          "t_first_token": 0.03923910000594333,
+          "t_total": 0.7716991000052076,
           "llm_called": true
         }
       ]
@@ -785,40 +795,46 @@
       },
       "runs": [
         {
-          "category": "refusal_wrong",
-          "page_ok": null,
-          "cited_pages": [],
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
           "warned": false,
-          "answer": "Not found in the provided documents.",
+          "answer": "According to [3] (esp32_datasheet_en.pdf | page 15 | figure esp32_datasheet_en_p015_fig01.png), GPIO12, ADC2_CH5, TOUCH5, RTC_GPIO15, MTDI, HSPIQ, MTDI 18 I/O.",
           "unsupported": [],
-          "t_retrieval": 0.009571000002324581,
-          "t_first_token": 0.0,
-          "t_total": 0.009571500006131828,
-          "llm_called": false
+          "t_retrieval": 0.02111420000437647,
+          "t_first_token": 0.4730131000105757,
+          "t_total": 1.1031425000110175,
+          "llm_called": true
         },
         {
-          "category": "refusal_wrong",
-          "page_ok": null,
-          "cited_pages": [],
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
           "warned": false,
-          "answer": "Not found in the provided documents.",
+          "answer": "According to [3] (esp32_datasheet_en.pdf | page 15 | figure esp32_datasheet_en_p015_fig01.png), GPIO12, ADC2_CH5, TOUCH5, RTC_GPIO15, MTDI, HSPIQ, MTDI 18 I/O.",
           "unsupported": [],
-          "t_retrieval": 0.008808899990981445,
-          "t_first_token": 0.0,
-          "t_total": 0.008809399994788691,
-          "llm_called": false
+          "t_retrieval": 0.01768669999728445,
+          "t_first_token": 0.041316699993330985,
+          "t_total": 0.6682893999968655,
+          "llm_called": true
         },
         {
-          "category": "refusal_wrong",
-          "page_ok": null,
-          "cited_pages": [],
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
           "warned": false,
-          "answer": "Not found in the provided documents.",
+          "answer": "According to [3] (esp32_datasheet_en.pdf | page 15 | figure esp32_datasheet_en_p015_fig01.png), GPIO12, ADC2_CH5, TOUCH5, RTC_GPIO15, MTDI, HSPIQ, MTDI 18 I/O.",
           "unsupported": [],
-          "t_retrieval": 0.009033700000145473,
-          "t_first_token": 0.0,
-          "t_total": 0.0090347999939695,
-          "llm_called": false
+          "t_retrieval": 0.021708000000216998,
+          "t_first_token": 0.04485160000331234,
+          "t_total": 0.6721923000004608,
+          "llm_called": true
         }
       ]
     },
@@ -836,51 +852,45 @@
       },
       "runs": [
         {
-          "category": "error_flagged",
+          "category": "error_silent",
           "page_ok": null,
           "cited_pages": [
-            15
+            14
           ],
-          "warned": true,
-          "answer": "GPIO5 has the HSPICS0 function [1].",
-          "unsupported": [
-            "HSPICS0"
-          ],
-          "t_retrieval": 0.010692200012272224,
-          "t_first_token": 0.17935780000698287,
-          "t_total": 0.29693170000973623,
+          "warned": false,
+          "answer": "GPIO13 has the HSPICS0 function [4].",
+          "unsupported": [],
+          "t_retrieval": 0.01788880000822246,
+          "t_first_token": 0.49656330001016613,
+          "t_total": 0.6255988000048092,
           "llm_called": true
         },
         {
-          "category": "error_flagged",
+          "category": "error_silent",
           "page_ok": null,
           "cited_pages": [
-            15
+            14
           ],
-          "warned": true,
-          "answer": "GPIO5 has the HSPICS0 function [1].",
-          "unsupported": [
-            "HSPICS0"
-          ],
-          "t_retrieval": 0.009510200005024672,
-          "t_first_token": 0.027860700007295236,
-          "t_total": 0.14262320000852924,
+          "warned": false,
+          "answer": "GPIO13 has the HSPICS0 function [4].",
+          "unsupported": [],
+          "t_retrieval": 0.015587100002449006,
+          "t_first_token": 0.04089300001214724,
+          "t_total": 0.16779910000332166,
           "llm_called": true
         },
         {
-          "category": "error_flagged",
+          "category": "error_silent",
           "page_ok": null,
           "cited_pages": [
-            15
+            14
           ],
-          "warned": true,
-          "answer": "GPIO5 has the HSPICS0 function [1].",
-          "unsupported": [
-            "HSPICS0"
-          ],
-          "t_retrieval": 0.0097778999916045,
-          "t_first_token": 0.027346200004103594,
-          "t_total": 0.14155420000315644,
+          "warned": false,
+          "answer": "GPIO13 has the HSPICS0 function [4].",
+          "unsupported": [],
+          "t_retrieval": 0.01635849999729544,
+          "t_first_token": 0.04250109998974949,
+          "t_total": 0.16932770000130404,
           "llm_called": true
         }
       ]
@@ -900,44 +910,56 @@
       "runs": [
         {
           "category": "ok",
-          "page_ok": true,
+          "page_ok": false,
           "cited_pages": [
-            15
+            28
           ],
-          "warned": false,
-          "answer": "GPIO21 has the VSPIHD function [1].",
-          "unsupported": [],
-          "t_retrieval": 0.010082799999509007,
-          "t_first_token": 0.3531708999944385,
-          "t_total": 0.4695032000017818,
+          "warned": true,
+          "answer": "GPIO21 42 I/O GPIO21, VSPIHD, EMAC_TX_EN [1]",
+          "unsupported": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "t_retrieval": 0.013934099988546222,
+          "t_first_token": 0.5249941999936709,
+          "t_total": 0.7369841999898199,
           "llm_called": true
         },
         {
           "category": "ok",
-          "page_ok": true,
+          "page_ok": false,
           "cited_pages": [
-            15
+            28
           ],
-          "warned": false,
-          "answer": "GPIO21 has the VSPIHD function [1].",
-          "unsupported": [],
-          "t_retrieval": 0.0091423000121722,
-          "t_first_token": 0.033135500008938834,
-          "t_total": 0.14754520000133198,
+          "warned": true,
+          "answer": "GPIO21 42 I/O GPIO21, VSPIHD, EMAC_TX_EN [1]",
+          "unsupported": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "t_retrieval": 0.01568779999797698,
+          "t_first_token": 0.039407599993865006,
+          "t_total": 0.24905220000073314,
           "llm_called": true
         },
         {
           "category": "ok",
-          "page_ok": true,
+          "page_ok": false,
           "cited_pages": [
-            15
+            28
           ],
-          "warned": false,
-          "answer": "GPIO21 has the VSPIHD function [1].",
-          "unsupported": [],
-          "t_retrieval": 0.010830900006112643,
-          "t_first_token": 0.035894200002076104,
-          "t_total": 0.1501581000047736,
+          "warned": true,
+          "answer": "GPIO21 42 I/O GPIO21, VSPIHD, EMAC_TX_EN [1]",
+          "unsupported": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "t_retrieval": 0.014984200010076165,
+          "t_first_token": 0.03778270000475459,
+          "t_total": 0.2473770000069635,
           "llm_called": true
         }
       ]
@@ -962,11 +984,11 @@
             15
           ],
           "warned": false,
-          "answer": "GPIO22 has the VSPIWP function. [2]",
+          "answer": "GPIO22 has the VSPIWP function [2].",
           "unsupported": [],
-          "t_retrieval": 0.009319199991296045,
-          "t_first_token": 0.09540089999791235,
-          "t_total": 0.2197463000047719,
+          "t_retrieval": 0.014396400001714937,
+          "t_first_token": 0.45580949999566656,
+          "t_total": 0.5741121999890311,
           "llm_called": true
         },
         {
@@ -976,11 +998,11 @@
             15
           ],
           "warned": false,
-          "answer": "GPIO22 has the VSPIWP function. [2]",
+          "answer": "GPIO22 has the VSPIWP function [2].",
           "unsupported": [],
-          "t_retrieval": 0.009641299999202602,
-          "t_first_token": 0.033772499999031425,
-          "t_total": 0.15769739999086596,
+          "t_retrieval": 0.014594399995985441,
+          "t_first_token": 0.038792999999714084,
+          "t_total": 0.15550000000803266,
           "llm_called": true
         },
         {
@@ -990,11 +1012,11 @@
             15
           ],
           "warned": false,
-          "answer": "GPIO22 has the VSPIWP function. [2]",
+          "answer": "GPIO22 has the VSPIWP function [2].",
           "unsupported": [],
-          "t_retrieval": 0.010020300003816374,
-          "t_first_token": 0.03429310000501573,
-          "t_total": 0.15851340000517666,
+          "t_retrieval": 0.015550400014035404,
+          "t_first_token": 0.04183910001302138,
+          "t_total": 0.15870290000748355,
           "llm_called": true
         }
       ]

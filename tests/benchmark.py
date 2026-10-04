@@ -76,7 +76,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Benchmark du moteur RAG")
     parser.add_argument("--runs", type=int, default=3, help="essais par question (défaut : 3)")
     parser.add_argument("--model", help="LLM Ollama à tester (défaut : config.LLM_MODEL)")
+    parser.add_argument("--hybrid", action="store_true", help="recherche hybride (embeddings + BM25)")
     args = parser.parse_args()
+    config.USE_HYBRID = args.hybrid
 
     if args.model:
         config.LLM_MODEL = args.model
@@ -132,7 +134,7 @@ def main() -> None:
         ("Median retrieval", f"{median([r['t_retrieval'] for r in all_runs]) * 1000:.0f} ms"),
         ("First LLM load", f"{load_time:.1f} s"),
     ]
-    header = (f"Model `{config.LLM_MODEL}`, {len(items)} questions x {args.runs} runs, "
+    header = (f"Model `{config.LLM_MODEL}`, retrieval {'hybrid' if config.USE_HYBRID else 'embedding'}, {len(items)} questions x {args.runs} runs, "
               f"top-K {config.TOP_K}, distance threshold {config.MAX_DISTANCE}, {date.today()}")
     markdown = f"{header}\n\n| Metric | Result |\n|---|---|\n" + \
         "\n".join(f"| {name} | {value} |" for name, value in rows)
@@ -143,7 +145,7 @@ def main() -> None:
 
     # --- Sauvegarde (les réponses complètes permettent de relire chaque erreur) ---
     RESULTS_DIR.mkdir(exist_ok=True)
-    safe_model = re.sub(r"[^\w.-]", "_", config.LLM_MODEL)
+    safe_model = re.sub(r"[^\w.-]", "_", config.LLM_MODEL) + ("_hybrid" if config.USE_HYBRID else "")
     json_path = RESULTS_DIR / f"benchmark_{safe_model}.json"
     json_path.write_text(json.dumps(
         {"model": config.LLM_MODEL, "runs_per_question": args.runs, "load_time_s": load_time,
