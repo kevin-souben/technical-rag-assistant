@@ -13,6 +13,24 @@ sentence-transformers: no cloud API, no API key.
 ![Answer with the cited figure displayed](docs/demo_voltage.png)
 ![Refusal when the documents do not contain the answer](docs/demo_refusal.png)
 
+## Summary
+
+- **What it does**: answers questions about technical PDFs (text, tables, figures) with local models only
+  (Ollama, sentence-transformers, ChromaDB). Every answer lists file, page and figure name, read from metadata.
+- **Measured on 27 questions on one English datasheet (ESP32)**: hybrid retrieval (embeddings + BM25) gave
+  81 % correct answers or correct refusals over 81 runs, against 56 % for embeddings alone. Silent errors
+  (wrong answer, no warning) were 10 % in both modes.
+- **Decision made before the data**: hybrid became the default by a rule written before the last five questions
+  were run (`CLAUDE.md`, commit `4364c90`). On those five it was not better, only not worse.
+- **Weaker outside its development document**: on a 59-page French motherboard manual (12 pre-registered
+  questions), hybrid gave 58 % correct and 25 % silent errors. Language and document type changed at once, so
+  the cause is not isolated.
+- **What does not work yet**: neighboring-row errors in tables pass the grounding check; values drawn in raster
+  images are not readable; the distance threshold is calibrated per document; refusals written in French are
+  not recognized. Details, raw answers and the corresponding commits are below and in `docs/`.
+- **Sample size**: 27 and 12 questions, one machine, one small model (`llama3.2:3b`). Read the numbers as
+  indicative.
+
 ## Why
 
 Datasheets are proprietary and long. A cloud chatbot means uploading confidential documents,
