@@ -5,7 +5,9 @@ Ask questions about datasheets (text **and** figures such as pinouts and tables)
 with the exact **file, page and figure name** as sources. Models run locally through Ollama and
 sentence-transformers: no cloud API, no API key.
 
-> Status: early version. Command-line and Streamlit interfaces work. Benchmarked on 27 questions
+> Status: early version. Command-line and Streamlit interfaces work. Benchmarked on 27 questions on one
+> English datasheet (hybrid retrieval is the default) and on 12 questions on one French user manual,
+> where results are clearly weaker.
 > on one datasheet; hybrid retrieval (embeddings + BM25) is the default.
 
 ![Answer with the cited figure displayed](docs/demo_voltage.png)
@@ -211,6 +213,71 @@ adding `LLM_MAX_TOKENS = 400` and a truncation flag, it is cut after about 4.5 s
 hybrid benchmark dropped from 58.2 s to 4.7 s. In embeddings mode, no answer was truncated. Truncation detection relies on
 `done_reason`, checked on the `ollama` Python package 0.6.3.
 
+### Second document: MSI MPG B550 GAMING PLUS user guide (French, 59 pages)
+
+Tested to see whether the system holds outside its development document. Two things change at once:
+the language (French instead of English) and the document type (user manual instead of a chip
+datasheet), so a weak result cannot be attributed to one of them. The PDF is not in the repository.
+
+No parameter was changed for this document: distance threshold 1.25, top-K 8, the lexical gate and the
+prompts were calibrated on the ESP32 datasheet. 12 questions (`tests/benchmark_questions_msi.json`) and
+their expected answers were committed before any run (commit `4981c03`), retrieval-only results before
+any LLM run (`c9f7b6b`), end-to-end results afterwards (`0c19256`). The index holds 171 entries (133 text
+passages, 38 figures; 26 of the 42 extracted figures received a non-empty description).
+
+Retrieval only (no LLM, identical over two runs, page level, 10 answerable questions):
+
+| | Embeddings | Hybrid |
+|---|---|---|
+| Expected page in the context given to the LLM | 8/10 | 8/10 |
+| Expected page in the 20 first entries | 8/10 | 9/10 |
+| Off-topic questions blocked before the LLM | 0/2 | 0/2 |
+
+End to end, `llama3.2:3b`, 12 questions x 3 runs = 36 runs per mode:
+
+| Metric | Embeddings | Hybrid |
+|---|---|---|
+| Correct answers or correct refusals (runs) | 42 % (15/36) | 58 % (21/36) |
+| Questions correct in all 3 runs | 5/12 | 7/12 |
+| Fully correct: answer and cited page (runs) | 33 % (12/36) | 58 % (21/36) |
+| Right page cited, among correct answers | 67 % (6/9) | 100 % (15/15) |
+| Silent errors (wrong, no warning) | 42 % (15/36) | 25 % (9/36) |
+| Flagged errors (wrong, warning shown) | 8 % (3/36) | 8 % (3/36) |
+| Useless refusals (answer existed) | 8 % (3/36) | 8 % (3/36) |
+| Questions whose verdict changed between runs | 0/12 | 0/12 |
+| Median / max total latency (LLM called) | 0.2 s / 0.7 s | 0.3 s / 0.9 s |
+
+On the ESP32 datasheet (27 questions) the same hybrid configuration gave 81 % correct and 10 % silent errors.
+The questions and the document differ, so only the order of magnitude is comparable.
+
+Reading of the raw answers, done by hand after seeing the results. Because two benchmark verdicts below
+are scoring artefacts, this reading differs from the benchmark. It is not an official number, and
+M06, M11 and M12 were counted by the benchmark without reading their answers individually.
+
+- **Scoring artefacts, not system errors.** M09: the answer "signal de contrôle de vitesse" is correct,
+  but the expected string was the English term "Speed Control Signal". M10: "4096x2160 60 Hz" is
+  correct, but the scoring refuses a digit preceded by a letter, so "2160" after an `x` is not found.
+  Expected answers were not changed after seeing results.
+- **Real errors.** M04 (LAN controller): both modes answered "NCT6687-R", which is the I/O controller on
+  page 19; the LAN controller is the Realtek 8111H on page 18. M08 (ATX_PWR1 pin 4) in embeddings mode:
+  "Ground", the neighboring row, instead of +5V. M05 (first DIMM slot): refusal in both modes, although in
+  hybrid mode page 28 was in the context. M07 (board dimensions): page 20 was never retrieved; the
+  hybrid answer invented "17 cm x 17 cm", and the grounding check flagged it (this uses the `cm` unit
+  added after Q11, so it is not independent evidence that the check generalizes).
+- **Incomplete answer.** M01 in embeddings mode answered "Remplacez la pile CMOS" without the CR2032 type.
+- **Right value, wrong page.** M02 in embeddings mode gave 24 W but cited page 12 instead of 38; the
+  grounding check flagged it.
+- By this hand reading, hybrid has 9 correct answers out of 12 and embeddings 7 out of 12. With 12
+  questions this is not significant.
+- **Off-topic questions.** The distance threshold blocked neither M11 (price) nor M12 (Tesla battery),
+  but the LLM refused both in all runs. On the English datasheet the threshold stopped them before the LLM.
+- **Refusal detection fails in French.** When the model refused in French (M07, embeddings), it did not use
+  the fixed English refusal sentence, so the refusal was not recognized as one (the user still saw a warning,
+  because no source was cited).
+- **BM25 tokenization (likely cause of the M04 regression, not tested).** The hand-written BM25 splits words with
+  `[A-Za-z0-9_]+`, so accented letters break words ("contrôleur" becomes "contr" and "leur"). It is not corrected
+  here, because fixing it and re-measuring on the same questions would tune the system on its test set.
+
 ### Model comparison (13 questions, embeddings mode)
 
 Measured before the generation cap and the hybrid mode, on the first 13 questions, one benchmark run for `mistral`.
@@ -246,7 +313,14 @@ both models, which suggests the bottleneck is upstream of the LLM, but this is n
 - Page numbers are those of the PDF reader, which can differ from the printed page numbers.
 - The embedding model is English-oriented, so questions should be in English for now.
 - The interface texts are still partly in French.
-- Tested on a single datasheet and 27 questions.
+- Tested on two documents (ESP32 datasheet in English, 27 questions; MSI B550 user guide in French, 12 questions).
+  On the French manual, results are clearly weaker (see above).
+- The distance threshold, which separates off-topic questions on the ESP32 datasheet, did not block any of the 2
+  off-topic questions on the French manual: it is calibrated per document, and the LLM took over.
+- BM25 tokenization ignores accented letters, which damages keyword search on French text.
+- Refusal detection looks for an English sentence, so refusals written in French are not recognized.
+- Scoring compares exact strings: a correct answer that translates or reformats an expected term ("4096x2160", "Speed
+  Control Signal" in French) is counted wrong.
 
 ## Roadmap
 
@@ -259,3 +333,7 @@ both models, which suggests the bottleneck is upstream of the LLM, but this is n
 - Network audit and offline test of ingestion and hybrid mode
 - English interface
 - Larger benchmark, on several datasheets
+- Multilingual embedding model, measured on French questions not used so far
+- Accent-aware BM25 tokenization, same constraint
+- Per-document calibration of the distance threshold
+- Language-aware refusal detection, and a scoring that tolerates reformatted values
