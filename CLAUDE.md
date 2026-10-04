@@ -22,6 +22,10 @@ sentence-transformers, Ollama (llama3.2:3b, moondream). Code dans src/, mesures 
 ## Règle de décision sur USE_HYBRID (écrite avant la mesure sur Q23 à Q27)
 L'hybride devient le mode par défaut si, sur Q23 à Q27, il a au plus autant d'erreurs silencieuses
 que les embeddings ET au moins autant de réponses correctes. Sinon il reste désactivé et on le documente.
+Précisions, écrites avant la mesure : on compte en essais (5 questions x 3 essais = 15 essais par mode).
+Une égalité sur les deux critères donne l'hybride par défaut, comme la règle le dit. En plus, l'hybride
+reste désactivé si une réponse dépasse 10 s de latence totale. Les chiffres de Q01 à Q22 ne
+comptent pas dans cette décision.
 
 ## Façon de travailler
 - Proposer un plan avant d'éditer, puis montrer le git diff à la fin.
