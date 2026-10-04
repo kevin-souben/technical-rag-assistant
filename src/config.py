@@ -11,6 +11,7 @@ RAW_PDF_DIR = BASE_DIR / "data" / "raw_pdfs"
 IMAGES_DIR = BASE_DIR / "data" / "extracted_images"
 RAG_DB = os.environ.get("RAG_DB", "")  # vide = base de l'ESP32 ; sinon data/chroma_db_<RAG_DB>
 CHROMA_DIR = BASE_DIR / "data" / (f"chroma_db_{RAG_DB}" if RAG_DB else "chroma_db")
+NOTEBOOKS_DIR = BASE_DIR / "data" / "notebooks"  # un sous-dossier par notebook (src/notebooks.py)
 
 # --- Extraction des images raster ---
 MIN_IMAGE_SIZE_PX = 150  # ignore les images plus petites (logos, puces)

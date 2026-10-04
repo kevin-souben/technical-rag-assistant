@@ -121,11 +121,11 @@ def _extract_vector_figures(doc, source: str, out_dir: Path) -> list[ExtractedIm
     return figures
 
 
-def extract_pdf(pdf_path) -> tuple[list[PageText], list[ExtractedImage]]:
+def extract_pdf(pdf_path, images_dir=None) -> tuple[list[PageText], list[ExtractedImage]]:
     """Point d'entrée : renvoie (textes par page, images extraites) pour un PDF."""
     pdf_path = Path(pdf_path)
     source = pdf_path.name
-    out_dir = config.IMAGES_DIR / pdf_path.stem  # un sous-dossier par PDF
+    out_dir = Path(images_dir or config.IMAGES_DIR) / pdf_path.stem  # un sous-dossier par PDF
     out_dir.mkdir(parents=True, exist_ok=True)
 
     with pymupdf.open(pdf_path) as doc:

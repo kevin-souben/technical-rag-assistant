@@ -49,8 +49,10 @@ def describe_image(image_path) -> str:
     return "" if is_degenerate(text) else text  # mieux vaut pas de description qu'une description fausse
 
 
-def describe_images(images, cache_path: Path) -> dict[str, str]:
-    """Décrit toutes les figures. Le cache évite de refaire un travail déjà fait."""
+def describe_images(images, cache_path: Path, progress=None) -> dict[str, str]:
+    """Décrit toutes les figures. Le cache évite de refaire un travail déjà fait.
+
+    progress(numéro, total), optionnel, est appelé après chaque figure."""
     cache = {}
     if cache_path.exists():
         cache = json.loads(cache_path.read_text(encoding="utf-8"))
@@ -61,6 +63,8 @@ def describe_images(images, cache_path: Path) -> dict[str, str]:
     for number, img in enumerate(images, start=1):
         if cache.get(img.name):
             print(f"  [{number}/{total}] {img.name} (déjà décrite, cache)")
+            if progress:
+                progress(number, total)
             continue
 
         start = time.perf_counter()
@@ -68,10 +72,14 @@ def describe_images(images, cache_path: Path) -> dict[str, str]:
             cache[img.name] = describe_image(img.path)
         except Exception as err:  # une figure en échec ne doit pas bloquer les autres
             print(f"  [{number}/{total}] {img.name} : ÉCHEC ({err})")
+            if progress:
+                progress(number, total)
             continue
 
         print(f"  [{number}/{total}] {img.name} : {time.perf_counter() - start:.1f} s")
         # sauvegarde après CHAQUE image : un Ctrl+C ne fait perdre aucun travail
         cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
+        if progress:
+            progress(number, total)
 
     return cache

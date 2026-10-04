@@ -41,11 +41,20 @@ def image_to_document(img: ExtractedImage, description: str, page_context: str =
     )
 
 
-def ingest_pdf(pdf_path: Path, store, with_images: bool = True) -> None:
+def ingest_pdf(pdf_path: Path, store, with_images: bool = True, images_dir=None,
+               progress=None) -> int:
+    """Ingère UN PDF. images_dir : défaut config.IMAGES_DIR. progress(message), optionnel.
+    Renvoie le nombre d'entrées indexées."""
+    def report(message: str) -> None:
+        if progress:
+            progress(message)
+
+    images_dir = Path(images_dir or config.IMAGES_DIR)
     print(f"\n=== {pdf_path.name} ===")
 
+    report("Extraction du texte et des figures")
     t0 = time.perf_counter()
-    pages, images = extract_pdf(pdf_path)
+    pages, images = extract_pdf(pdf_path, images_dir)
     text_chunks = chunk_pages(pages)
     t_extract = time.perf_counter() - t0
     print(f"Extraction : {len(pages)} pages, {len(text_chunks)} chunks, "
@@ -55,9 +64,12 @@ def ingest_pdf(pdf_path: Path, store, with_images: bool = True) -> None:
     t_vlm = 0.0
     if with_images and images:
         print("Description des figures par le VLM local :")
+        report(f"Description des figures : 0/{len(images)}")
         t1 = time.perf_counter()
-        cache_path = config.IMAGES_DIR / pdf_path.stem / "descriptions.json"
-        descriptions = describe_images(images, cache_path)
+        cache_path = images_dir / pdf_path.stem / "descriptions.json"
+        descriptions = describe_images(
+            images, cache_path,
+            progress=lambda n, total: report(f"Description des figures : {n}/{total}"))
         t_vlm = time.perf_counter() - t1
 
     # début du texte de chaque page (titre de section) : sert de contexte aux figures
@@ -70,6 +82,7 @@ def ingest_pdf(pdf_path: Path, store, with_images: bool = True) -> None:
             context = page_starts.get(img.page, "")
             image_docs.append(image_to_document(img, description, context))
 
+    report("Indexation (embeddings)")
     t2 = time.perf_counter()
     removed = delete_source(store, pdf_path.name)  # réingestion propre
     add_documents(store, text_chunks + image_docs)
@@ -79,6 +92,8 @@ def ingest_pdf(pdf_path: Path, store, with_images: bool = True) -> None:
         print(f"{removed} anciennes entrées de ce PDF remplacées")
     print(f"Indexé : {len(text_chunks)} chunks texte + {len(image_docs)} figures")
     print(f"Temps : extraction {t_extract:.1f} s | VLM {t_vlm:.1f} s | indexation {t_index:.1f} s")
+    report("Terminé")
+    return len(text_chunks) + len(image_docs)
 
 
 def main() -> None:

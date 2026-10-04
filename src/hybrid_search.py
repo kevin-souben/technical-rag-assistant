@@ -55,18 +55,25 @@ class BM25Index:
         return result
 
 
-_cache = {"count": None, "index": None}
+_cache = {}  # dossier de la base -> (nombre d'entrées, index BM25)
 
 
 def get_index(store) -> BM25Index:
     """Construit l'index BM25 depuis ChromaDB, et le reconstruit si la base a changé."""
+    key = getattr(store, "persist_dir", None)  # une base = un index
     count = count_documents(store)
-    if _cache["count"] != count:
+    cached = _cache.get(key)
+    if cached is None or cached[0] != count:
         data = store.get(include=["documents", "metadatas"])
         docs = [Document(page_content=text, metadata=meta)
                 for text, meta in zip(data["documents"], data["metadatas"])]
-        _cache["count"], _cache["index"] = count, BM25Index(docs)
-    return _cache["index"]
+        _cache[key] = (count, BM25Index(docs))
+    return _cache[key][1]
+
+
+def forget_index(persist_dir) -> None:
+    """Oublie l'index d'une base modifiée : le nombre d'entrées seul ne suffit pas à le détecter."""
+    _cache.pop(str(persist_dir), None)
 
 
 def rank_candidates(store, question: str) -> list[tuple]:
