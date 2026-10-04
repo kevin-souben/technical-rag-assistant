@@ -164,38 +164,41 @@ of the figure); the check only reads the cited chunk, which most likely is a nei
 Net effect: better detection, one new false alarm. The fix targeted a gap found on Q11 and was
 measured on Q11, so it shows the fix works on that case, not that it generalizes.
 
-### Hybrid retrieval (embeddings + BM25), 17 questions
+### Hybrid retrieval (embeddings + BM25), 22 questions
 
 A hand-written BM25 is fused with the embedding ranking (reciprocal rank fusion), and a lexical
 gate lets a passage through the distance threshold when it contains a rare uppercase identifier
 of the question (e.g. `HSPIQ`). Off by default (`USE_HYBRID = False`). Q03 motivated it; Q14 to
-Q17 were written before it was built, with no parameter tuned afterwards.
+Q17 and then Q18 to Q22 were written before it was measured on them, with no parameter tuned afterwards.
 
 Retrieval only (no LLM, identical over two runs, measured at page level):
 
 | | Embeddings | Hybrid |
 |---|---|---|
-| Answerable questions with an expected page in the LLM context | 12/15 | 15/15 |
+| Answerable questions with an expected page in the LLM context | 13/20 | 20/20 |
+| Of which the 5 unseen questions (Q18 to Q22) | 1/5 | 5/5 |
 | Off-topic questions blocked before the LLM | 2/2 | 2/2 |
 
-End to end, `llama3.2:3b`, 17 questions x 3 runs, one batch per configuration:
+End to end, `llama3.2:3b`, 22 questions x 3 runs, one batch per configuration:
 
 | | Embeddings | Hybrid |
 |---|---|---|
-| Answer correct, any cited page | 11/17 | 14/17 (13/17 without Q13) |
-| Answer correct and right page cited | 10/17 | 11/17 (10/17 without Q13) |
-| Wrong answer, no warning | 1 (Q01) | 2 (Q01, Q15) |
-| Refusal although the answer existed | 3 (Q03, Q14, Q11 in 1 run) | 1 (Q11) |
-| Correct answer shown with a warning | 2 (Q07, Q12) | 5 (Q03, Q05, Q12, Q13, Q16) |
+| Answer correct (or correct refusal), any cited page | 11/22 | 18/22 |
+| Answer correct and right page cited | 10/22 | 14/22 |
+| Wrong answer, no warning | 2 (Q01; Q22 in 2 of 3 runs) | 2 (Q01, Q15) |
+| Refusal although the answer existed | 5 (Q03, Q14, Q18, Q19, Q20) + Q11 once | 1 (Q11) |
+| Unseen questions Q18 to Q22 answered correctly | 0/5 | 4/5 |
+| Correct answers shown with a warning (runs) | 6/66 | 18/66 |
+| Max total latency | 1.5 s | 58.2 s (Q21) |
 
-- Retrieval improved clearly, but end-to-end accuracy with the right cited page did not,
-  and silent errors went from 1 to 2 questions. The hybrid mode stays off by default.
-- Q13 is counted correct by the benchmark, but the answer just copies the figure's labels.
-- Q03 gave the right pins but cited page 16 and added details invented from the strapping table.
-- Q15: the model returned the neighboring row (GPIO13, HSPID) on the right page. The lexical check
-  cannot see a real value attached to the wrong signal.
-- Q05 and Q16 now cite page 28 instead of 15 (flagged by the check). Likely cause, not verified:
-  the fusion changes the passage order and the model cites the wrong number.
+- On the unseen pin-function questions, retrieval went from 1/5 to 5/5 and correct answers from 0/5 to 4/5.
+  This is one family of questions on one document: it does not show the gain generalizes to other question types.
+- Cost: more warnings on correct answers, and some answers cite a neighboring page (Q03, Q05, Q16).
+  For Q05 the answer cited source [1] (a generic GPIO page placed first by the fusion) while the
+  values were in sources 2 and 3; the grounding check flagged it.
+- Q15 and Q21 (the two `CS0` signals) still fail with the right context. Q15 returned the neighboring row (GPIO13).
+- Q13 is counted correct by the benchmark, but its answer copies the figure's labels.
+- Q21 took about 58 s per run in hybrid mode, against 0.1 s with embeddings; cause under investigation.
 - The lexical gate is too broad: `gpio` appears in 6 of 150 entries, so it counts as a rare identifier.
 
 ### Model comparison (same 13 questions, grounding check v2)
