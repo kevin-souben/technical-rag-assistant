@@ -1,4 +1,4 @@
-Retrieval only (no LLM), mode `embedding`, 22 questions, 150 indexed entries, embedding `sentence-transformers/all-MiniLM-L6-v2`, top-K 8, distance threshold 1.25, 2026-10-04
+Retrieval only (no LLM), mode `embedding`, 27 questions, 150 indexed entries, embedding `sentence-transformers/all-MiniLM-L6-v2`, top-K 8, distance threshold 1.25, 2026-10-04
 
 Observation depth: 20 entries. Measured at page level, not passage level.
 
@@ -26,11 +26,16 @@ Observation depth: 20 entries. Measured at page level, not passage level.
 | Q20 | 14 | 11 | 1.35 | no | 13, 16 |
 | Q21 | 14 | 7 | 1.28 | no | 15, 16, 28, 32 |
 | Q22 | 15 | 2 | 1.13 | yes | 13, 15, 28 |
+| Q23 | 34 | 1 | 0.80 | yes | 27, 34, 36 |
+| Q24 | 27 | 2 | 0.78 | yes | 26, 27, 29 |
+| Q25 | 32 | 1 | 0.96 | yes | 32 |
+| Q26 | 10, 17 | 2 | 0.74 | yes | 1, 8, 17, 18 |
+| Q27 | 30 | 1 | 0.59 | yes | 8, 18, 23, 30, 36 |
 
 | Metric | Result |
 |---|---|
-| Answerable questions with an expected page in the LLM context | 13/20 |
-| Answerable questions with ALL expected pages in the LLM context | 13/20 |
-| Answerable questions with an expected page in the 20 first entries | 20/20 |
+| Answerable questions with an expected page in the LLM context | 18/25 |
+| Answerable questions with ALL expected pages in the LLM context | 17/25 |
+| Answerable questions with an expected page in the 20 first entries | 25/25 |
 | Off-topic questions blocked before the LLM | 2/2 |
 | Identical results over two runs | yes |
