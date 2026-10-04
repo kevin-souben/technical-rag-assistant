@@ -11,6 +11,7 @@ __pycache__/
 data/raw_pdfs/*
 data/extracted_images/*
 data/chroma_db/*
+data/chroma_db_*/
 !data/raw_pdfs/.gitkeep
 !data/extracted_images/.gitkeep
 !data/chroma_db/.gitkeep

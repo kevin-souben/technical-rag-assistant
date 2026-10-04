@@ -2,13 +2,15 @@
 
 Tout ce qu'on peut vouloir régler se trouve ici, jamais dans le reste du code.
 """
+import os
 from pathlib import Path
 
 # --- Chemins (calculés depuis l'emplacement de ce fichier) ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 RAW_PDF_DIR = BASE_DIR / "data" / "raw_pdfs"
 IMAGES_DIR = BASE_DIR / "data" / "extracted_images"
-CHROMA_DIR = BASE_DIR / "data" / "chroma_db"
+RAG_DB = os.environ.get("RAG_DB", "")  # vide = base de l'ESP32 ; sinon data/chroma_db_<RAG_DB>
+CHROMA_DIR = BASE_DIR / "data" / (f"chroma_db_{RAG_DB}" if RAG_DB else "chroma_db")
 
 # --- Extraction des images raster ---
 MIN_IMAGE_SIZE_PX = 150  # ignore les images plus petites (logos, puces)

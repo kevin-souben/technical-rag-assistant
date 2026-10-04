@@ -63,12 +63,19 @@ def measure(item: dict, store, mode: str) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Évaluation de la recherche seule")
     parser.add_argument("--mode", choices=["embedding", "hybrid"], default="embedding")
+    parser.add_argument("--questions", help="fichier JSON de questions (défaut : benchmark_questions.json)")
+    parser.add_argument("--tag", default="", help="suffixe ajouté au nom du fichier de sortie")
     args = parser.parse_args()
+    # sans tag, les résultats d'un autre document écraseraient ceux de l'ESP32
+    if (config.RAG_DB or args.questions) and not args.tag:
+        raise SystemExit("--tag est obligatoire avec RAG_DB ou --questions.")
     config.USE_HYBRID = args.mode == "hybrid"
     output_file = config.BASE_DIR / "docs" / (
-        "retrieval_hybrid.md" if args.mode == "hybrid" else "retrieval_baseline.md")
+        ("retrieval_hybrid" if args.mode == "hybrid" else "retrieval_baseline")
+        + (f"_{args.tag}" if args.tag else "") + ".md")
 
-    items = json.loads(QUESTIONS_FILE.read_text(encoding="utf-8"))
+    questions_file = Path(args.questions) if args.questions else QUESTIONS_FILE
+    items = json.loads(questions_file.read_text(encoding="utf-8"))
     store = get_vector_store()
 
     first_pass = [measure(item, store, args.mode) for item in items]

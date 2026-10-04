@@ -78,21 +78,28 @@ def main() -> None:
     parser.add_argument("--runs", type=int, default=3, help="essais par question (défaut : 3)")
     parser.add_argument("--model", help="LLM Ollama à tester (défaut : config.LLM_MODEL)")
     parser.add_argument("--hybrid", action="store_true", help="recherche hybride (embeddings + BM25)")
+    parser.add_argument("--questions", help="fichier JSON de questions (défaut : benchmark_questions.json)")
+    parser.add_argument("--tag", default="", help="suffixe ajouté au nom des fichiers de résultats")
     args = parser.parse_args()
+    # sans tag, les résultats d'un autre document écraseraient ceux de l'ESP32
+    if (config.RAG_DB or args.questions) and not args.tag:
+        raise SystemExit("--tag est obligatoire avec RAG_DB ou --questions.")
     config.USE_HYBRID = args.hybrid
 
     if args.model:
         config.LLM_MODEL = args.model
     check_llm()
 
-    items = json.loads(QUESTIONS_FILE.read_text(encoding="utf-8"))
+    questions_file = Path(args.questions) if args.questions else QUESTIONS_FILE
+    items = json.loads(questions_file.read_text(encoding="utf-8"))
+    warmup_question = items[0]["question"] if args.questions else WARMUP_QUESTION
     store = get_vector_store()
     print(f"Modèle : {config.LLM_MODEL} | base : {count_documents(store)} entrées | "
           f"{len(items)} questions x {args.runs} essais\n")
 
     # Échauffement : le 1er appel charge le LLM en mémoire, on le mesure à part
     t0 = time.perf_counter()
-    ask(WARMUP_QUESTION, store)
+    ask(warmup_question, store)
     load_time = time.perf_counter() - t0
     print(f"Échauffement (chargement du LLM) : {load_time:.1f} s\n")
 
@@ -147,7 +154,8 @@ def main() -> None:
 
     # --- Sauvegarde (les réponses complètes permettent de relire chaque erreur) ---
     RESULTS_DIR.mkdir(exist_ok=True)
-    safe_model = re.sub(r"[^\w.-]", "_", config.LLM_MODEL) + ("_hybrid" if config.USE_HYBRID else "")
+    safe_model = re.sub(r"[^\w.-]", "_", config.LLM_MODEL) + ("_hybrid" if config.USE_HYBRID else "") + (
+        f"_{args.tag}" if args.tag else "")
     json_path = RESULTS_DIR / f"benchmark_{safe_model}.json"
     json_path.write_text(json.dumps(
         {"model": config.LLM_MODEL, "runs_per_question": args.runs, "load_time_s": load_time,
