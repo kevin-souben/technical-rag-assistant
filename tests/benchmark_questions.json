@@ -90,5 +90,33 @@
     "expected_all": ["PMU", "ULP", "Recovery"],
     "expected_pages": [12],
     "should_refuse": false
+  },
+  {
+    "id": "Q14",
+    "question": "Which GPIO pin has the HSPIQ function?",
+    "expected_all": ["GPIO12"],
+    "expected_pages": [14],
+    "should_refuse": false
+  },
+  {
+    "id": "Q15",
+    "question": "Which GPIO pin has the HSPICS0 function?",
+    "expected_all": ["GPIO15"],
+    "expected_pages": [14],
+    "should_refuse": false
+  },
+  {
+    "id": "Q16",
+    "question": "Which GPIO pin has the VSPIHD function?",
+    "expected_all": ["GPIO21"],
+    "expected_pages": [15],
+    "should_refuse": false
+  },
+  {
+    "id": "Q17",
+    "question": "Which GPIO pin has the VSPIWP function?",
+    "expected_all": ["GPIO22"],
+    "expected_pages": [15],
+    "should_refuse": false
   }
 ]
