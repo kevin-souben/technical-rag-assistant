@@ -15,6 +15,9 @@ h1 { text-align: center; font-weight: 500; }
 [data-testid="stMainMenu"], [data-testid="stAppDeployButton"], footer { display: none; }
 /* boutons de la barre latérale alignés à gauche, comme une liste */
 [data-testid="stSidebar"] button { justify-content: flex-start; text-align: left; }
+/* bouton de confirmation (popover) de la barre latérale : texte centré comme les autres boutons */
+[data-testid="stSidebar"] [data-testid="stPopover"] button { justify-content: center; text-align: center; }
+[data-testid="stSidebar"] [data-testid="stPopover"] button > div { justify-content: center; }
 </style>
 """
 
