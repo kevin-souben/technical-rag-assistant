@@ -164,41 +164,58 @@ of the figure); the check only reads the cited chunk, which most likely is a nei
 Net effect: better detection, one new false alarm. The fix targeted a gap found on Q11 and was
 measured on Q11, so it shows the fix works on that case, not that it generalizes.
 
-### Hybrid retrieval (embeddings + BM25), 22 questions
+### Hybrid retrieval (embeddings + BM25), 27 questions
 
 A hand-written BM25 is fused with the embedding ranking (reciprocal rank fusion), and a lexical
 gate lets a passage through the distance threshold when it contains a rare uppercase identifier
-of the question (e.g. `HSPIQ`). Off by default (`USE_HYBRID = False`). Q03 motivated it; Q14 to
-Q17 and then Q18 to Q22 were written before it was measured on them, with no parameter tuned afterwards.
+of the question (e.g. `HSPIQ`). Q03 motivated it; Q14 to Q22 were measured on after it was built,
+with no parameter tuned afterwards.
+
+**Decision rule, written before running Q23 to Q27** (in `CLAUDE.md`, commit `4364c90`; results in
+`b5e8d23`): hybrid becomes the default if, on Q23 to Q27 (5 questions x 3 runs), it has at most as many
+silent errors as embeddings, at least as many correct answers, and no answer slower than 10 s.
+
+| Q23 to Q27, 15 runs per mode | Embeddings | Hybrid |
+|---|---|---|
+| Correct answers | 12/15 | 12/15 |
+| Silent errors (all on Q24) | 3/15 | 2/15 |
+| Max total latency | 1.5 s | 4.7 s |
+
+The rule is satisfied, so `USE_HYBRID = True` is the default. On these five questions hybrid is
+not better, only not worse: the difference is one run out of 15, and both modes retrieved the
+expected page for all five.
 
 Retrieval only (no LLM, identical over two runs, measured at page level):
 
 | | Embeddings | Hybrid |
 |---|---|---|
-| Answerable questions with an expected page in the LLM context | 13/20 | 20/20 |
-| Of which the 5 unseen questions (Q18 to Q22) | 1/5 | 5/5 |
+| Answerable questions with an expected page in the LLM context | 18/25 | 25/25 |
 | Off-topic questions blocked before the LLM | 2/2 | 2/2 |
 
-End to end, `llama3.2:3b`, 22 questions x 3 runs, one batch per configuration:
+End to end, `llama3.2:3b`, 27 questions x 3 runs, one batch per configuration:
 
 | | Embeddings | Hybrid |
 |---|---|---|
-| Answer correct (or correct refusal), any cited page | 11/22 | 18/22 |
-| Answer correct and right page cited | 10/22 | 14/22 |
-| Wrong answer, no warning | 2 (Q01; Q22 in 2 of 3 runs) | 2 (Q01, Q15) |
+| Answer correct (or correct refusal), any cited page | 15/27 | 22/27 |
+| Answer correct and right page cited | 14/27 | 18/27 |
+| Wrong answer, no warning | 3 (Q01; Q22 in 2 of 3 runs; Q24) | 3 (Q01, Q15; Q24 in 2 of 3 runs) |
 | Refusal although the answer existed | 5 (Q03, Q14, Q18, Q19, Q20) + Q11 once | 1 (Q11) |
-| Unseen questions Q18 to Q22 answered correctly | 0/5 | 4/5 |
-| Correct answers shown with a warning (runs) | 6/66 | 18/66 |
-| Max total latency | 1.5 s | 58.2 s (Q21) |
+| Correct answers shown with a warning (runs) | 6/81 | 18/81 |
+| Right page cited among correct answers (runs) | 92 % (36/39) | 80 % (48/60) |
+| Max total latency | 1.5 s | 4.7 s (Q21) |
 
-- On the unseen pin-function questions, retrieval went from 1/5 to 5/5 and correct answers from 0/5 to 4/5.
-  This is one family of questions on one document: it does not show the gain generalizes to other question types.
-- Cost: more warnings on correct answers, and some answers cite a neighboring page (Q03, Q05, Q16).
-  For Q05 the answer cited source [1] (a generic GPIO page placed first by the fusion) while the
-  values were in sources 2 and 3; the grounding check flagged it.
-- Q15 and Q21 (the two `CS0` signals) still fail with the right context. Q15 returned the neighboring row (GPIO13).
+- The gain comes from pin-function questions (Q18 to Q22): retrieval went from 1/5 to 5/5 and correct
+  answers from 0/5 to 4/5. This is one family of questions on one document.
+- Cost of the hybrid mode: more warnings on correct answers, and some answers cite a neighboring page
+  (Q03, Q05, Q16, Q22). For Q05 the answer cited a generic GPIO page placed first by the fusion
+  while the values were in other sources; the grounding check flagged it.
+- Q15, Q21 and Q24 fail with the right context: the model returns the neighboring row of a table.
+  Q24 (Deep-sleep power with the ULP co-processor on) answered "25 µA @1% duty", the value of the
+  next row; the expected value is 0.15 mA. The grounding check cannot see it, since the value exists in the cited page.
+- Q21 produced a looping answer of 16,156 characters (about 58 s) before `LLM_MAX_TOKENS = 400` was added;
+  it is now cut after about 4.5 s and flagged as truncated.
 - Q13 is counted correct by the benchmark, but its answer copies the figure's labels.
-- Q21 took about 58 s per run in hybrid mode, against 0.1 s with embeddings; cause under investigation.
+- Q22 and Q24 changed verdict between runs, so single-run differences are within the noise.
 - The lexical gate is too broad: `gpio` appears in 6 of 150 entries, so it counts as a rare identifier.
 
 ### Model comparison (same 13 questions, grounding check v2)
@@ -244,3 +261,4 @@ of the LLM, but this is not proven.
 - Larger benchmark, on several datasheets
 - Ignore generic tokens such as `gpio` in the lexical gate (measure on new questions)
 - Row-level chunking of pin tables, to avoid neighboring-row errors
+- Row-level chunking of tables, to avoid neighboring-row errors (Q15, Q21, Q24)

@@ -41,5 +41,5 @@ LLM_NUM_CTX = 4096      # taille de contexte demandée à Ollama (tokens)
 LLM_MAX_TOKENS = 400    # plafond de tokens générés par réponse (num_predict d'Ollama)
 
 # --- Recherche hybride (embeddings + BM25) ---
-USE_HYBRID = False        # reste False tant que la mesure avant/après n'est pas faite
+USE_HYBRID = True         # activé après la mesure sur Q23-Q27, selon la règle de CLAUDE.md
 RARE_DF_RATIO = 0.10      # un identifiant est "rare" s'il figure dans au plus 10 % des passages
