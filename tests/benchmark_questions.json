@@ -157,5 +157,40 @@
     "expected_all": ["GPIO7"],
     "expected_pages": [15],
     "should_refuse": false
+  },
+  {
+    "id": "Q23",
+    "question": "What is the current consumption when transmitting 802.11b DSSS at 1 Mbps?",
+    "expected_all": ["225"],
+    "expected_pages": [34],
+    "should_refuse": false
+  },
+  {
+    "id": "Q24",
+    "question": "What is the Deep-sleep power consumption when the ULP co-processor is powered on?",
+    "expected_all": ["0.15"],
+    "expected_pages": [27],
+    "should_refuse": false
+  },
+  {
+    "id": "Q25",
+    "question": "What is the maximum operation length for RSA and ECC hardware acceleration?",
+    "expected_all": ["4096"],
+    "expected_pages": [32],
+    "should_refuse": false
+  },
+  {
+    "id": "Q26",
+    "question": "How much on-chip SRAM does the ESP32 have?",
+    "expected_all": ["520"],
+    "expected_pages": [10, 17],
+    "should_refuse": false
+  },
+  {
+    "id": "Q27",
+    "question": "What data rates does the Ethernet MAC of the ESP32 support?",
+    "expected_all": ["10", "100"],
+    "expected_pages": [30],
+    "should_refuse": false
   }
 ]
