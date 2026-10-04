@@ -118,5 +118,44 @@
     "expected_all": ["GPIO22"],
     "expected_pages": [15],
     "should_refuse": false
+  },
+  {
+    "id": "Q18",
+    "question": "Which GPIO pin has the HSPIWP function?",
+    "expected_all": ["GPIO2"],
+    "forbidden": ["GPIO22", "GPIO10"],
+    "expected_pages": [14],
+    "should_refuse": false
+  },
+  {
+    "id": "Q19",
+    "question": "Which GPIO pin has the HSPIHD function?",
+    "expected_all": ["GPIO4"],
+    "forbidden": ["GPIO21", "GPIO9"],
+    "expected_pages": [14],
+    "should_refuse": false
+  },
+  {
+    "id": "Q20",
+    "question": "Which GPIO pin has the SPIHD function?",
+    "expected_all": ["GPIO9"],
+    "forbidden": ["GPIO4", "GPIO21"],
+    "expected_pages": [14],
+    "should_refuse": false
+  },
+  {
+    "id": "Q21",
+    "question": "Which GPIO pin has the SPICS0 function?",
+    "expected_all": ["GPIO11"],
+    "forbidden": ["GPIO15", "GPIO5"],
+    "expected_pages": [14],
+    "should_refuse": false
+  },
+  {
+    "id": "Q22",
+    "question": "Which GPIO number corresponds to U2RTS?",
+    "expected_all": ["GPIO7"],
+    "expected_pages": [15],
+    "should_refuse": false
   }
 ]

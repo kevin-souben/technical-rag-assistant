@@ -37,9 +37,9 @@ Question -> embedding -> top-K passages -> local LLM -> answer with [n] citation
   details poorly.
 - **Retrieval**: `sentence-transformers/all-MiniLM-L6-v2` embeddings and ChromaDB.
 - **Generation**: `llama3.2:3b` via Ollama, with a constrained prompt (temperature 0).
-- **Traceability**: the LLM only picks source numbers. File, page and figure name are read from
-  metadata by the code, so a page number cannot be invented. The model can still cite the wrong
-  passage, which is why the grounding check below exists.
+- **Traceability**: the LLM only picks source numbers. File, page and figure name in the sources
+  list are read from metadata by the code, so that list cannot contain an invented page. The
+  answer text itself may still mention pages or figures written by the model, and these are not verified.
 
 ## Anti-hallucination safeguards
 
@@ -89,9 +89,10 @@ Q01 is partly ambiguous: the datasheet itself gives several supply ranges (2.2-3
 overview, 2.3-3.6 V for analog pins, 2.8-3.6 V for VBAT in Table 8).
 
 **Results are not perfectly reproducible.** Two full runs with the same code and the same index
-gave different verdicts for Q03 (3 refusals, then 1 refusal and 2 flagged wrong answers), although
-retrieval is deterministic and the temperature is 0. The cause was not identified. The numbers
-below come from the latest run.
+gave different verdicts for Q03 (3 refusals, then 1 refusal and 2 flagged wrong answers).
+Retrieval was measured as identical over two runs, and the context given to the LLM was the same,
+so the variability comes from generation, despite temperature 0. The cause was not identified.
+The sections up to "Model comparison" were measured on the first 13 questions.
 
 ### Results per question (latest run)
 
@@ -163,6 +164,40 @@ of the figure); the check only reads the cited chunk, which most likely is a nei
 Net effect: better detection, one new false alarm. The fix targeted a gap found on Q11 and was
 measured on Q11, so it shows the fix works on that case, not that it generalizes.
 
+### Hybrid retrieval (embeddings + BM25), 17 questions
+
+A hand-written BM25 is fused with the embedding ranking (reciprocal rank fusion), and a lexical
+gate lets a passage through the distance threshold when it contains a rare uppercase identifier
+of the question (e.g. `HSPIQ`). Off by default (`USE_HYBRID = False`). Q03 motivated it; Q14 to
+Q17 were written before it was built, with no parameter tuned afterwards.
+
+Retrieval only (no LLM, identical over two runs, measured at page level):
+
+| | Embeddings | Hybrid |
+|---|---|---|
+| Answerable questions with an expected page in the LLM context | 12/15 | 15/15 |
+| Off-topic questions blocked before the LLM | 2/2 | 2/2 |
+
+End to end, `llama3.2:3b`, 17 questions x 3 runs, one batch per configuration:
+
+| | Embeddings | Hybrid |
+|---|---|---|
+| Answer correct, any cited page | 11/17 | 14/17 (13/17 without Q13) |
+| Answer correct and right page cited | 10/17 | 11/17 (10/17 without Q13) |
+| Wrong answer, no warning | 1 (Q01) | 2 (Q01, Q15) |
+| Refusal although the answer existed | 3 (Q03, Q14, Q11 in 1 run) | 1 (Q11) |
+| Correct answer shown with a warning | 2 (Q07, Q12) | 5 (Q03, Q05, Q12, Q13, Q16) |
+
+- Retrieval improved clearly, but end-to-end accuracy with the right cited page did not,
+  and silent errors went from 1 to 2 questions. The hybrid mode stays off by default.
+- Q13 is counted correct by the benchmark, but the answer just copies the figure's labels.
+- Q03 gave the right pins but cited page 16 and added details invented from the strapping table.
+- Q15: the model returned the neighboring row (GPIO13, HSPID) on the right page. The lexical check
+  cannot see a real value attached to the wrong signal.
+- Q05 and Q16 now cite page 28 instead of 15 (flagged by the check). Likely cause, not verified:
+  the fusion changes the passage order and the model cites the wrong number.
+- The lexical gate is too broad: `gpio` appears in 6 of 150 entries, so it counts as a rare identifier.
+
 ### Model comparison (same 13 questions, grounding check v2)
 
 | | llama3.2:3b (3 runs, latest) | mistral (7B, one benchmark run) |
@@ -204,3 +239,5 @@ of the LLM, but this is not proven.
 - Network audit and offline ingestion test
 - English interface
 - Larger benchmark, on several datasheets
+- Ignore generic tokens such as `gpio` in the lexical gate (measure on new questions)
+- Row-level chunking of pin tables, to avoid neighboring-row errors

@@ -1,7 +1,7 @@
 {
   "model": "llama3.2:3b",
   "runs_per_question": 3,
-  "load_time_s": 1.0249728999915533,
+  "load_time_s": 1.0244859000085853,
   "results": [
     {
       "item": {
@@ -27,9 +27,9 @@
           "warned": false,
           "answer": "The recommended operating supply voltage range of the ESP32 is VBAT 2.8 3.3 3.6 V [1][2].",
           "unsupported": [],
-          "t_retrieval": 0.017304900000453927,
-          "t_first_token": 0.1757614999951329,
-          "t_total": 0.49448739999206737,
+          "t_retrieval": 0.01994520000880584,
+          "t_first_token": 0.17767970000568312,
+          "t_total": 0.5036676000017906,
           "llm_called": true
         },
         {
@@ -41,9 +41,9 @@
           "warned": false,
           "answer": "The recommended operating supply voltage range of the ESP32 is VBAT 2.8 3.3 3.6 V [1][2].",
           "unsupported": [],
-          "t_retrieval": 0.01588140000239946,
-          "t_first_token": 0.04026969999540597,
-          "t_total": 0.357742899999721,
+          "t_retrieval": 0.017075600000680424,
+          "t_first_token": 0.04090699998778291,
+          "t_total": 0.35773809999227524,
           "llm_called": true
         },
         {
@@ -55,9 +55,9 @@
           "warned": false,
           "answer": "The recommended operating supply voltage range of the ESP32 is VBAT 2.8 3.3 3.6 V [1][2].",
           "unsupported": [],
-          "t_retrieval": 0.015122199998586439,
-          "t_first_token": 0.03956499999912921,
-          "t_total": 0.3553461999981664,
+          "t_retrieval": 0.018721300002653152,
+          "t_first_token": 0.0437132999941241,
+          "t_total": 0.4011958000046434,
           "llm_called": true
         }
       ]
@@ -89,9 +89,9 @@
           "warned": false,
           "answer": "The strapping pins of the ESP32 are:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
           "unsupported": [],
-          "t_retrieval": 0.015623100000084378,
-          "t_first_token": 0.28906380000989884,
-          "t_total": 1.0693432000116445,
+          "t_retrieval": 0.019932800001697615,
+          "t_first_token": 0.31374730000970885,
+          "t_total": 1.1203559999994468,
           "llm_called": true
         },
         {
@@ -103,9 +103,9 @@
           "warned": false,
           "answer": "The strapping pins of the ESP32 are:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
           "unsupported": [],
-          "t_retrieval": 0.01593739999225363,
-          "t_first_token": 0.040578799991635606,
-          "t_total": 0.8192024000018137,
+          "t_retrieval": 0.017141799995442852,
+          "t_first_token": 0.04213839999283664,
+          "t_total": 0.8854184999945574,
           "llm_called": true
         },
         {
@@ -117,9 +117,9 @@
           "warned": false,
           "answer": "The strapping pins of the ESP32 are:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
           "unsupported": [],
-          "t_retrieval": 0.01619030001165811,
-          "t_first_token": 0.04026690000318922,
-          "t_total": 0.8203323000052478,
+          "t_retrieval": 0.019116099996608682,
+          "t_first_token": 0.04657059999590274,
+          "t_total": 0.9039050999999745,
           "llm_called": true
         }
       ]
@@ -160,9 +160,9 @@
             "SPID",
             "SPIQ"
           ],
-          "t_retrieval": 0.020832300011534244,
-          "t_first_token": 0.3602984000026481,
-          "t_total": 1.2777092000033008,
+          "t_retrieval": 0.022253599992836826,
+          "t_first_token": 0.3645659000030719,
+          "t_total": 1.3171112999989418,
           "llm_called": true
         },
         {
@@ -181,9 +181,9 @@
             "SPID",
             "SPIQ"
           ],
-          "t_retrieval": 0.020592400003806688,
-          "t_first_token": 0.04392619999998715,
-          "t_total": 0.5927733999997145,
+          "t_retrieval": 0.022666699995170347,
+          "t_first_token": 0.045724600000539795,
+          "t_total": 0.5915843999973731,
           "llm_called": true
         },
         {
@@ -202,9 +202,9 @@
             "SPID",
             "SPIQ"
           ],
-          "t_retrieval": 0.018314999993890524,
-          "t_first_token": 0.04117860000405926,
-          "t_total": 0.5863516999961575,
+          "t_retrieval": 0.022358800008078106,
+          "t_first_token": 0.043994799998472445,
+          "t_total": 0.5915431000030367,
           "llm_called": true
         }
       ]
@@ -231,9 +231,9 @@
           "warned": false,
           "answer": "GPIO18 has the VSPICLK function [1].",
           "unsupported": [],
-          "t_retrieval": 0.014922600006684661,
-          "t_first_token": 0.4800212999980431,
-          "t_total": 0.6097140000056243,
+          "t_retrieval": 0.01846530000329949,
+          "t_first_token": 0.4806603999895742,
+          "t_total": 0.6103274999913992,
           "llm_called": true
         },
         {
@@ -245,9 +245,9 @@
           "warned": false,
           "answer": "GPIO18 has the VSPICLK function [1].",
           "unsupported": [],
-          "t_retrieval": 0.016651500001898967,
-          "t_first_token": 0.04070810000121128,
-          "t_total": 0.16775280000001658,
+          "t_retrieval": 0.018384099996183068,
+          "t_first_token": 0.04274489999806974,
+          "t_total": 0.17056319999392144,
           "llm_called": true
         },
         {
@@ -259,9 +259,9 @@
           "warned": false,
           "answer": "GPIO18 has the VSPICLK function [1].",
           "unsupported": [],
-          "t_retrieval": 0.01513390000036452,
-          "t_first_token": 0.04016470001079142,
-          "t_total": 0.16729120000672992,
+          "t_retrieval": 0.017571599993971176,
+          "t_first_token": 0.04211660000146367,
+          "t_total": 0.16981540000415407,
           "llm_called": true
         }
       ]
@@ -291,9 +291,9 @@
             "GPIO19",
             "VSPIQ"
           ],
-          "t_retrieval": 0.014814800000749528,
-          "t_first_token": 0.530206299998099,
-          "t_total": 0.7553770999948028,
+          "t_retrieval": 0.018308700004126877,
+          "t_first_token": 0.5262547000020277,
+          "t_total": 0.7503972000122303,
           "llm_called": true
         },
         {
@@ -308,9 +308,9 @@
             "GPIO19",
             "VSPIQ"
           ],
-          "t_retrieval": 0.015306500004953705,
-          "t_first_token": 0.03974269999889657,
-          "t_total": 0.26280870000482537,
+          "t_retrieval": 0.017777499990188517,
+          "t_first_token": 0.04379319999134168,
+          "t_total": 0.2653174000006402,
           "llm_called": true
         },
         {
@@ -325,9 +325,9 @@
             "GPIO19",
             "VSPIQ"
           ],
-          "t_retrieval": 0.015127599996048957,
-          "t_first_token": 0.038974999988568015,
-          "t_total": 0.2612102999992203,
+          "t_retrieval": 0.016960199995082803,
+          "t_first_token": 0.040709299995796755,
+          "t_total": 0.26358659999095835,
           "llm_called": true
         }
       ]
@@ -355,9 +355,9 @@
           "warned": false,
           "answer": "The operating temperature range of the ESP32 is -40°C to 125°C [4].",
           "unsupported": [],
-          "t_retrieval": 0.016575399989960715,
-          "t_first_token": 0.37396779999835417,
-          "t_total": 0.565589199992246,
+          "t_retrieval": 0.018215300005977042,
+          "t_first_token": 0.3751631000050111,
+          "t_total": 0.5671345000009751,
           "llm_called": true
         },
         {
@@ -369,9 +369,9 @@
           "warned": false,
           "answer": "The operating temperature range of the ESP32 is -40°C to 125°C [4].",
           "unsupported": [],
-          "t_retrieval": 0.18347230000654235,
-          "t_first_token": 0.20729590000701137,
-          "t_total": 0.39659869999741204,
+          "t_retrieval": 0.20877630000177305,
+          "t_first_token": 0.23081520000414457,
+          "t_total": 0.4203114999982063,
           "llm_called": true
         },
         {
@@ -383,9 +383,9 @@
           "warned": false,
           "answer": "The operating temperature range of the ESP32 is -40°C to 125°C [4].",
           "unsupported": [],
-          "t_retrieval": 0.01577690000704024,
-          "t_first_token": 0.03747060000023339,
-          "t_total": 0.22955639999418054,
+          "t_retrieval": 0.016519600001629442,
+          "t_first_token": 0.03869260000647046,
+          "t_total": 0.22890250000637025,
           "llm_called": true
         }
       ]
@@ -413,9 +413,9 @@
           "warned": false,
           "answer": "According to [6], U0RXD corresponds to GPIO3, and U0TXD corresponds to GPIO1.",
           "unsupported": [],
-          "t_retrieval": 0.01951549999648705,
-          "t_first_token": 0.5384563999978127,
-          "t_total": 0.7915291999961482,
+          "t_retrieval": 0.01878240000223741,
+          "t_first_token": 0.5503366999910213,
+          "t_total": 0.8030080000025919,
           "llm_called": true
         },
         {
@@ -427,9 +427,9 @@
           "warned": false,
           "answer": "According to [6], U0RXD corresponds to GPIO3, and U0TXD corresponds to GPIO1.",
           "unsupported": [],
-          "t_retrieval": 0.01575089999823831,
-          "t_first_token": 0.04190620000008494,
-          "t_total": 0.2940202999889152,
+          "t_retrieval": 0.017042299994500354,
+          "t_first_token": 0.04140609999012668,
+          "t_total": 0.2920338999974774,
           "llm_called": true
         },
         {
@@ -441,9 +441,9 @@
           "warned": false,
           "answer": "According to [6], U0RXD corresponds to GPIO3, and U0TXD corresponds to GPIO1.",
           "unsupported": [],
-          "t_retrieval": 0.016158300000824966,
-          "t_first_token": 0.04197639999620151,
-          "t_total": 0.2928661000041757,
+          "t_retrieval": 0.01757470000302419,
+          "t_first_token": 0.04256280000845436,
+          "t_total": 0.29331680000177585,
           "llm_called": true
         }
       ]
@@ -470,9 +470,9 @@
           "warned": false,
           "answer": "The ESP32 has 48 GPIO pins [1].",
           "unsupported": [],
-          "t_retrieval": 0.015262899993103929,
-          "t_first_token": 0.3754947999987053,
-          "t_total": 0.48758069999166764,
+          "t_retrieval": 0.017252999998163432,
+          "t_first_token": 0.38135049999982584,
+          "t_total": 0.49446429999079555,
           "llm_called": true
         },
         {
@@ -484,9 +484,9 @@
           "warned": false,
           "answer": "The ESP32 has 48 GPIO pins [1].",
           "unsupported": [],
-          "t_retrieval": 0.01617469999473542,
-          "t_first_token": 0.039635299996007234,
-          "t_total": 0.15005070000188425,
+          "t_retrieval": 0.018253400005050935,
+          "t_first_token": 0.041867100007948466,
+          "t_total": 0.15184730000328273,
           "llm_called": true
         },
         {
@@ -498,9 +498,9 @@
           "warned": false,
           "answer": "The ESP32 has 48 GPIO pins [1].",
           "unsupported": [],
-          "t_retrieval": 0.014409099996555597,
-          "t_first_token": 0.0365070999978343,
-          "t_total": 0.14729540000553243,
+          "t_retrieval": 0.017189699996379204,
+          "t_first_token": 0.03985879999527242,
+          "t_total": 0.14999039999383967,
           "llm_called": true
         }
       ]
@@ -521,9 +521,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.019831300000078045,
+          "t_retrieval": 0.022783000007621013,
           "t_first_token": 0.0,
-          "t_total": 0.019833000013022684,
+          "t_total": 0.02278660000592936,
           "llm_called": false
         },
         {
@@ -533,9 +533,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.021005000002332963,
+          "t_retrieval": 0.023807499994290993,
           "t_first_token": 0.0,
-          "t_total": 0.021005900009186007,
+          "t_total": 0.023808300000382587,
           "llm_called": false
         },
         {
@@ -545,9 +545,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.020236300013493747,
+          "t_retrieval": 0.02110680000623688,
           "t_first_token": 0.0,
-          "t_total": 0.020237100005033426,
+          "t_total": 0.02110769999853801,
           "llm_called": false
         }
       ]
@@ -568,9 +568,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.020311900007072836,
+          "t_retrieval": 0.021798799993121065,
           "t_first_token": 0.0,
-          "t_total": 0.020313100001658313,
+          "t_total": 0.02179969999997411,
           "llm_called": false
         },
         {
@@ -580,9 +580,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.022969600002397783,
+          "t_retrieval": 0.021899500003200956,
           "t_first_token": 0.0,
-          "t_total": 0.02297069999622181,
+          "t_total": 0.021900499996263534,
           "llm_called": false
         },
         {
@@ -592,9 +592,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.020876399998087436,
+          "t_retrieval": 0.020678500004578382,
           "t_first_token": 0.0,
-          "t_total": 0.020877599992672913,
+          "t_total": 0.020679300010669976,
           "llm_called": false
         }
       ]
@@ -619,9 +619,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.022033199988072738,
-          "t_first_token": 0.13783179999154527,
-          "t_total": 0.2093651999894064,
+          "t_retrieval": 0.02255150000564754,
+          "t_first_token": 0.1355397000006633,
+          "t_total": 0.20467180000559893,
           "llm_called": true
         },
         {
@@ -631,9 +631,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.023024900001473725,
-          "t_first_token": 0.041083500007516704,
-          "t_total": 0.1082792000088375,
+          "t_retrieval": 0.02195790001132991,
+          "t_first_token": 0.03988910000771284,
+          "t_total": 0.10663410001143347,
           "llm_called": true
         },
         {
@@ -643,9 +643,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.021251199999824166,
-          "t_first_token": 0.039504200001829304,
-          "t_total": 0.10661400000390131,
+          "t_retrieval": 0.022715300001436844,
+          "t_first_token": 0.041076000008615665,
+          "t_total": 0.10745080000197049,
           "llm_called": true
         }
       ]
@@ -674,9 +674,9 @@
           "unsupported": [
             "2mm"
           ],
-          "t_retrieval": 0.01631029999407474,
-          "t_first_token": 0.17692369999713264,
-          "t_total": 0.3691118999995524,
+          "t_retrieval": 0.019784600008279085,
+          "t_first_token": 0.17619009999907576,
+          "t_total": 0.366819700007909,
           "llm_called": true
         },
         {
@@ -690,9 +690,9 @@
           "unsupported": [
             "2mm"
           ],
-          "t_retrieval": 0.016043199997511692,
-          "t_first_token": 0.03711599999223836,
-          "t_total": 0.22864659999322612,
+          "t_retrieval": 0.017500300004030578,
+          "t_first_token": 0.03915430000051856,
+          "t_total": 0.2268573000037577,
           "llm_called": true
         },
         {
@@ -706,9 +706,9 @@
           "unsupported": [
             "2mm"
           ],
-          "t_retrieval": 0.01630730000033509,
-          "t_first_token": 0.037781599996378645,
-          "t_total": 0.2259481999935815,
+          "t_retrieval": 0.018241600002511404,
+          "t_first_token": 0.04389509999600705,
+          "t_total": 0.23040450000553392,
           "llm_called": true
         }
       ]
@@ -740,9 +740,9 @@
             "SLOW",
             "FAST"
           ],
-          "t_retrieval": 0.017700199998216704,
-          "t_first_token": 0.2985839000029955,
-          "t_total": 1.0333660000032978,
+          "t_retrieval": 0.01984979999542702,
+          "t_first_token": 0.29925339999317657,
+          "t_total": 1.0301214999926742,
           "llm_called": true
         },
         {
@@ -757,9 +757,9 @@
             "SLOW",
             "FAST"
           ],
-          "t_retrieval": 0.01605520000157412,
-          "t_first_token": 0.03897200000938028,
-          "t_total": 0.7730053999985103,
+          "t_retrieval": 0.01811579999048263,
+          "t_first_token": 0.04257079999661073,
+          "t_total": 0.7761873999988893,
           "llm_called": true
         },
         {
@@ -774,9 +774,9 @@
             "SLOW",
             "FAST"
           ],
-          "t_retrieval": 0.015729800012195483,
-          "t_first_token": 0.03923910000594333,
-          "t_total": 0.7716991000052076,
+          "t_retrieval": 0.017154700006358325,
+          "t_first_token": 0.04044520000752527,
+          "t_total": 0.770318099996075,
           "llm_called": true
         }
       ]
@@ -803,9 +803,9 @@
           "warned": false,
           "answer": "According to [3] (esp32_datasheet_en.pdf | page 15 | figure esp32_datasheet_en_p015_fig01.png), GPIO12, ADC2_CH5, TOUCH5, RTC_GPIO15, MTDI, HSPIQ, MTDI 18 I/O.",
           "unsupported": [],
-          "t_retrieval": 0.02111420000437647,
-          "t_first_token": 0.4730131000105757,
-          "t_total": 1.1031425000110175,
+          "t_retrieval": 0.021963299994240515,
+          "t_first_token": 0.47273899998981506,
+          "t_total": 1.101813699991908,
           "llm_called": true
         },
         {
@@ -817,9 +817,9 @@
           "warned": false,
           "answer": "According to [3] (esp32_datasheet_en.pdf | page 15 | figure esp32_datasheet_en_p015_fig01.png), GPIO12, ADC2_CH5, TOUCH5, RTC_GPIO15, MTDI, HSPIQ, MTDI 18 I/O.",
           "unsupported": [],
-          "t_retrieval": 0.01768669999728445,
-          "t_first_token": 0.041316699993330985,
-          "t_total": 0.6682893999968655,
+          "t_retrieval": 0.021375500000431202,
+          "t_first_token": 0.04452569999557454,
+          "t_total": 0.670210500000394,
           "llm_called": true
         },
         {
@@ -831,9 +831,9 @@
           "warned": false,
           "answer": "According to [3] (esp32_datasheet_en.pdf | page 15 | figure esp32_datasheet_en_p015_fig01.png), GPIO12, ADC2_CH5, TOUCH5, RTC_GPIO15, MTDI, HSPIQ, MTDI 18 I/O.",
           "unsupported": [],
-          "t_retrieval": 0.021708000000216998,
-          "t_first_token": 0.04485160000331234,
-          "t_total": 0.6721923000004608,
+          "t_retrieval": 0.02120610000565648,
+          "t_first_token": 0.04543280000507366,
+          "t_total": 0.6716009000083432,
           "llm_called": true
         }
       ]
@@ -860,9 +860,9 @@
           "warned": false,
           "answer": "GPIO13 has the HSPICS0 function [4].",
           "unsupported": [],
-          "t_retrieval": 0.01788880000822246,
-          "t_first_token": 0.49656330001016613,
-          "t_total": 0.6255988000048092,
+          "t_retrieval": 0.0190988000103971,
+          "t_first_token": 0.4951902000029804,
+          "t_total": 0.6241700000100536,
           "llm_called": true
         },
         {
@@ -874,9 +874,9 @@
           "warned": false,
           "answer": "GPIO13 has the HSPICS0 function [4].",
           "unsupported": [],
-          "t_retrieval": 0.015587100002449006,
-          "t_first_token": 0.04089300001214724,
-          "t_total": 0.16779910000332166,
+          "t_retrieval": 0.018101099994964898,
+          "t_first_token": 0.043908199993893504,
+          "t_total": 0.17104119999567047,
           "llm_called": true
         },
         {
@@ -888,9 +888,9 @@
           "warned": false,
           "answer": "GPIO13 has the HSPICS0 function [4].",
           "unsupported": [],
-          "t_retrieval": 0.01635849999729544,
-          "t_first_token": 0.04250109998974949,
-          "t_total": 0.16932770000130404,
+          "t_retrieval": 0.01853639999171719,
+          "t_first_token": 0.043489499992574565,
+          "t_total": 0.1701755999965826,
           "llm_called": true
         }
       ]
@@ -921,9 +921,9 @@
             "VSPIHD",
             "EMAC_TX_EN"
           ],
-          "t_retrieval": 0.013934099988546222,
-          "t_first_token": 0.5249941999936709,
-          "t_total": 0.7369841999898199,
+          "t_retrieval": 0.018617299996549264,
+          "t_first_token": 0.5289464999950724,
+          "t_total": 0.7427073999861022,
           "llm_called": true
         },
         {
@@ -939,9 +939,9 @@
             "VSPIHD",
             "EMAC_TX_EN"
           ],
-          "t_retrieval": 0.01568779999797698,
-          "t_first_token": 0.039407599993865006,
-          "t_total": 0.24905220000073314,
+          "t_retrieval": 0.01695859999745153,
+          "t_first_token": 0.041386400000192225,
+          "t_total": 0.25084000000788365,
           "llm_called": true
         },
         {
@@ -957,9 +957,9 @@
             "VSPIHD",
             "EMAC_TX_EN"
           ],
-          "t_retrieval": 0.014984200010076165,
-          "t_first_token": 0.03778270000475459,
-          "t_total": 0.2473770000069635,
+          "t_retrieval": 0.017218100008904003,
+          "t_first_token": 0.04161640000529587,
+          "t_total": 0.25200110000150744,
           "llm_called": true
         }
       ]
@@ -986,9 +986,9 @@
           "warned": false,
           "answer": "GPIO22 has the VSPIWP function [2].",
           "unsupported": [],
-          "t_retrieval": 0.014396400001714937,
-          "t_first_token": 0.45580949999566656,
-          "t_total": 0.5741121999890311,
+          "t_retrieval": 0.017655999996350147,
+          "t_first_token": 0.48090229999797884,
+          "t_total": 0.5990668000013102,
           "llm_called": true
         },
         {
@@ -1000,9 +1000,9 @@
           "warned": false,
           "answer": "GPIO22 has the VSPIWP function [2].",
           "unsupported": [],
-          "t_retrieval": 0.014594399995985441,
-          "t_first_token": 0.038792999999714084,
-          "t_total": 0.15550000000803266,
+          "t_retrieval": 0.017154700006358325,
+          "t_first_token": 0.0423235000052955,
+          "t_total": 0.15839609999966342,
           "llm_called": true
         },
         {
@@ -1014,9 +1014,316 @@
           "warned": false,
           "answer": "GPIO22 has the VSPIWP function [2].",
           "unsupported": [],
-          "t_retrieval": 0.015550400014035404,
-          "t_first_token": 0.04183910001302138,
-          "t_total": 0.15870290000748355,
+          "t_retrieval": 0.017523699993034825,
+          "t_first_token": 0.04246689999126829,
+          "t_total": 0.158896699998877,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q18",
+        "question": "Which GPIO pin has the HSPIWP function?",
+        "expected_all": [
+          "GPIO2"
+        ],
+        "forbidden": [
+          "GPIO22",
+          "GPIO10"
+        ],
+        "expected_pages": [
+          14
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
+          "warned": false,
+          "answer": "According to [6], GPIO2 has the HSPIWP function.",
+          "unsupported": [],
+          "t_retrieval": 0.019146600010572,
+          "t_first_token": 0.6021394999988843,
+          "t_total": 0.751745600005961,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
+          "warned": false,
+          "answer": "According to [6], GPIO2 has the HSPIWP function.",
+          "unsupported": [],
+          "t_retrieval": 0.017621800012420863,
+          "t_first_token": 0.04144470000755973,
+          "t_total": 0.1891687000024831,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
+          "warned": false,
+          "answer": "According to [6], GPIO2 has the HSPIWP function.",
+          "unsupported": [],
+          "t_retrieval": 0.018133299992769025,
+          "t_first_token": 0.04290679999394342,
+          "t_total": 0.1908973999961745,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q19",
+        "question": "Which GPIO pin has the HSPIHD function?",
+        "expected_all": [
+          "GPIO4"
+        ],
+        "forbidden": [
+          "GPIO21",
+          "GPIO9"
+        ],
+        "expected_pages": [
+          14
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
+          "warned": false,
+          "answer": "GPIO4 has the HSPIHD function [5].",
+          "unsupported": [],
+          "t_retrieval": 0.019106399995507672,
+          "t_first_token": 0.5218966999964323,
+          "t_total": 0.640180300004431,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
+          "warned": false,
+          "answer": "GPIO4 has the HSPIHD function [5].",
+          "unsupported": [],
+          "t_retrieval": 0.018330200007767417,
+          "t_first_token": 0.04328329999407288,
+          "t_total": 0.15945340000325814,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
+          "warned": false,
+          "answer": "GPIO4 has the HSPIHD function [5].",
+          "unsupported": [],
+          "t_retrieval": 0.01876300000003539,
+          "t_first_token": 0.04898449999745935,
+          "t_total": 0.1648432999936631,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q20",
+        "question": "Which GPIO pin has the SPIHD function?",
+        "expected_all": [
+          "GPIO9"
+        ],
+        "forbidden": [
+          "GPIO4",
+          "GPIO21"
+        ],
+        "expected_pages": [
+          14
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
+          "warned": false,
+          "answer": "GPIO9 has the SPIHD function [6].",
+          "unsupported": [],
+          "t_retrieval": 0.01772730000084266,
+          "t_first_token": 0.45453509999788366,
+          "t_total": 0.5616608999989694,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
+          "warned": false,
+          "answer": "GPIO9 has the SPIHD function [6].",
+          "unsupported": [],
+          "t_retrieval": 0.017150999992736615,
+          "t_first_token": 0.04262619999644812,
+          "t_total": 0.14870710000104737,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            14
+          ],
+          "warned": false,
+          "answer": "GPIO9 has the SPIHD function [6].",
+          "unsupported": [],
+          "t_retrieval": 0.017912199997226708,
+          "t_first_token": 0.043235299992375076,
+          "t_total": 0.14961469999980181,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q21",
+        "question": "Which GPIO pin has the SPICS0 function?",
+        "expected_all": [
+          "GPIO11"
+        ],
+        "forbidden": [
+          "GPIO15",
+          "GPIO5"
+        ],
+        "expected_pages": [
+          14
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "error_flagged",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": true,
+          "answer": "GPIO8 has the SPICLK function, but GPIO8 is listed as having the function SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function SD_DATA1, SPIHD, HS1_DATA3, U1TXD. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS.",
+          "unsupported": [],
+          "t_retrieval": 0.017813200000091456,
+          "t_first_token": 0.3154047999996692,
+          "t_total": 57.804747900008806,
+          "llm_called": true
+        },
+        {
+          "category": "error_flagged",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": true,
+          "answer": "GPIO8 has the SPICLK function, but GPIO8 is listed as having the function SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function SD_DATA1, SPIHD, HS1_DATA3, U1TXD. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS.",
+          "unsupported": [],
+          "t_retrieval": 0.016397400002460927,
+          "t_first_token": 0.600626800005557,
+          "t_total": 58.10004150000168,
+          "llm_called": true
+        },
+        {
+          "category": "error_flagged",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": true,
+          "answer": "GPIO8 has the SPICLK function, but GPIO8 is listed as having the function SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function SD_DATA1, SPIHD, HS1_DATA3, U1TXD. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS. GPIO8 is also listed as having the function GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS.",
+          "unsupported": [],
+          "t_retrieval": 0.017551800003275275,
+          "t_first_token": 0.46734119999746326,
+          "t_total": 58.221900599994115,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "Q22",
+        "question": "Which GPIO number corresponds to U2RTS?",
+        "expected_all": [
+          "GPIO7"
+        ],
+        "expected_pages": [
+          15
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": false,
+          "cited_pages": [
+            28
+          ],
+          "warned": true,
+          "answer": "According to [1] (page 28 | text), SD_DATA_0 is GPIO7, SD_DATA_0 is also listed as U2RTS.",
+          "unsupported": [
+            "GPIO7",
+            "SD_DATA_0",
+            "U2RTS"
+          ],
+          "t_retrieval": 0.016290800005663186,
+          "t_first_token": 0.43661830000928603,
+          "t_total": 0.7866388000111328,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": false,
+          "cited_pages": [
+            28
+          ],
+          "warned": true,
+          "answer": "According to [1] (page 28 | text), SD_DATA_0 is GPIO7, SD_DATA_0 is also listed as U2RTS.",
+          "unsupported": [
+            "GPIO7",
+            "SD_DATA_0",
+            "U2RTS"
+          ],
+          "t_retrieval": 0.01636819999839645,
+          "t_first_token": 0.04137639999680687,
+          "t_total": 0.3896589999931166,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": false,
+          "cited_pages": [
+            28
+          ],
+          "warned": true,
+          "answer": "According to [1] (page 28 | text), SD_DATA_0 is GPIO7, SD_DATA_0 is also listed as U2RTS.",
+          "unsupported": [
+            "GPIO7",
+            "SD_DATA_0",
+            "U2RTS"
+          ],
+          "t_retrieval": 0.016867099999217317,
+          "t_first_token": 0.04221929999766871,
+          "t_total": 0.39233090000925586,
           "llm_called": true
         }
       ]
