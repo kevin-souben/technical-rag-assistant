@@ -14,32 +14,32 @@ def print_report(answer) -> None:
     """Affiche les sources (construites depuis les métadonnées) et les temps."""
     print("\n")
     if not answer.hits:
-        print("Aucun passage assez proche dans la base : le LLM n'a pas été appelé.")
+        print("No passage close enough in the database: the LLM was not called.")
     elif answer.cited:
-        print("Sources citées :")
+        print("Cited sources:")
         for number, doc in answer.cited:
             print(f"  [{number}] {source_label(doc)}")
             if doc.metadata.get("type") == "image":
-                print(f"      fichier image : {doc.metadata['image_path']}")
+                print(f"      image file: {doc.metadata['image_path']}")
     else:
         if not answer.refused:
-            print("ATTENTION : la réponse ne cite aucune source, ne pas s'y fier.")
-        print("Passages consultés :")
+            print("WARNING: the answer cites no source, do not rely on it.")
+        print("Passages consulted:")
         for number, (doc, dist) in enumerate(answer.hits, start=1):
             print(f"  [{number}] {source_label(doc)} (distance {dist:.2f})")
 
     if answer.invalid_citations:
-        print(f"ATTENTION : numéros de source inexistants ignorés : {answer.invalid_citations}")
+        print(f"WARNING: nonexistent source numbers ignored: {answer.invalid_citations}")
 
     if answer.unsupported:
-        print("ATTENTION : valeurs absentes des sources utilisées (possible invention) : "
+        print("WARNING: values missing from the sources used (possible fabrication): "
               + ", ".join(answer.unsupported))
 
     if answer.truncated:
-        print("ATTENTION : réponse coupée (limite de longueur atteinte), elle peut être incomplète.")
+        print("WARNING: answer cut off (length limit reached), it may be incomplete.")
 
-    print(f"\nTemps : recherche {answer.t_retrieval:.2f} s | "
-          f"1er mot {answer.t_first_token:.1f} s | total {answer.t_total:.1f} s")
+    print(f"\nTime: retrieval {answer.t_retrieval:.2f} s | "
+          f"first token {answer.t_first_token:.1f} s | total {answer.t_total:.1f} s")
 
 
 def run_question(question: str, store) -> None:
@@ -50,20 +50,20 @@ def run_question(question: str, store) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Interrogation de la documentation technique")
-    parser.add_argument("question", nargs="*", help="question (sinon : mode interactif)")
+    parser = argparse.ArgumentParser(description="Query the technical documentation")
+    parser.add_argument("question", nargs="*", help="question (otherwise: interactive mode)")
     args = parser.parse_args()
 
     check_llm()
-    print("Chargement de la base et du modèle d'embeddings...")
+    print("Loading the database and the embedding model...")
     store = get_vector_store()
-    print(f"Base prête : {count_documents(store)} entrées.\n")
+    print(f"Database ready: {count_documents(store)} entries.\n")
 
     if args.question:
         run_question(" ".join(args.question), store)
         return
 
-    print("Posez votre question (vide, 'quit' ou 'exit' pour quitter).")
+    print("Ask your question (empty, 'quit' or 'exit' to quit).")
     while True:
         question = input("\nQuestion> ").strip()
         if question.lower() in {"", "quit", "exit"}:

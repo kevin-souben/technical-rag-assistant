@@ -49,10 +49,10 @@ def check_llm() -> None:
         names = [m.model for m in ollama.list().models]
     except Exception:
         raise SystemExit(
-            "Ollama ne répond pas. Lancez l'application Ollama, puis relancez la commande."
+            "Ollama is not responding. Start the Ollama application, then run the command again."
         )
     if not any(name.startswith(config.LLM_MODEL) for name in names):
-        raise SystemExit(f"Modèle manquant. Lancez : ollama pull {config.LLM_MODEL}")
+        raise SystemExit(f"Missing model. Run: ollama pull {config.LLM_MODEL}")
 
 
 def source_label(doc) -> str:
