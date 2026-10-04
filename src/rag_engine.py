@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 import ollama
 
 from src import config
+from src.hybrid_search import hybrid_retrieve
 
 NOT_FOUND = "Not found in the provided documents."
 
@@ -62,10 +63,11 @@ def source_label(doc) -> str:
 
 
 def retrieve(store, question: str) -> list:
-    """Cherche les TOP_K passages les plus proches, puis écarte ceux qui sont trop éloignés."""
+    """Cherche les passages à donner au LLM : hybride si config.USE_HYBRID, sinon embeddings seuls."""
+    if config.USE_HYBRID:
+        return hybrid_retrieve(store, question)
     results = store.similarity_search_with_score(question, k=config.TOP_K)
     return [(doc, dist) for doc, dist in results if dist <= config.MAX_DISTANCE]
-
 
 def build_context(hits: list) -> str:
     """Numérote les passages : [1], [2]... Le LLM ne cite que ces numéros."""

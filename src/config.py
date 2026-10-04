@@ -38,3 +38,7 @@ TOP_K = 8
 MAX_DISTANCE = 1.25      # au-delà, un passage est jugé trop éloigné de la question
 LLM_TEMPERATURE = 0.0   # 0 = réponses reproductibles, pas de créativité
 LLM_NUM_CTX = 4096      # taille de contexte demandée à Ollama (tokens)
+
+# --- Recherche hybride (embeddings + BM25) ---
+USE_HYBRID = False        # reste False tant que la mesure avant/après n'est pas faite
+RARE_DF_RATIO = 0.10      # un identifiant est "rare" s'il figure dans au plus 10 % des passages

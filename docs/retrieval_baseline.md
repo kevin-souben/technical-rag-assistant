@@ -1,6 +1,6 @@
-Retrieval only (no LLM), 17 questions, 150 indexed entries, embedding `sentence-transformers/all-MiniLM-L6-v2`, top-K 8, distance threshold 1.25, 2026-10-04
+Retrieval only (no LLM), mode `embedding`, 17 questions, 150 indexed entries, embedding `sentence-transformers/all-MiniLM-L6-v2`, top-K 8, distance threshold 1.25, 2026-10-04
 
-Observation depth: 20 nearest entries. Measured at page level, not passage level.
+Observation depth: 20 entries. Measured at page level, not passage level.
 
 | ID | Expected page(s) | Rank of first expected page | Distance | Expected page in LLM context | Pages in LLM context |
 |---|---|---|---|---|---|
@@ -26,6 +26,6 @@ Observation depth: 20 nearest entries. Measured at page level, not passage level
 |---|---|
 | Answerable questions with an expected page in the LLM context | 12/15 |
 | Answerable questions with ALL expected pages in the LLM context | 12/15 |
-| Answerable questions with an expected page in the 20 nearest entries | 15/15 |
+| Answerable questions with an expected page in the 20 first entries | 15/15 |
 | Off-topic questions blocked before the LLM | 2/2 |
 | Identical results over two runs | yes |

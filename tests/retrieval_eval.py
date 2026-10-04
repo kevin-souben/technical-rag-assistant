@@ -1,32 +1,40 @@
 """Mesure de la recherche SEULE (sans LLM) : la page attendue est-elle retrouvée ?
 
 Usage :
-    python -m tests.retrieval_eval
+    python -m tests.retrieval_eval                  # embeddings seuls (baseline)
+    python -m tests.retrieval_eval --mode hybrid    # embeddings + BM25
 
 Pour chaque question, on regarde :
   - le rang de la première entrée dont la page est attendue (parmi les WIDE_K plus proches,
     sans seuil de distance) ;
-  - si la page attendue est dans ce que le LLM reçoit réellement (TOP_K + seuil de distance) ;
+  - si la page attendue est dans ce que le LLM reçoit réellement ;
   - pour les questions hors sujet : si elles sont bloquées avant le LLM.
-La mesure est au niveau de la PAGE, pas du passage : elle peut être légèrement optimiste.
+La mesure est au niveau de la PAGE, pas du passage : elle peut être optimiste.
 """
+import argparse
 import json
 from datetime import date
 from pathlib import Path
 
 from src import config
+from src.hybrid_search import rank_candidates
 from src.rag_engine import retrieve
 from src.vector_store import count_documents, get_vector_store
 
 QUESTIONS_FILE = Path(__file__).parent / "benchmark_questions.json"
-OUTPUT_FILE = config.BASE_DIR / "docs" / "retrieval_baseline.md"
-WIDE_K = 20  # profondeur d'observation, au-delà de TOP_K, pour voir où se classe la bonne page
+WIDE_K = 20  # profondeur d'observation, au-delà de TOP_K
 
 
-def measure(item: dict, store) -> dict:
-    """Lance la recherche pour UNE question et renvoie ce qu'on veut observer."""
+def wide_ranking(store, question: str, mode: str) -> list:
+    """Les WIDE_K premières entrées, sans seuil : [(doc, distance)]."""
+    if mode == "hybrid":
+        return [(doc, dist) for doc, dist, _ in rank_candidates(store, question)[:WIDE_K]]
+    return store.similarity_search_with_score(question, k=WIDE_K)
+
+
+def measure(item: dict, store, mode: str) -> dict:
     question = item["question"]
-    wide = store.similarity_search_with_score(question, k=WIDE_K)
+    wide = wide_ranking(store, question, mode)
     context = retrieve(store, question)  # exactement ce que le LLM recevrait
     expected = set(item["expected_pages"])
 
@@ -53,22 +61,29 @@ def measure(item: dict, store) -> dict:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Évaluation de la recherche seule")
+    parser.add_argument("--mode", choices=["embedding", "hybrid"], default="embedding")
+    args = parser.parse_args()
+    config.USE_HYBRID = args.mode == "hybrid"
+    output_file = config.BASE_DIR / "docs" / (
+        "retrieval_hybrid.md" if args.mode == "hybrid" else "retrieval_baseline.md")
+
     items = json.loads(QUESTIONS_FILE.read_text(encoding="utf-8"))
     store = get_vector_store()
 
-    first_pass = [measure(item, store) for item in items]
-    second_pass = [measure(item, store) for item in items]
+    first_pass = [measure(item, store, args.mode) for item in items]
+    second_pass = [measure(item, store, args.mode) for item in items]
     deterministic = all(a["signature"] == b["signature"] for a, b in zip(first_pass, second_pass))
 
     answerable = [r for r in first_pass if not r["should_refuse"]]
     refusals = [r for r in first_pass if r["should_refuse"]]
 
     lines = [
-        f"Retrieval only (no LLM), {len(items)} questions, {count_documents(store)} indexed entries, "
-        f"embedding `{config.EMBEDDING_MODEL}`, top-K {config.TOP_K}, "
-        f"distance threshold {config.MAX_DISTANCE}, {date.today()}",
+        f"Retrieval only (no LLM), mode `{args.mode}`, {len(items)} questions, "
+        f"{count_documents(store)} indexed entries, embedding `{config.EMBEDDING_MODEL}`, "
+        f"top-K {config.TOP_K}, distance threshold {config.MAX_DISTANCE}, {date.today()}",
         "",
-        f"Observation depth: {WIDE_K} nearest entries. Measured at page level, not passage level.",
+        f"Observation depth: {WIDE_K} entries. Measured at page level, not passage level.",
         "",
         "| ID | Expected page(s) | Rank of first expected page | Distance | Expected page in LLM context | Pages in LLM context |",
         "|---|---|---|---|---|---|",
@@ -94,7 +109,7 @@ def main() -> None:
         f"{sum(r['any_in_context'] for r in answerable)}/{n} |",
         f"| Answerable questions with ALL expected pages in the LLM context | "
         f"{sum(r['all_in_context'] for r in answerable)}/{n} |",
-        f"| Answerable questions with an expected page in the {WIDE_K} nearest entries | "
+        f"| Answerable questions with an expected page in the {WIDE_K} first entries | "
         f"{sum(r['first_rank'] is not None for r in answerable)}/{n} |",
         f"| Off-topic questions blocked before the LLM | "
         f"{sum(r['blocked'] for r in refusals)}/{len(refusals)} |",
@@ -103,8 +118,8 @@ def main() -> None:
 
     report = "\n".join(lines)
     print(report)
-    OUTPUT_FILE.write_text(report + "\n", encoding="utf-8")
-    print(f"\nEnregistré dans {OUTPUT_FILE}")
+    output_file.write_text(report + "\n", encoding="utf-8")
+    print(f"\nEnregistré dans {output_file}")
 
 
 if __name__ == "__main__":
