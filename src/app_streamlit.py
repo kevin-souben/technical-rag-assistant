@@ -228,15 +228,6 @@ except NOTEBOOK_ERRORS as err:
     st.error(f"Could not read the history: {err}")
     history = []
 
-if history:
-    with st.sidebar.popover("Clear history", width="stretch"):
-        st.write("Delete the history of this notebook only? Its sources are kept.")
-        if st.button("Confirm", key=f"clear_{slug}", type="primary"):
-            try:
-                notebooks.clear_chat(slug)
-            except NOTEBOOK_ERRORS as err:
-                st.session_state.flash.append(("error", str(err)))
-            st.rerun()
 st.caption("Each question is answered on its own: the assistant has no memory of earlier "
            "messages, the history below is only displayed.")
 
@@ -265,3 +256,13 @@ if not history:
 for entry in reversed(history[-RECENT_COUNT:]):
     st.sidebar.button(entry["question"], key=f"recent_{entry['id']}", type="tertiary",
                       width="stretch", on_click=ask_again, args=(entry["question"],))
+
+if history:
+    with st.sidebar.popover("Clear history", width="stretch"):
+        st.write("Delete the history of this notebook only? Its sources are kept.")
+        if st.button("Confirm", key=f"clear_{slug}", type="primary"):
+            try:
+                notebooks.clear_chat(slug)
+            except NOTEBOOK_ERRORS as err:
+                st.session_state.flash.append(("error", str(err)))
+            st.rerun()
