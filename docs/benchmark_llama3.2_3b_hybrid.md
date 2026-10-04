@@ -1,4 +1,4 @@
-Model `llama3.2:3b`, retrieval hybrid, 22 questions x 3 runs, top-K 8, distance threshold 1.25, 2026-10-04
+Model `llama3.2:3b`, retrieval hybrid, 22 questions x 3 runs, top-K 8, distance threshold 1.25, max tokens 400, context 4096, 2026-10-04
 
 | Metric | Result |
 |---|---|
@@ -12,6 +12,6 @@ Model `llama3.2:3b`, retrieval hybrid, 22 questions x 3 runs, top-K 8, distance 
 | Unstable questions (verdict changes between runs) | 0/22 |
 | Median total latency (LLM called) | 0.4 s |
 | Median first token (LLM called) | 0.0 s |
-| Max total latency | 58.2 s |
+| Max total latency | 4.9 s |
 | Median retrieval | 18 ms |
-| First LLM load | 1.0 s |
+| First LLM load | 5.5 s |
