@@ -26,6 +26,10 @@ Précisions, écrites avant la mesure : on compte en essais (5 questions x 3 ess
 Une égalité sur les deux critères donne l'hybride par défaut, comme la règle le dit. En plus, l'hybride
 reste désactivé si une réponse dépasse 10 s de latence totale. Les chiffres de Q01 à Q22 ne
 comptent pas dans cette décision.
+Précisions, écrites avant la mesure : on compte en essais (5 questions x 3 essais = 15 essais par mode).
+Une égalité sur les deux critères donne l'hybride par défaut, comme la règle le dit. En plus, l'hybride
+reste désactivé si une réponse dépasse 10 s de latence totale. Les chiffres de Q01 à Q22 ne
+comptent pas dans cette décision.
 
 ## Façon de travailler
 - Proposer un plan avant d'éditer, puis montrer le git diff à la fin.

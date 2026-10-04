@@ -22,3 +22,5 @@ data/chroma_db/*
 .vscode/
 .DS_Store
 Thumbs.db
+
+.claude/settings.local.json
