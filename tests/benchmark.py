@@ -31,7 +31,7 @@ def contains_term(text: str, term: str) -> bool:
 
 def evaluate(item: dict, answer) -> dict:
     """Classe UNE réponse dans une catégorie et note la page citée."""
-    warned = bool(answer.unsupported or answer.invalid_citations) or (
+    warned = bool(answer.unsupported or answer.invalid_citations or answer.truncated) or (
         not answer.refused and not answer.cited
     )
     cited_pages = sorted({doc.metadata["page"] for _, doc in answer.cited})
@@ -59,6 +59,7 @@ def evaluate(item: dict, answer) -> dict:
         "page_ok": page_ok,
         "cited_pages": cited_pages,
         "warned": warned,
+        "truncated": answer.truncated,
         "answer": answer.text,
         "unsupported": answer.unsupported,
         "t_retrieval": answer.t_retrieval,
@@ -135,7 +136,8 @@ def main() -> None:
         ("First LLM load", f"{load_time:.1f} s"),
     ]
     header = (f"Model `{config.LLM_MODEL}`, retrieval {'hybrid' if config.USE_HYBRID else 'embedding'}, {len(items)} questions x {args.runs} runs, "
-              f"top-K {config.TOP_K}, distance threshold {config.MAX_DISTANCE}, {date.today()}")
+                f"top-K {config.TOP_K}, distance threshold {config.MAX_DISTANCE}, "
+                f"max tokens {config.LLM_MAX_TOKENS}, context {config.LLM_NUM_CTX}, {date.today()}")
     markdown = f"{header}\n\n| Metric | Result |\n|---|---|\n" + \
         "\n".join(f"| {name} | {value} |" for name, value in rows)
 
@@ -149,6 +151,9 @@ def main() -> None:
     json_path = RESULTS_DIR / f"benchmark_{safe_model}.json"
     json_path.write_text(json.dumps(
         {"model": config.LLM_MODEL, "runs_per_question": args.runs, "load_time_s": load_time,
+         "params": {"top_k": config.TOP_K, "max_distance": config.MAX_DISTANCE,
+                    "max_tokens": config.LLM_MAX_TOKENS, "num_ctx": config.LLM_NUM_CTX,
+                    "hybrid": config.USE_HYBRID},
          "results": results}, ensure_ascii=False, indent=2), encoding="utf-8")
     (RESULTS_DIR / f"benchmark_{safe_model}.md").write_text(markdown + "\n", encoding="utf-8")
     print(f"\nRésultats enregistrés dans {json_path}")

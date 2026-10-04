@@ -38,6 +38,7 @@ TOP_K = 8
 MAX_DISTANCE = 1.25      # au-delà, un passage est jugé trop éloigné de la question
 LLM_TEMPERATURE = 0.0   # 0 = réponses reproductibles, pas de créativité
 LLM_NUM_CTX = 4096      # taille de contexte demandée à Ollama (tokens)
+LLM_MAX_TOKENS = 400    # plafond de tokens générés par réponse (num_predict d'Ollama)
 
 # --- Recherche hybride (embeddings + BM25) ---
 USE_HYBRID = False        # reste False tant que la mesure avant/après n'est pas faite

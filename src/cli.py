@@ -35,6 +35,9 @@ def print_report(answer) -> None:
         print("ATTENTION : valeurs absentes des sources utilisées (possible invention) : "
               + ", ".join(answer.unsupported))
 
+    if answer.truncated:
+        print("ATTENTION : réponse coupée (limite de longueur atteinte), elle peut être incomplète.")
+
     print(f"\nTemps : recherche {answer.t_retrieval:.2f} s | "
           f"1er mot {answer.t_first_token:.1f} s | total {answer.t_total:.1f} s")
 

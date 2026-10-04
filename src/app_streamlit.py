@@ -61,6 +61,8 @@ if question:
     if answer.unsupported:
         st.error("Valeurs absentes des sources utilisées (possible invention) : "
                  + ", ".join(answer.unsupported))
+    if answer.truncated:
+        st.warning("Réponse coupée (limite de longueur atteinte) : elle peut être incomplète.")
 
     # --- Sources citées, avec les schémas affichés ---
     if answer.cited:

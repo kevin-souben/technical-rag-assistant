@@ -37,6 +37,7 @@ class Answer:
     invalid_citations: list = field(default_factory=list)
     unsupported: list = field(default_factory=list)  # valeurs de la réponse absentes des sources
     refused: bool = False
+    truncated: bool = False  # génération coupée par LLM_MAX_TOKENS
     t_retrieval: float = 0.0
     t_first_token: float = 0.0
     t_total: float = 0.0
@@ -150,14 +151,17 @@ def ask(question: str, store, on_token=None) -> Answer:
         )},
     ]
 
-    text, t_first = "", 0.0
+    text, t_first, done_reason = "", 0.0, None
     stream = ollama.chat(
         model=config.LLM_MODEL,
         messages=messages,
         stream=True,
-        options={"temperature": config.LLM_TEMPERATURE, "num_ctx": config.LLM_NUM_CTX},
+        options={"temperature": config.LLM_TEMPERATURE, "num_ctx": config.LLM_NUM_CTX,
+                 "num_predict": config.LLM_MAX_TOKENS},
     )
     for chunk in stream:
+        if chunk.done_reason:  # renseigné sur le dernier chunk : "stop" ou "length"
+            done_reason = chunk.done_reason
         token = chunk["message"]["content"]
         if token and not t_first:
             t_first = time.perf_counter() - t0
@@ -182,5 +186,6 @@ def ask(question: str, store, on_token=None) -> Answer:
                 unsupported.append(token)
 
     return Answer(text=text, hits=hits, cited=cited, invalid_citations=invalid,
-                  unsupported=unsupported, refused=refused, t_retrieval=t_retrieval,
+                  unsupported=unsupported, refused=refused,
+                  truncated=(done_reason == "length"), t_retrieval=t_retrieval,
                   t_first_token=t_first, t_total=time.perf_counter() - t0)
