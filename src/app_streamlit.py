@@ -229,7 +229,7 @@ except NOTEBOOK_ERRORS as err:
     history = []
 
 if history:
-    with st.popover("Clear history"):
+    with st.sidebar.popover("Clear history", width="stretch"):
         st.write("Delete the history of this notebook only? Its sources are kept.")
         if st.button("Confirm", key=f"clear_{slug}", type="primary"):
             try:
