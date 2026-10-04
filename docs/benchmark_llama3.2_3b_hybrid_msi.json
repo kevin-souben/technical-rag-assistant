@@ -1,0 +1,716 @@
+{
+  "model": "llama3.2:3b",
+  "runs_per_question": 3,
+  "load_time_s": 1.3665591000171844,
+  "params": {
+    "top_k": 8,
+    "max_distance": 1.25,
+    "max_tokens": 400,
+    "num_ctx": 4096,
+    "hybrid": true
+  },
+  "results": [
+    {
+      "item": {
+        "id": "M01",
+        "question": "Quelle pile CMOS faut-il installer sur la carte mère ?",
+        "expected_all": [
+          "CR2032"
+        ],
+        "expected_pages": [
+          40
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            40
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "Remplacez lapile CMOS 1. Poussez le clip de retenue pour libérer la pile. 2. Retirez la pile du socket. 3. Installez la nouvelle pile bouton CR2032 avec le signe + vers le haut. Assurez-vous que la pile est fermement maintenue par le dispositif de retenue. [1]",
+          "unsupported": [],
+          "t_retrieval": 0.017829899996286258,
+          "t_first_token": 0.04591519999667071,
+          "t_total": 0.876939499983564,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            40
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "Remplacez lapile CMOS 1. Poussez le clip de retenue pour libérer la pile. 2. Retirez la pile du socket. 3. Installez la nouvelle pile bouton CR2032 avec le signe + vers le haut. Assurez-vous que la pile est fermement maintenue par le dispositif de retenue. [1]",
+          "unsupported": [],
+          "t_retrieval": 0.016234700015047565,
+          "t_first_token": 0.04071709999698214,
+          "t_total": 0.8679752000025474,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            40
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "Remplacez lapile CMOS 1. Poussez le clip de retenue pour libérer la pile. 2. Retirez la pile du socket. 3. Installez la nouvelle pile bouton CR2032 avec le signe + vers le haut. Assurez-vous que la pile est fermement maintenue par le dispositif de retenue. [1]",
+          "unsupported": [],
+          "t_retrieval": 0.016927699994994327,
+          "t_first_token": 0.0418958000082057,
+          "t_total": 0.8706254000135232,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M02",
+        "question": "Quelle est la puissance maximum du connecteur CPU_FAN1 ?",
+        "expected_all": [
+          "24"
+        ],
+        "expected_pages": [
+          38
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            38
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La puissance maximum du connecteur CPU_FAN1 est de 24 W [1].",
+          "unsupported": [],
+          "t_retrieval": 0.016464200016343966,
+          "t_first_token": 0.3714216999942437,
+          "t_total": 0.5676789999997709,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            38
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La puissance maximum du connecteur CPU_FAN1 est de 24 W [1].",
+          "unsupported": [],
+          "t_retrieval": 0.017900500010000542,
+          "t_first_token": 0.04364960000384599,
+          "t_total": 0.23660979999112897,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            38
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La puissance maximum du connecteur CPU_FAN1 est de 24 W [1].",
+          "unsupported": [],
+          "t_retrieval": 0.016782399994553998,
+          "t_first_token": 0.04192819999298081,
+          "t_total": 0.2344431999954395,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M03",
+        "question": "Quelle est la puissance maximum du connecteur PUMP_FAN1 ?",
+        "expected_all": [
+          "36"
+        ],
+        "expected_pages": [
+          38
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            38
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La puissance maximum du connecteur PUMP_FAN1 est de 36 W [1].",
+          "unsupported": [],
+          "t_retrieval": 0.01729160000104457,
+          "t_first_token": 0.31783119999454357,
+          "t_total": 0.519299499981571,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            38
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La puissance maximum du connecteur PUMP_FAN1 est de 36 W [1].",
+          "unsupported": [],
+          "t_retrieval": 0.016785600018920377,
+          "t_first_token": 0.041442600020673126,
+          "t_total": 0.24302090000128374,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            38
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La puissance maximum du connecteur PUMP_FAN1 est de 36 W [1].",
+          "unsupported": [],
+          "t_retrieval": 0.0168781999964267,
+          "t_first_token": 0.0432882999884896,
+          "t_total": 0.24568980000913143,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M04",
+        "question": "Quel contrôleur LAN est utilisé sur cette carte mère ?",
+        "expected_all": [
+          "8111H"
+        ],
+        "expected_pages": [
+          18
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            19
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "Le contrôleur LAN utilisé sur cette carte mère est le NCT6687-R [1].",
+          "unsupported": [],
+          "t_retrieval": 0.017472300009103492,
+          "t_first_token": 0.3043657000234816,
+          "t_total": 0.5249994000187144,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            19
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "Le contrôleur LAN utilisé sur cette carte mère est le NCT6687-R [1].",
+          "unsupported": [],
+          "t_retrieval": 0.01658360002329573,
+          "t_first_token": 0.04204510001000017,
+          "t_total": 0.2599633000208996,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            19
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "Le contrôleur LAN utilisé sur cette carte mère est le NCT6687-R [1].",
+          "unsupported": [],
+          "t_retrieval": 0.015954300004523247,
+          "t_first_token": 0.04158129999996163,
+          "t_total": 0.25924810001743026,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M05",
+        "question": "Quel slot DIMM faut-il remplir en premier ?",
+        "expected_all": [
+          "DIMMA2"
+        ],
+        "expected_pages": [
+          28
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "refusal_wrong",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "truncated": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.01575220000813715,
+          "t_first_token": 0.2689957999973558,
+          "t_total": 0.3416561000049114,
+          "llm_called": true
+        },
+        {
+          "category": "refusal_wrong",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "truncated": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.015990100015187636,
+          "t_first_token": 0.039759400009643286,
+          "t_total": 0.10915790000581183,
+          "llm_called": true
+        },
+        {
+          "category": "refusal_wrong",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "truncated": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.01690189997316338,
+          "t_first_token": 0.04238129997975193,
+          "t_total": 0.11211929999990389,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M06",
+        "question": "Quelle est la fréquence maximale de la mémoire en mode 1DPC 1R ?",
+        "expected_all": [
+          "4400"
+        ],
+        "expected_pages": [
+          17
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            17
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La fréquence maximale de la mémoire en mode 1DPC 1R est de 4400 MHz [1].",
+          "unsupported": [],
+          "t_retrieval": 0.021510899998247623,
+          "t_first_token": 0.13047169998753816,
+          "t_total": 0.4338696000049822,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            17
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La fréquence maximale de la mémoire en mode 1DPC 1R est de 4400 MHz [1].",
+          "unsupported": [],
+          "t_retrieval": 0.20939920001546852,
+          "t_first_token": 0.22983520000707358,
+          "t_total": 0.5360094000061508,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            17
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La fréquence maximale de la mémoire en mode 1DPC 1R est de 4400 MHz [1].",
+          "unsupported": [],
+          "t_retrieval": 0.021122900012414902,
+          "t_first_token": 0.041765800007851794,
+          "t_total": 0.3112445000151638,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M07",
+        "question": "Quelles sont les dimensions de la carte mère ?",
+        "expected_all": [
+          "244",
+          "305"
+        ],
+        "expected_pages": [
+          20
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "error_flagged",
+          "page_ok": null,
+          "cited_pages": [
+            5
+          ],
+          "warned": true,
+          "truncated": false,
+          "answer": "Les dimensions de la carte mère sont de 17 cm x 17 cm [1].",
+          "unsupported": [
+            "17 cm"
+          ],
+          "t_retrieval": 0.020695799990789965,
+          "t_first_token": 0.24806379998335615,
+          "t_total": 0.4359110999794211,
+          "llm_called": true
+        },
+        {
+          "category": "error_flagged",
+          "page_ok": null,
+          "cited_pages": [
+            5
+          ],
+          "warned": true,
+          "truncated": false,
+          "answer": "Les dimensions de la carte mère sont de 17 cm x 17 cm [1].",
+          "unsupported": [
+            "17 cm"
+          ],
+          "t_retrieval": 0.017935599986230955,
+          "t_first_token": 0.03972619998967275,
+          "t_total": 0.2456767999974545,
+          "llm_called": true
+        },
+        {
+          "category": "error_flagged",
+          "page_ok": null,
+          "cited_pages": [
+            5
+          ],
+          "warned": true,
+          "truncated": false,
+          "answer": "Les dimensions de la carte mère sont de 17 cm x 17 cm [1].",
+          "unsupported": [
+            "17 cm"
+          ],
+          "t_retrieval": 0.021491100022103637,
+          "t_first_token": 0.04569970001466572,
+          "t_total": 0.2584493000176735,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M08",
+        "question": "Quel signal se trouve sur la broche 4 du connecteur ATX_PWR1 ?",
+        "expected_all": [
+          "5V"
+        ],
+        "expected_pages": [
+          34
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            34
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La broche 4 du connecteur ATX_PWR1 est le signal +5V [1].",
+          "unsupported": [],
+          "t_retrieval": 0.019582899985834956,
+          "t_first_token": 0.41647159997955896,
+          "t_total": 0.6488816999772098,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            34
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La broche 4 du connecteur ATX_PWR1 est le signal +5V [1].",
+          "unsupported": [],
+          "t_retrieval": 0.018080400011967868,
+          "t_first_token": 0.04491950001101941,
+          "t_total": 0.28977970001869835,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": true,
+          "cited_pages": [
+            34
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La broche 4 du connecteur ATX_PWR1 est le signal +5V [1].",
+          "unsupported": [],
+          "t_retrieval": 0.018138999992515892,
+          "t_first_token": 0.0468068000045605,
+          "t_total": 0.2946530999906827,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M09",
+        "question": "Quel signal se trouve sur la broche 4 d'un connecteur de ventilateur en mode PWM ?",
+        "expected_all": [
+          "Speed Control Signal"
+        ],
+        "expected_pages": [
+          38
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            38
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "Le signal se trouve sur la broche 4 d'un connecteur de ventilateur en mode PWM, c'est le signal de contrôle de vitesse, [2][3].",
+          "unsupported": [],
+          "t_retrieval": 0.0213870000152383,
+          "t_first_token": 0.41744270001072437,
+          "t_total": 0.8329438999935519,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            38
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "Le signal se trouve sur la broche 4 d'un connecteur de ventilateur en mode PWM, c'est le signal de contrôle de vitesse, [2].",
+          "unsupported": [],
+          "t_retrieval": 0.01926949998596683,
+          "t_first_token": 0.048083400004543364,
+          "t_total": 0.4521509000041988,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            38
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "Le signal se trouve sur la broche 4 d'un connecteur de ventilateur en mode PWM, c'est le signal de contrôle de vitesse, [2].",
+          "unsupported": [],
+          "t_retrieval": 0.019741399999475107,
+          "t_first_token": 0.048127499991096556,
+          "t_total": 0.40401549998205155,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M10",
+        "question": "Quelle est la résolution maximale de la sortie HDMI ?",
+        "expected_all": [
+          "4096",
+          "2160"
+        ],
+        "expected_pages": [
+          18
+        ],
+        "should_refuse": false
+      },
+      "runs": [
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            18
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La résolution maximale de la sortie HDMI est de 4096x2160 60 Hz [1].",
+          "unsupported": [],
+          "t_retrieval": 0.01830060000065714,
+          "t_first_token": 0.361531999980798,
+          "t_total": 0.6102734000014607,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            18
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La résolution maximale de la sortie HDMI est de 4096x2160 60 Hz [1].",
+          "unsupported": [],
+          "t_retrieval": 0.018053100007819012,
+          "t_first_token": 0.04599800001597032,
+          "t_total": 0.3158679000043776,
+          "llm_called": true
+        },
+        {
+          "category": "error_silent",
+          "page_ok": null,
+          "cited_pages": [
+            18
+          ],
+          "warned": false,
+          "truncated": false,
+          "answer": "La résolution maximale de la sortie HDMI est de 4096x2160 60 Hz [1].",
+          "unsupported": [],
+          "t_retrieval": 0.018583500001113862,
+          "t_first_token": 0.0466986000246834,
+          "t_total": 0.3166934000037145,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M11",
+        "question": "Quel est le prix de cette carte mère ?",
+        "expected_all": [],
+        "expected_pages": [],
+        "should_refuse": true
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "truncated": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.018406999995931983,
+          "t_first_token": 0.33518809999804944,
+          "t_total": 0.41363920000731014,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "truncated": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.01795700000366196,
+          "t_first_token": 0.04404979999526404,
+          "t_total": 0.11384249999537133,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "truncated": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.01809060000232421,
+          "t_first_token": 0.0449211000232026,
+          "t_total": 0.12344410002697259,
+          "llm_called": true
+        }
+      ]
+    },
+    {
+      "item": {
+        "id": "M12",
+        "question": "Quelle est la capacité de la batterie d'une Tesla Model 3 ?",
+        "expected_all": [],
+        "expected_pages": [],
+        "should_refuse": true
+      },
+      "runs": [
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "truncated": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.018792300019413233,
+          "t_first_token": 0.09413979999953881,
+          "t_total": 0.16375360000529326,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "truncated": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.01946660000248812,
+          "t_first_token": 0.037730000010924414,
+          "t_total": 0.10406129999319091,
+          "llm_called": true
+        },
+        {
+          "category": "ok",
+          "page_ok": null,
+          "cited_pages": [],
+          "warned": false,
+          "truncated": false,
+          "answer": "Not found in the provided documents.",
+          "unsupported": [],
+          "t_retrieval": 0.021058500016806647,
+          "t_first_token": 0.03829970001243055,
+          "t_total": 0.10459820000687614,
+          "llm_called": true
+        }
+      ]
+    }
+  ]
+}
