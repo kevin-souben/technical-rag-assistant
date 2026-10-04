@@ -1,0 +1,86 @@
+[
+  {
+    "id": "M01",
+    "question": "Quelle pile CMOS faut-il installer sur la carte mère ?",
+    "expected_all": ["CR2032"],
+    "expected_pages": [40],
+    "should_refuse": false
+  },
+  {
+    "id": "M02",
+    "question": "Quelle est la puissance maximum du connecteur CPU_FAN1 ?",
+    "expected_all": ["24"],
+    "expected_pages": [38],
+    "should_refuse": false
+  },
+  {
+    "id": "M03",
+    "question": "Quelle est la puissance maximum du connecteur PUMP_FAN1 ?",
+    "expected_all": ["36"],
+    "expected_pages": [38],
+    "should_refuse": false
+  },
+  {
+    "id": "M04",
+    "question": "Quel contrôleur LAN est utilisé sur cette carte mère ?",
+    "expected_all": ["8111H"],
+    "expected_pages": [18],
+    "should_refuse": false
+  },
+  {
+    "id": "M05",
+    "question": "Quel slot DIMM faut-il remplir en premier ?",
+    "expected_all": ["DIMMA2"],
+    "expected_pages": [28],
+    "should_refuse": false
+  },
+  {
+    "id": "M06",
+    "question": "Quelle est la fréquence maximale de la mémoire en mode 1DPC 1R ?",
+    "expected_all": ["4400"],
+    "expected_pages": [17],
+    "should_refuse": false
+  },
+  {
+    "id": "M07",
+    "question": "Quelles sont les dimensions de la carte mère ?",
+    "expected_all": ["244", "305"],
+    "expected_pages": [20],
+    "should_refuse": false
+  },
+  {
+    "id": "M08",
+    "question": "Quel signal se trouve sur la broche 4 du connecteur ATX_PWR1 ?",
+    "expected_all": ["5V"],
+    "expected_pages": [34],
+    "should_refuse": false
+  },
+  {
+    "id": "M09",
+    "question": "Quel signal se trouve sur la broche 4 d'un connecteur de ventilateur en mode PWM ?",
+    "expected_all": ["Speed Control Signal"],
+    "expected_pages": [38],
+    "should_refuse": false
+  },
+  {
+    "id": "M10",
+    "question": "Quelle est la résolution maximale de la sortie HDMI ?",
+    "expected_all": ["4096", "2160"],
+    "expected_pages": [18],
+    "should_refuse": false
+  },
+  {
+    "id": "M11",
+    "question": "Quel est le prix de cette carte mère ?",
+    "expected_all": [],
+    "expected_pages": [],
+    "should_refuse": true
+  },
+  {
+    "id": "M12",
+    "question": "Quelle est la capacité de la batterie d'une Tesla Model 3 ?",
+    "expected_all": [],
+    "expected_pages": [],
+    "should_refuse": true
+  }
+]
