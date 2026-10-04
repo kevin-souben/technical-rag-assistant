@@ -251,8 +251,9 @@ On the ESP32 datasheet (27 questions) the same hybrid configuration gave 81 % co
 The questions and the document differ, so only the order of magnitude is comparable.
 
 Reading of the raw answers, done by hand after seeing the results. Because two benchmark verdicts below
-are scoring artefacts, this reading differs from the benchmark. It is not an official number, and
-M06, M11 and M12 were counted by the benchmark without reading their answers individually.
+are scoring artefacts, this reading differs from the benchmark. It is not an official number. It covers
+the first run of each question in each mode; the three runs gave the same verdict for every question.
+M06 answered "4400 MHz" and M11 and M12 gave the fixed refusal sentence, in both modes.
 
 - **Scoring artefacts, not system errors.** M09: the answer "signal de contrôle de vitesse" is correct,
   but the expected string was the English term "Speed Control Signal". M10: "4096x2160 60 Hz" is
