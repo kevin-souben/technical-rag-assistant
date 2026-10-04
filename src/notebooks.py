@@ -39,6 +39,7 @@ LEGACY_CHATS = "_legacy_chats"
 RESERVED = {"esp32", "msi", LEGACY_CHATS}
 MAX_PDF_BYTES = 200 * 1024 * 1024        # 200 Mo
 FORBIDDEN_NAME_CHARS = re.compile(r'[<>:"|?*\x00-\x1f]')  # caractères interdits ou dangereux sous Windows
+WINDOWS_RESERVED = {"CON", "PRN", "AUX", "NUL"} | {f"COM{i}" for i in range(1, 10)} | {f"LPT{i}" for i in range(1, 10)}
 CHAT_KEYS = {"id", "timestamp", "question", "answer", "refused", "truncated",
              "warnings", "cited", "timings"}
 
@@ -140,8 +141,11 @@ def _write_json(path: Path, obj) -> None:
 def _clean_pdf_name(filename) -> str:
     """Garde le seul nom du fichier (aucun dossier) et exige l'extension .pdf."""
     name = Path(str(filename).replace("\\", "/")).name
+    stem = Path(name).stem
     if (not name or name in {".", ".."} or FORBIDDEN_NAME_CHARS.search(name)
-            or Path(name).suffix.lower() != ".pdf"):  # ".pdf" seul : suffixe vide, refusé
+            or Path(name).suffix.lower() != ".pdf"  # ".pdf" seul : suffixe vide, refusé
+            or not stem.strip(". ")                 # "..pdf" : un nom fait uniquement de points
+            or stem.split(".")[0].upper() in WINDOWS_RESERVED):  # CON.pdf, NUL.pdf...
         raise ValueError(f"Nom de PDF invalide : {filename!r}")
     return name
 
