@@ -1,7 +1,7 @@
 {
   "model": "llama3.2:3b",
   "runs_per_question": 3,
-  "load_time_s": 3.8729537000035634,
+  "load_time_s": 1.0934141000034288,
   "results": [
     {
       "item": {
@@ -28,9 +28,9 @@
           "warned": false,
           "answer": "The recommended operating supply voltage range of the ESP32 is 1.8 V to 3.6 V [1][3][4].",
           "unsupported": [],
-          "t_retrieval": 0.01110760000301525,
-          "t_first_token": 0.28021569999691565,
-          "t_total": 0.5744384999998147,
+          "t_retrieval": 0.011515100006363355,
+          "t_first_token": 0.2835506000119494,
+          "t_total": 0.5790428000036627,
           "llm_called": true
         },
         {
@@ -43,9 +43,9 @@
           "warned": false,
           "answer": "The recommended operating supply voltage range of the ESP32 is 1.8 V to 3.6 V [1][3][4].",
           "unsupported": [],
-          "t_retrieval": 0.00981399999000132,
-          "t_first_token": 0.033644999988609925,
-          "t_total": 0.3313869999983581,
+          "t_retrieval": 0.009720000001834705,
+          "t_first_token": 0.035334800006239675,
+          "t_total": 0.33040469999832567,
           "llm_called": true
         },
         {
@@ -58,9 +58,9 @@
           "warned": false,
           "answer": "The recommended operating supply voltage range of the ESP32 is 1.8 V to 3.6 V [1][3][4].",
           "unsupported": [],
-          "t_retrieval": 0.01028020000376273,
-          "t_first_token": 0.033833099994808435,
-          "t_total": 0.328756600007182,
+          "t_retrieval": 0.010488700005225837,
+          "t_first_token": 0.034942600002978,
+          "t_total": 0.33097490000363905,
           "llm_called": true
         }
       ]
@@ -92,9 +92,9 @@
           "warned": false,
           "answer": "The strapping pins of the ESP32 are:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
           "unsupported": [],
-          "t_retrieval": 0.010264799988362938,
-          "t_first_token": 0.36110579999512993,
-          "t_total": 1.1395374999992782,
+          "t_retrieval": 0.010213500005193055,
+          "t_first_token": 0.12962040001002606,
+          "t_total": 0.9093314000056125,
           "llm_called": true
         },
         {
@@ -106,9 +106,9 @@
           "warned": false,
           "answer": "The strapping pins of the ESP32 are:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
           "unsupported": [],
-          "t_retrieval": 0.009411000006366521,
-          "t_first_token": 0.032540400003199466,
-          "t_total": 0.812849299996742,
+          "t_retrieval": 0.009516100006294437,
+          "t_first_token": 0.032922700003837235,
+          "t_total": 0.8130358000053093,
           "llm_called": true
         },
         {
@@ -120,9 +120,9 @@
           "warned": false,
           "answer": "The strapping pins of the ESP32 are:\n\n• MTDI/GPIO12: internal pull-down [1]\n• GPIO0: internal pull-up [1]\n• GPIO2: internal pull-down [1]\n• GPIO4: internal pull-down [1]\n• MTDO/GPIO15: internal pull-up [1]\n• GPIO5: internal pull-up [1]",
           "unsupported": [],
-          "t_retrieval": 0.011602899990975857,
-          "t_first_token": 0.0341708999912953,
-          "t_total": 0.8143503000028431,
+          "t_retrieval": 0.010041199988336302,
+          "t_first_token": 0.0330136999982642,
+          "t_total": 0.8103238999901805,
           "llm_called": true
         }
       ]
@@ -154,33 +154,45 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.010812999986228533,
-          "t_first_token": 0.15661929998896085,
-          "t_total": 0.226041299989447,
+          "t_retrieval": 0.010529299994232133,
+          "t_first_token": 0.15669999999227002,
+          "t_total": 0.22698540000419598,
           "llm_called": true
         },
         {
-          "category": "refusal_wrong",
+          "category": "error_flagged",
           "page_ok": null,
-          "cited_pages": [],
-          "warned": false,
-          "answer": "Not found in the provided documents.",
-          "unsupported": [],
-          "t_retrieval": 0.00953180000942666,
-          "t_first_token": 0.027568400008021854,
-          "t_total": 0.09458220000669826,
+          "cited_pages": [
+            16
+          ],
+          "warned": true,
+          "answer": "According to [1], the SPICLK, SPID, and SPIQ functions are associated with the following pins:\n\n- SPICLK: GPIO0 [1]\n- SPID: GPIO5 [1]\n- SPIQ: MTDO [1]",
+          "unsupported": [
+            "SPICLK",
+            "SPID",
+            "SPIQ"
+          ],
+          "t_retrieval": 0.010544899996602908,
+          "t_first_token": 0.028504700007033534,
+          "t_total": 0.5226009000034537,
           "llm_called": true
         },
         {
-          "category": "refusal_wrong",
+          "category": "error_flagged",
           "page_ok": null,
-          "cited_pages": [],
-          "warned": false,
-          "answer": "Not found in the provided documents.",
-          "unsupported": [],
-          "t_retrieval": 0.009314400012954138,
-          "t_first_token": 0.02733290000469424,
-          "t_total": 0.09399920000578277,
+          "cited_pages": [
+            16
+          ],
+          "warned": true,
+          "answer": "According to [1], the SPICLK, SPID, and SPIQ functions are associated with the following pins:\n\n- SPICLK: GPIO0 [1]\n- SPID: GPIO5 [1]\n- SPIQ: MTDO [1]",
+          "unsupported": [
+            "SPICLK",
+            "SPID",
+            "SPIQ"
+          ],
+          "t_retrieval": 0.010248500009765849,
+          "t_first_token": 0.028186499999719672,
+          "t_total": 0.5225924999976996,
           "llm_called": true
         }
       ]
@@ -207,9 +219,9 @@
           "warned": false,
           "answer": "GPIO18 has the VSPICLK function [1].",
           "unsupported": [],
-          "t_retrieval": 0.01112450000073295,
-          "t_first_token": 0.42749060000642203,
-          "t_total": 0.5539450000069337,
+          "t_retrieval": 0.010076799997477792,
+          "t_first_token": 0.4259289000037825,
+          "t_total": 0.5520973999955459,
           "llm_called": true
         },
         {
@@ -221,9 +233,9 @@
           "warned": false,
           "answer": "GPIO18 has the VSPICLK function [1].",
           "unsupported": [],
-          "t_retrieval": 0.00979870000446681,
-          "t_first_token": 0.03436869999859482,
-          "t_total": 0.158753900002921,
+          "t_retrieval": 0.009613600006559864,
+          "t_first_token": 0.032386399994720705,
+          "t_total": 0.15658510000503156,
           "llm_called": true
         },
         {
@@ -235,9 +247,9 @@
           "warned": false,
           "answer": "GPIO18 has the VSPICLK function [1].",
           "unsupported": [],
-          "t_retrieval": 0.009273799994844012,
-          "t_first_token": 0.03274749999400228,
-          "t_total": 0.15748289998737164,
+          "t_retrieval": 0.010056800005258992,
+          "t_first_token": 0.03533189999870956,
+          "t_total": 0.16119050000270363,
           "llm_called": true
         }
       ]
@@ -264,9 +276,9 @@
           "warned": false,
           "answer": "GPIO19 has the VSPIQ function [5].",
           "unsupported": [],
-          "t_retrieval": 0.010303200004273094,
-          "t_first_token": 0.47369730001082644,
-          "t_total": 0.5895467000082135,
+          "t_retrieval": 0.01174009998794645,
+          "t_first_token": 0.47303439999814145,
+          "t_total": 0.5893058999936329,
           "llm_called": true
         },
         {
@@ -278,9 +290,9 @@
           "warned": false,
           "answer": "GPIO19 has the VSPIQ function [5].",
           "unsupported": [],
-          "t_retrieval": 0.009768000003532507,
-          "t_first_token": 0.033819900010712445,
-          "t_total": 0.14785400000982918,
+          "t_retrieval": 0.009882099999231286,
+          "t_first_token": 0.03339640000194777,
+          "t_total": 0.14900069999566767,
           "llm_called": true
         },
         {
@@ -292,9 +304,9 @@
           "warned": false,
           "answer": "GPIO19 has the VSPIQ function [5].",
           "unsupported": [],
-          "t_retrieval": 0.010198600008152425,
-          "t_first_token": 0.0342506000015419,
-          "t_total": 0.14858780000940897,
+          "t_retrieval": 0.008881799993105233,
+          "t_first_token": 0.03304159999242984,
+          "t_total": 0.14716649999900255,
           "llm_called": true
         }
       ]
@@ -322,9 +334,9 @@
           "warned": false,
           "answer": "The operating temperature range of the ESP32 is -40°C to 125°C, as stated in [8].",
           "unsupported": [],
-          "t_retrieval": 0.010092099997564219,
-          "t_first_token": 0.32914039999013767,
-          "t_total": 0.5633547999896109,
+          "t_retrieval": 0.01005339999392163,
+          "t_first_token": 0.32940220000455156,
+          "t_total": 0.5615511999931186,
           "llm_called": true
         },
         {
@@ -336,9 +348,9 @@
           "warned": false,
           "answer": "The operating temperature range of the ESP32 is -40°C to 125°C, as stated in [8].",
           "unsupported": [],
-          "t_retrieval": 0.009534000011626631,
-          "t_first_token": 0.03141880000475794,
-          "t_total": 0.26103120000334457,
+          "t_retrieval": 0.009102000010898337,
+          "t_first_token": 0.031887300006928854,
+          "t_total": 0.2618362000066554,
           "llm_called": true
         },
         {
@@ -350,9 +362,9 @@
           "warned": false,
           "answer": "The operating temperature range of the ESP32 is -40°C to 125°C, as stated in [8].",
           "unsupported": [],
-          "t_retrieval": 0.01051559999177698,
-          "t_first_token": 0.032421900003100745,
-          "t_total": 0.2629476000001887,
+          "t_retrieval": 0.009602799997082911,
+          "t_first_token": 0.03144120000069961,
+          "t_total": 0.26496979998773895,
           "llm_called": true
         }
       ]
@@ -383,9 +395,9 @@
             "GPIO3",
             "GPIO1"
           ],
-          "t_retrieval": 0.010653800010913983,
-          "t_first_token": 0.46745160000864416,
-          "t_total": 0.7067857000074582,
+          "t_retrieval": 0.010407399997347966,
+          "t_first_token": 0.4703423000028124,
+          "t_total": 0.7100790999975288,
           "llm_called": true
         },
         {
@@ -400,9 +412,9 @@
             "GPIO3",
             "GPIO1"
           ],
-          "t_retrieval": 0.009554299991577864,
-          "t_first_token": 0.03264079999644309,
-          "t_total": 0.2711593999993056,
+          "t_retrieval": 0.009065700010978617,
+          "t_first_token": 0.032791600009659305,
+          "t_total": 0.2713328000099864,
           "llm_called": true
         },
         {
@@ -417,9 +429,9 @@
             "GPIO3",
             "GPIO1"
           ],
-          "t_retrieval": 0.009944100005668588,
-          "t_first_token": 0.0333907000022009,
-          "t_total": 0.27089680000790395,
+          "t_retrieval": 0.010685600005672313,
+          "t_first_token": 0.034456900000805035,
+          "t_total": 0.2732084000017494,
           "llm_called": true
         }
       ]
@@ -446,9 +458,9 @@
           "warned": false,
           "answer": "The ESP32 has 48 GPIO pins [1].",
           "unsupported": [],
-          "t_retrieval": 0.009281900012865663,
-          "t_first_token": 0.37038310000207275,
-          "t_total": 0.48371380000025965,
+          "t_retrieval": 0.009466900010011159,
+          "t_first_token": 0.35744760000670794,
+          "t_total": 0.4695030000002589,
           "llm_called": true
         },
         {
@@ -460,9 +472,9 @@
           "warned": false,
           "answer": "The ESP32 has 48 GPIO pins [1].",
           "unsupported": [],
-          "t_retrieval": 0.01061499999195803,
-          "t_first_token": 0.03448089999437798,
-          "t_total": 0.14482659999339376,
+          "t_retrieval": 0.009561800005030818,
+          "t_first_token": 0.03210110000509303,
+          "t_total": 0.14256930000556167,
           "llm_called": true
         },
         {
@@ -474,9 +486,9 @@
           "warned": false,
           "answer": "The ESP32 has 48 GPIO pins [1].",
           "unsupported": [],
-          "t_retrieval": 0.009640400006901473,
-          "t_first_token": 0.031975900012184866,
-          "t_total": 0.14190729999972973,
+          "t_retrieval": 0.010303400005795993,
+          "t_first_token": 0.033307200006674975,
+          "t_total": 0.14386739999463316,
           "llm_called": true
         }
       ]
@@ -497,9 +509,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.01029720000224188,
+          "t_retrieval": 0.010412500007078052,
           "t_first_token": 0.0,
-          "t_total": 0.010299000001396053,
+          "t_total": 0.010414400006993674,
           "llm_called": false
         },
         {
@@ -509,9 +521,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.009779899992281571,
+          "t_retrieval": 0.011747600001399405,
           "t_first_token": 0.0,
-          "t_total": 0.009780599997611716,
+          "t_total": 0.011748799995984882,
           "llm_called": false
         },
         {
@@ -521,9 +533,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.011641599994618446,
+          "t_retrieval": 0.010211600005277433,
           "t_first_token": 0.0,
-          "t_total": 0.011642299999948591,
+          "t_total": 0.010212300010607578,
           "llm_called": false
         }
       ]
@@ -544,9 +556,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.009083700002520345,
+          "t_retrieval": 0.00984289999178145,
           "t_first_token": 0.0,
-          "t_total": 0.009084399993298575,
+          "t_total": 0.009843599997111596,
           "llm_called": false
         },
         {
@@ -556,9 +568,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.009804300003452227,
+          "t_retrieval": 0.009961999996448867,
           "t_first_token": 0.0,
-          "t_total": 0.009805499998037703,
+          "t_total": 0.009962900003301911,
           "llm_called": false
         },
         {
@@ -568,9 +580,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.012145600005169399,
+          "t_retrieval": 0.010503800003789365,
           "t_first_token": 0.0,
-          "t_total": 0.01214609999442473,
+          "t_total": 0.010504100006073713,
           "llm_called": false
         }
       ]
@@ -595,9 +607,9 @@
           "warned": false,
           "answer": "Not found in the provided documents.",
           "unsupported": [],
-          "t_retrieval": 0.012490399996750057,
-          "t_first_token": 0.1401490999996895,
-          "t_total": 0.20978600000671577,
+          "t_retrieval": 0.010112899995874614,
+          "t_first_token": 0.11056980000284966,
+          "t_total": 0.1803859000065131,
           "llm_called": true
         },
         {
@@ -611,9 +623,9 @@
           "unsupported": [
             "1.2 mm"
           ],
-          "t_retrieval": 0.009814400007599033,
-          "t_first_token": 0.027621800007182173,
-          "t_total": 0.2456512000062503,
+          "t_retrieval": 0.010308400000212714,
+          "t_first_token": 0.028199100008350797,
+          "t_total": 0.2452194000070449,
           "llm_called": true
         },
         {
@@ -627,9 +639,9 @@
           "unsupported": [
             "1.2 mm"
           ],
-          "t_retrieval": 0.010710699993069284,
-          "t_first_token": 0.028648199993767776,
-          "t_total": 0.24740509998810012,
+          "t_retrieval": 0.011370899999747053,
+          "t_first_token": 0.02853700000559911,
+          "t_total": 0.2477462000097148,
           "llm_called": true
         }
       ]
@@ -658,9 +670,9 @@
           "unsupported": [
             "2mm"
           ],
-          "t_retrieval": 0.011642199999187142,
-          "t_first_token": 0.22007110000413377,
-          "t_total": 0.40966540000226814,
+          "t_retrieval": 0.011288600013358518,
+          "t_first_token": 0.22149880000506528,
+          "t_total": 0.41433430000324734,
           "llm_called": true
         },
         {
@@ -674,9 +686,9 @@
           "unsupported": [
             "2mm"
           ],
-          "t_retrieval": 0.009947400001692586,
-          "t_first_token": 0.03168069999082945,
-          "t_total": 0.22117799999250565,
+          "t_retrieval": 0.011864000000059605,
+          "t_first_token": 0.032959799995296635,
+          "t_total": 0.22059640000225045,
           "llm_called": true
         },
         {
@@ -690,9 +702,9 @@
           "unsupported": [
             "2mm"
           ],
-          "t_retrieval": 0.009657999995397404,
-          "t_first_token": 0.031495999995968305,
-          "t_total": 0.2204719000001205,
+          "t_retrieval": 0.010115099998074584,
+          "t_first_token": 0.03185539999685716,
+          "t_total": 0.22024579999560956,
           "llm_called": true
         }
       ]
@@ -726,9 +738,9 @@
             "RWDT",
             "SRAM"
           ],
-          "t_retrieval": 0.010815299989189953,
-          "t_first_token": 0.5868305999902077,
-          "t_total": 1.600679900002433,
+          "t_retrieval": 0.00995130000228528,
+          "t_first_token": 0.5779917000036221,
+          "t_total": 1.5061375999939628,
           "llm_called": true
         },
         {
@@ -745,9 +757,9 @@
             "RWDT",
             "SRAM"
           ],
-          "t_retrieval": 0.00985999999102205,
-          "t_first_token": 0.03521629999158904,
-          "t_total": 0.9599281999981031,
+          "t_retrieval": 0.00980219998746179,
+          "t_first_token": 0.03513839999504853,
+          "t_total": 0.9592056999972556,
           "llm_called": true
         },
         {
@@ -764,9 +776,9 @@
             "RWDT",
             "SRAM"
           ],
-          "t_retrieval": 0.010641900007613003,
-          "t_first_token": 0.035477900004480034,
-          "t_total": 0.967396700012614,
+          "t_retrieval": 0.010308700002497062,
+          "t_first_token": 0.0360763000062434,
+          "t_total": 0.9616756000032183,
           "llm_called": true
         }
       ]

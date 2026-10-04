@@ -117,9 +117,9 @@ def main() -> None:
     rows = [
         ("Correct answers or correct refusals", pct(counts["ok"], total)),
         ("Fully correct (answer and cited page, or correct refusal)",
-         ("Correct answers with a warning shown",
-         pct(sum(1 for r in all_runs if r["category"] == "ok" and r["warned"]), total)),
          pct(sum(1 for r in all_runs if r["category"] == "ok" and r["page_ok"] is not False), total)),
+        ("Correct answers with a warning shown",
+         pct(sum(1 for r in all_runs if r["category"] == "ok" and r["warned"]), total)),
         ("Silent errors (wrong, no warning)", pct(counts["error_silent"], total)),
         ("Flagged errors (wrong, warning shown)", pct(counts["error_flagged"], total)),
         ("Useless refusals (answer existed)", pct(counts["refusal_wrong"], total)),

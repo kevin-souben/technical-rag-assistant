@@ -1,9 +1,9 @@
 # Technical RAG Assistant
 
-An **offline, multimodal RAG assistant** for hardware and embedded engineers.
+An **offline-oriented, multimodal RAG assistant** for hardware and embedded engineers.
 Ask questions about datasheets (text **and** figures such as pinouts and tables) and get answers
-with the exact **file, page and figure name** as sources. Everything runs locally:
-no cloud API, no API key, no document leaves the machine.
+with the exact **file, page and figure name** as sources. Models run locally through Ollama and
+sentence-transformers: no cloud API, no API key.
 
 > Status: early version. Command-line and Streamlit interfaces work; a first benchmark is included.
 
@@ -13,9 +13,13 @@ no cloud API, no API key, no document leaves the machine.
 ## Why
 
 Datasheets are proprietary and long. A cloud chatbot means uploading confidential documents,
-and an ungrounded LLM invents pin numbers. This project keeps data local and makes every answer traceable.
+and an ungrounded LLM invents pin numbers. This project keeps documents on the machine and makes every answer traceable.
 
-Telemetry is disabled in ChromaDB and Streamlit. Internet is used only to download the models once.
+Telemetry is disabled in ChromaDB and Streamlit. Internet is needed once to download the models.
+After that, a CLI question and the full 13-question benchmark were run with the network disabled
+and completed (Windows, Ollama running locally). The embedding library is forced into offline mode
+by default; to download a model, set `RAG_ALLOW_DOWNLOAD=1`. Ingestion was not tested offline and
+network traffic was not otherwise audited.
 
 ## How it works
 
@@ -43,11 +47,11 @@ Question -> embedding -> top-K passages -> local LLM -> answer with [n] citation
 2. Strict prompt with a fixed refusal sentence.
 3. Citations resolved from metadata, not written by the LLM.
 4. Grounding check: pin names, values with units and signal names in the answer must appear in
-   the cited sources, otherwise a warning is displayed.
+   the cited passage, otherwise a warning is displayed.
 
 ## Quick start (Windows, PowerShell)
 
-Requires Python 3.11 or 3.12 (tested on 3.11.3) and [Ollama](https://ollama.com/download).
+Requires Python 3.11 or 3.12 (tested on 3.11.3) and [Ollama](https://ollama.com/download) (the app must be running).
 
 ```powershell
 python -m venv venv
@@ -57,8 +61,14 @@ pip install -r requirements.txt
 ollama pull moondream
 ollama pull llama3.2:3b
 
+# first run only: allow the embedding model download
+$env:RAG_ALLOW_DOWNLOAD="1"
+
 # put a PDF in data\raw_pdfs\, then:
 python -m src.ingest
+
+# back to offline mode
+Remove-Item Env:RAG_ALLOW_DOWNLOAD
 
 # ask questions in the terminal...
 python -m src.cli
@@ -67,49 +77,56 @@ python -m src.cli
 streamlit run src/app_streamlit.py
 ```
 
-Internet is needed only once, to download the models.
-
 ## Benchmark
 
 13 questions on one datasheet (ESP32, 43 pages), each asked 3 times. Model `llama3.2:3b`,
-top-K 8, distance threshold 1.25, run on 2026-10-04. Expected answers were written by reading the PDF.
-13 questions is a small sample: read these numbers as indicative, not as general accuracy.
-The benchmark checks that expected values appear in the answer, not that they are attached to the right signal.
+top-K 8, distance threshold 1.25, run on 2026-10-04. Expected answers were written from the PDF
+text and checked against it. 13 questions is a small sample: read these numbers as indicative,
+not as general accuracy. The benchmark checks that expected values appear in the answer, not that
+they are attached to the right signal. Raw results, including every answer, are in `docs/`.
 
-### Results per question
+Q01 is partly ambiguous: the datasheet itself gives several supply ranges (2.2-3.6 V in the
+overview, 2.3-3.6 V for analog pins, 2.8-3.6 V for VBAT in Table 8).
+
+**Results are not perfectly reproducible.** Two full runs with the same code and the same index
+gave different verdicts for Q03 (3 refusals, then 1 refusal and 2 flagged wrong answers), although
+retrieval is deterministic and the temperature is 0. The cause was not identified. The numbers
+below come from the latest run.
+
+### Results per question (latest run)
 
 | Outcome | Questions |
 |---|---|
-| Correct answer (or correct refusal), right page | 8 of 13 |
+| Correct answer (or correct refusal), right page | 8 of 13 (Q12 triggers a false alarm, see below) |
 | Correct answer, wrong page cited (flagged by the grounding check) | 1 of 13 (Q07) |
 | Wrong answer with no warning | 1 of 13 (Q01) |
-| Wrong answer with a warning displayed | 2 of 13 (Q13; Q11 in 2 runs of 3) |
-| Refusal although the answer existed | 1 of 13 (Q03; Q11 in 1 run of 3) |
+| Wrong answer with a warning displayed, in all 3 runs | 1 of 13 (Q13) |
+| Verdict differs between runs (refusal in 1 run, flagged wrong answer in 2) | 2 of 13 (Q03, Q11) |
 
-Q11 gave a wrong answer in 2 runs out of 3 and a refusal in the third.
-
-### Results per run (39 runs)
+### Results per run (39 runs, grounding check v2)
 
 | Metric | Result |
 |---|---|
 | Correct answers or correct refusals | 69 % (27/39) |
 | Fully correct (answer and cited page, or correct refusal) | 62 % (24/39) |
-| Silent errors (wrong, no warning) | 13 % (5/39) |
-| Flagged errors (wrong, warning shown) | 8 % (3/39) |
-| Useless refusals (answer existed) | 10 % (4/39) |
-| Questions whose verdict changed between runs | 1/13 (Q11) |
+| Correct answers with a warning shown (Q07, Q12) | 15 % (6/39) |
+| Silent errors (wrong, no warning) | 8 % (3/39) |
+| Flagged errors (wrong, warning shown) | 18 % (7/39) |
+| Useless refusals (answer existed) | 5 % (2/39) |
+| Correct page cited (among correct answers) | 86 % (18/21) |
+| Questions whose verdict changed between runs | 2/13 (Q03, Q11) |
 | Median / max total latency, model already loaded | 0.3 s / 1.5 s |
-| Median retrieval | 10 ms |
+| Median retrieval | about 10 ms |
 
 Latencies were measured with the model already in memory; a cold start took about 38 s.
-A first single-run pass gave a 0.6 s median and a 1.3 s maximum.
+Repeated identical questions may benefit from caching in Ollama (not verified).
 
 ### What the benchmark showed
 
-- **Retrieval limits some answers more than generation.** For Q03 (SPICLK, SPID, SPIQ), the pin table
-  on pages 14-15 never reached the LLM: page 14 is absent from the 12 nearest entries and page 15
-  ranks 8th at a distance of 1.34, above the 1.25 threshold. The embedding model handles
-  identifiers like `SPICLK` poorly.
+- **For Q03, retrieval is a bottleneck.** The pin table on pages 14-15 never reached the LLM:
+  page 14 is absent from the 12 nearest entries and page 15 ranks 8th at a distance of 1.34,
+  above the 1.25 threshold. A likely cause, not tested: the embedding model handles identifiers
+  like `SPICLK` poorly.
 - **Dimensions drawn in a raster figure are not readable.** For Q11 (package dimensions), the model
   answered "1.2 mm", a value that appears neither in the indexed text of the figure nor, as far as
   we can tell, in the drawing. The grounding check initially missed it because its unit list did
@@ -130,40 +147,60 @@ A first single-run pass gave a 0.6 s median and a 1.3 s maximum.
 Q11 exposed a gap: the grounding check ignored the `mm` unit. Adding it moved Q11's wrong
 answers from silent to flagged. Accuracy did not change, only detection.
 
-| `llama3.2:3b`, 13 questions x 3 runs | v1 | v2 |
+| `llama3.2:3b`, 13 questions x 3 runs | v1 | v2, first run |
 |---|---|---|
 | Correct answers or correct refusals | 69 % (27/39) | 69 % (27/39) |
 | Silent errors | 13 % (5/39) | 8 % (3/39) |
 | Flagged errors | 8 % (3/39) | 13 % (5/39) |
+| Correct answers with a warning shown | 8 % (3/39), Q07 | 15 % (6/39), Q07 and Q12 |
 
-The fix targets a gap found on Q11 itself, and was measured on Q11: it shows the fix works on
-that case, not that it generalizes to other dimensions.
+A later v2 run gave 18 % flagged errors and 5 % useless refusals; the difference comes from
+the Q03 variability above, not from the `mm` change.
 
-### Model comparison (same 13 questions, 3 runs each)
+The change also produced a false alarm on Q12: the answer "2mm" is correct, but the check flagged it
+in every run. Page 42 contains "2mm" in two indexed entries (a text chunk and the native text
+of the figure); the check only reads the cited chunk, which most likely is a neighboring one.
+Net effect: better detection, one new false alarm. The fix targeted a gap found on Q11 and was
+measured on Q11, so it shows the fix works on that case, not that it generalizes.
 
-| | llama3.2:3b | mistral (7B) |
+### Model comparison (same 13 questions, grounding check v2)
+
+| | llama3.2:3b (3 runs, latest) | mistral (7B, one benchmark run) |
 |---|---|---|
 | Correct answers or refusals (questions) | 9/13 | 9/13 |
 | Fully correct, answer and page (questions) | 8/13 | 8/13 |
-| Wrong answer, no warning | Q01, Q11 (2 runs of 3) | Q01, Q13 |
-| Wrong answer, warning displayed | Q13 | Q03 |
-| Refusal although the answer existed | Q03 (and Q11 once) | Q11 |
-| Median / max total latency, model loaded | 0.3 s / 1.5 s | 0.7 s / 2.8 s |
+| Wrong answer, no warning | Q01 | Q01, Q13 |
+| Wrong answer, warning displayed | Q13; Q03 and Q11 in 2 runs of 3 | Q03 |
+| Refusal although the answer existed | Q03 and Q11 in 1 run of 3 | Q11 |
+| Correct answers with a warning shown (runs) | 6/39 | 6/39 |
+| Median / max total latency, model loaded | 0.3 s / 1.5 s | 0.6 s / 2.8 s |
 
-The larger model was about twice as slow and not more accurate on this set. With 13 questions,
-a one-question difference is not significant. The same questions fail with both models.
+The larger model was about twice as slow and not more accurate on this set. With 13 questions and
+the run-to-run variability of the 3B model, these differences are not significant. The same
+questions (Q01, Q03, Q11, Q13) fail with both models, which suggests the bottleneck is upstream
+of the LLM, but this is not proven.
 
 ## Known limitations
 
-- Small models read dense tables poorly, and the embedding model retrieves identifiers poorly (see Q03).
-- The grounding check is lexical: it catches invented values and names, not real values attached to the wrong signal, not omissions, and not units outside its list.
+- Small models read dense tables poorly, and retrieval of identifiers looks weak (see Q03).
+- Results vary between runs for some questions, even at temperature 0 (Q03, Q11).
+- The grounding check is lexical: it catches invented values and names, not real values attached
+  to the wrong signal, not omissions.
+- The check reads only the cited chunk, so a correct answer whose value sits in a neighboring
+  chunk is flagged (Q12).
 - Values that appear only inside raster images depend on a small VLM and are not verified.
 - Page numbers are those of the PDF reader, which can differ from the printed page numbers.
 - The embedding model is English-oriented, so questions should be in English for now.
+- The interface texts are still partly in French.
 - Tested on a single datasheet and 13 questions. Q11 to Q13 were added after seeing the system's behavior on the first ten.
+- Before the offline-mode fix, start-up waited about 23 s on retries to reach the Hugging Face Hub when the network was disabled.
 
 ## Roadmap
 
-- Keyword search (BM25) alongside embeddings, for identifiers such as `SPICLK`
-- Add the `mm` unit to the grounding check and report before/after on the benchmark
+- Retrieval-only metric (is the expected page among the retrieved passages), deterministic and independent of the LLM
+- Keyword search (BM25) alongside embeddings, for identifiers such as `SPICLK`, measured before/after
+- Grounding check over neighboring chunks of the same page, to remove the Q12 false alarm
+- Investigate run-to-run variability
+- Network audit and offline ingestion test
+- English interface
 - Larger benchmark, on several datasheets
