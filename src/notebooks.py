@@ -279,7 +279,10 @@ def add_pdf(slug: str, data: bytes, filename: str, with_images: bool, progress=N
     name = _clean_pdf_name(filename)
     _check_pdf_bytes(data)
     if with_images:
-        check_ollama()  # avant d'écrire quoi que ce soit
+        try:
+            check_ollama()  # avant d'écrire quoi que ce soit
+        except SystemExit as err:  # l'interface doit pouvoir afficher le message, pas fermer le programme
+            raise RuntimeError(str(err)) from None
 
     pdf_path = _check_inside(paths["pdfs_dir"] / name)
     _check_inside(paths["images_dir"])
